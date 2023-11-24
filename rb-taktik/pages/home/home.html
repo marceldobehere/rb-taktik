@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>RB Taktik</title>
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+    <h1 style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0);">RB-Taktik</h1>
+    <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
+        <div class="inline">
+            <image class="inline" style="width: 100px; height: 100px; background-color: white;"></image>
+            <p class="inline">
+                <span>Bashar</span><br>
+                Rank: <span>9999</span>
+            </p>
+        </div>
+
+        <div class="inline">
+        </div>
+
+        <div class="inline">
+            [Stats here]
+        </div>
+
+        <div class="inline">
+            [Messages here]
+        </div>
+    </div>
+
+    <button class="form-button-big" onclick="joinGame()">Join Game</button>
+
+    <div style="border:2px solid black;margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 60px;">
+        <div class="inline" style="border:2px solid black;width:400px;height:400px;background-color: gray;display:inline-grid; grid-template-columns: auto auto;">
+            <div style="border: 1px solid black;">
+                Ranked Game
+            </div>
+            <div style="border: 1px solid black;">
+                Random Game
+            </div>
+            <div style="border: 1px solid black;">
+                Options
+            </div>
+            <div style="border: 1px solid black;">
+                Create Game
+            </div>
+        </div>
+
+        <div class="inline" style="border:2px solid black; background-color: gray;">
+            [Friend List]
+        </div>
+    </div>
+
+    </body>
+    <script src="/shared/js/roccModule.js"></script>
+    <script>
+        importModule('/shared/js/basicModules.js');
+        importModule('home.js');
+        startImporting();
+    </script>
+</html>

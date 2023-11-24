@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>RB Taktik - Login</title>
+        <link rel="stylesheet" href="/shared/css/styles.css">
+    </head>
+    <body>
+
+    <h1>Welcome</h1>
+
+    <input class="form-input-big" id="input-username" type="text" value="" placeholder="Enter your username">
+
+    <input class="form-input-big" id="input-password" type="password" value="" placeholder="Enter your password">
+
+    <button class="form-button-big" id="btn-login" onclick="doLogin()">Login</button>
+
+    <br>
+    <br>
+
+    <h2>Don't have an account? <a href="/register">Register</a></h2>
+
+    <h3><a href="/guest">Play as a Guest</a></h3>
+
+
+
+    </body>
+    <script src="/shared/js/roccModule.js"></script>
+    <script>
+        importModule('/shared/js/basicModules.js');
+        importModule('login.js');
+        startImporting();
+    </script>
+</html>

@@ -1,0 +1,90 @@
+/*background blue*/
+
+:root {
+    --text-col: white;
+    --link-col: white;
+    --input-bg-col: #2010AF;
+    --input-col: white;
+    --bg-col: #2076bf;
+}
+
+
+
+body {
+    background-color: var(--bg-col);
+    color: var(--text-col);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3
+{
+    color: var(--text-col);
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-col);
+}
+
+.form-input-big {
+    width: 500px;
+    height: 60px;
+    border-radius: 25px;
+    border: 4px solid red;
+    padding: 5px;
+    margin: auto auto 30px;
+    font-size: 22px;
+    display: block;
+
+    color: var(--text-col);
+    -webkit-text-fill-color: var(--input-col);
+    background-color: var(--input-bg-col);
+}
+
+.form-button-big {
+    height: 50px;
+    padding: 5px 25px 5px 25px;
+    border-radius: 25px;
+    border: 4px solid red;
+    margin: auto auto 20px;
+    font-size: 25px;
+    display: block;
+
+    color: var(--text-col);
+    background-color: var(--input-bg-col);
+}
+
+
+.form-button-big:hover {
+    background-color: #2010AF;
+    border: 4px solid white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--input-bg-col) inset !important;
+    font-family: 'Roboto', sans-serif !important;
+    -webkit-text-fill-color: var(--input-col) !important;
+    font-size: 25px !important;
+    appearance: inherit;
+}
+
+.inline {
+    display: inline-block;
+    border: 1px solid red;
+}

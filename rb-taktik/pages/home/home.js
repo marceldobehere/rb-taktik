@@ -1,0 +1,4 @@
+function joinGame()
+{
+    goPage("/ingame")
+}
