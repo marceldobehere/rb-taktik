@@ -1,0 +1,46 @@
+/*background blue*/
+
+:root {
+    --text-col: white;
+    --link-col: white;
+    --input-bg-col: #2010AF;
+    --input-col: white;
+    --bg-col: #2076bf;
+}
+
+body {
+    background-color: var(--bg-col);
+    color: var(--text-col);
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+
+h1, h2, h3
+{
+    color: var(--text-col);
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-col);
+}
+
+
+.inline {
+    display: inline-block;
+    border: 1px solid red;
+}

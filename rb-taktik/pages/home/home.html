@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>RB Taktik</title>
+        <link rel="stylesheet" href="/shared/css/main_styles.css">
         <link rel="stylesheet" href="home.css">
     </head>
     <body>
@@ -28,20 +29,18 @@
         </div>
     </div>
 
-    <button class="form-button-big" onclick="joinGame()">Join Game</button>
-
     <div style="border:2px solid black;margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 60px;">
         <div class="inline" style="border:2px solid black;width:400px;height:400px;background-color: gray;display:inline-grid; grid-template-columns: auto auto;">
-            <div style="border: 1px solid black;">
+            <div class="menu-tile tile-tl" onclick="joinRankedGame()">
                 Ranked Game
             </div>
-            <div style="border: 1px solid black;">
+            <div class="menu-tile tile-tr" onclick="joinRandomGame()">
                 Random Game
             </div>
-            <div style="border: 1px solid black;">
+            <div class="menu-tile tile-bl" onclick="openOptions()">
                 Options
             </div>
-            <div style="border: 1px solid black;">
+            <div class="menu-tile tile-br" onclick="createGame()">
                 Create Game
             </div>
         </div>
