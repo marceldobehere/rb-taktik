@@ -19,6 +19,55 @@ function removeGamesWithPlayer(playerSocket) {
     console.log(gameDict);
 }
 
+function getGameWithPlayer(playerSocket) {
+    for (let key in gameDict) {
+        if (gameDict[key]["sockets"].indexOf(playerSocket) != -1) {
+            return gameDict[key];
+        }
+    }
+
+    return undefined;
+}
+
+function resetGameState(entry)
+{
+    entry["state"] = {
+        "board": [
+            undefined, undefined, undefined,
+            undefined, undefined, undefined,
+            undefined, undefined, undefined],
+        "playerPoints": [0,0],
+        "playerTurn": 0,
+        "gameRunning": false,
+        "gameWinner": undefined,
+        "playerStacks": [[999,4,3,2], [999,4,3,2]],
+        "playerNames": ["N/A", "N/A"]
+    };
+}
+
+function resetGame(entry)
+{
+    entry["state"]["board"] = [
+        undefined, undefined, undefined,
+        undefined, undefined, undefined,
+        undefined, undefined, undefined];
+
+    entry["state"]["playerTurn"] = 0;
+    entry["state"]["gameRunning"] = false;
+    entry["state"]["gameWinner"] = undefined;
+    entry["state"]["playerStacks"] = [[999,4,3,2], [999,4,3,2]];
+}
+
+function checkWin(entry)
+{
+    let state = entry["state"];
+    let board = state["board"];
+
+    // check for same player with the same rules as tic tac toe
+
+    return false;
+}
+
 function initApp(_app, _io) {
     app = _app;
     io = _io;
@@ -52,15 +101,21 @@ function initApp(_app, _io) {
                 "id": id,
                 "players": [username],
                 "sockets": [socket],
-                "settings": {}
+                "settings": {},
+                "state": {}
             };
+
+            resetGameState(gameEntry);
+
+            gameEntry["state"]["playerNames"][0] = username;
 
             gameDict[id] = gameEntry;
 
             socket.emit("game-create", {
                 "id": gameEntry["id"],
                 "players": gameEntry["players"],
-                "settings": gameEntry["settings"]
+                "settings": gameEntry["settings"],
+                "state": gameEntry["state"]
             });
 
             console.log(gameDict);
@@ -87,25 +142,157 @@ function initApp(_app, _io) {
 
             gameEntry["players"].push(username);
             gameEntry["sockets"].push(socket);
+            gameEntry["state"]["playerNames"][1] = username;
 
             socket.emit("game-join", {
                 "id": gameEntry["id"],
                 "players": gameEntry["players"],
-                "settings": gameEntry["settings"]
+                "settings": gameEntry["settings"],
+                "state": gameEntry["state"]
             });
 
             for (let socket of gameEntry["sockets"])
                 socket.emit("game-join", {
                     "id": gameEntry["id"],
                     "players": gameEntry["players"],
-                    "settings": gameEntry["settings"]
+                    "settings": gameEntry["settings"],
+                    "state": gameEntry["state"]
                 });
 
             console.log(gameDict);
         });
 
         socket.on('game-leave', (obj) => {
+            removeGamesWithPlayer(socket);
+        });
 
+        socket.on('game-start', (obj) => {
+            let game = getGameWithPlayer(socket);
+            console.log(game);
+
+            if (!game)
+                return socket.emit("game-start", {"error": "Not in game"});
+
+            if (game["players"].indexOf(obj["username"]) == -1)
+                return socket.emit("game-start", {"error": "Not in game"});
+
+            if (game["players"].length < 2)
+                return socket.emit("game-start", {"error": "Not enough players"});
+
+            if (game["state"]["gameRunning"])
+                return socket.emit("game-start", {"error": "Game already running"});
+
+            resetGame(game);
+
+            game["state"]["gameRunning"] = true;
+
+            socket.emit("game-start", {});
+
+            for (let socket of game["sockets"])
+                socket.emit("game-start", {
+                    "id": game["id"],
+                    "players": game["players"],
+                    "settings": game["settings"],
+                    "state": game["state"]
+                });
+        });
+
+        socket.on('game-stop', (obj) => {
+            let game = getGameWithPlayer(socket);
+
+            if (!game)
+                return socket.emit("game-stop", {"error": "Not in game"});
+
+            if (game["players"].indexOf(obj["username"]) == -1)
+                return socket.emit("game-stop", {"error": "Not in game"});
+
+            if (!game["state"]["gameRunning"])
+                return socket.emit("game-stop", {"error": "Game not running"});
+
+            game["state"]["gameRunning"] = false;
+
+            socket.emit("game-stop", {});
+
+            for (let socket of game["sockets"])
+                socket.emit("game-stop", {
+                    "id": game["id"],
+                    "players": game["players"],
+                    "settings": game["settings"],
+                    "state": game["state"]
+                });
+        });
+
+
+
+        socket.on('game-move', (obj) => {
+            let gameEntry = getGameWithPlayer(socket);
+
+            (() => {
+                if (obj == undefined || obj["player"] == undefined || obj["field"] == undefined || obj["piece"] == undefined)
+                    return socket.emit("game-move", {"error": "Invalid Session"});
+
+                let username = obj["player"];
+                let field = obj["field"];
+                let piece = obj["piece"];
+
+
+
+                if (!gameEntry)
+                    return socket.emit("game-move", {"error": "Invalid Game ID"});
+
+                if (gameEntry["players"].indexOf(username) == -1)
+                    return socket.emit("game-move", {"error": "Not in game"});
+
+                let state = gameEntry["state"];
+
+                if (!state["gameRunning"])
+                    return socket.emit("game-move", {"error": "Game not running"});
+
+                if (state["gameWinner"] != undefined)
+                    return socket.emit("game-move", {"error": "Game already over"});
+
+                if (state["playerTurn"] != gameEntry["players"].indexOf(username))
+                    return socket.emit("game-move", {"error": "Not your turn"});
+
+                if (piece < 0 || piece > 3)
+                    return socket.emit("game-move", {"error": "Invalid piece"});
+
+                if (state["board"][field] != undefined)
+                {
+                    if (state["board"][field]["piece"] >= piece)
+                        return socket.emit("game-move", {"error": "Field already occupied"});
+                }
+
+                if (state["playerStacks"][state["playerTurn"]][piece] <= 0)
+                    return socket.emit("game-move", {"error": "Not enough pieces"});
+
+                state["board"][field] = {player: state["playerTurn"], piece: piece};
+                state["playerStacks"][state["playerTurn"]][piece] -= 1;
+
+                state["playerTurn"] = (state["playerTurn"] + 1) % 2;
+            })();
+
+            if (gameEntry)
+            {
+                let won = checkWin(gameEntry);
+                if (won &&
+                    gameEntry["state"]["gameWinner"] != gameEntry["state"]["playerTurn"])
+                {
+                    gameEntry["state"]["gameWinner"] = gameEntry["state"]["playerTurn"];
+                    gameEntry["state"]["playerPoints"][gameEntry["state"]["playerTurn"]] += 1;
+                    gameEntry["state"]["gameRunning"] = false;
+                }
+
+                let state = gameEntry["state"];
+                for (let socket of gameEntry["sockets"])
+                    socket.emit("game-move", {state});
+
+                if (won)
+                {
+                    for (let socket of gameEntry["sockets"])
+                        socket.emit("game-win", {state});
+                }
+            }
         });
 
         socket.on('game-settings', (obj) => {
