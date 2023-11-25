@@ -15,16 +15,56 @@
                 <p class="player-name">Player 1</p>
                 <image class="player-image"></image>
             </div>
+
+            <div class="player-stats-box">
+                <p>R2: <span id="player-red-r2">4x</span></p>
+                <p>R3: <span id="player-red-r3">3x</span></p>
+                <p>R4: <span id="player-red-r4">2x</span></p>
+            </div>
+
+            <div class="chat-container">
+                <ul id="chat-list">
+                    <li>[XX:XX] Red: Blub 123</li>
+                    <li>[XX:XX] Blue: Blub 123</li>
+                    <li>[XX:XX] Red: Blub 121234123412343</li>
+                    <li>[XX:XX] Blue: Blub</li>
+                </ul>
+                <input id="chat-input" placeholder="Enter Chat message here">
+            </div>
         </div>
 
-        <div class="game-box">
-            [Game Field]
+        <div class="game-container">
+            <div class="game-box">
+                <div class="game-field" onclick="fieldClicked(this)">A1</div>
+                <div class="game-field" onclick="fieldClicked(this)">A2</div>
+                <div class="game-field" onclick="fieldClicked(this)">A3</div>
+
+                <div class="game-field" onclick="fieldClicked(this)">B1</div>
+                <div class="game-field" onclick="fieldClicked(this)">B2</div>
+                <div class="game-field" onclick="fieldClicked(this)">B3</div>
+
+                <div class="game-field" onclick="fieldClicked(this)">C1</div>
+                <div class="game-field" onclick="fieldClicked(this)">C2</div>
+                <div class="game-field" onclick="fieldClicked(this)">C3</div>
+
+            </div>
+
+            <div class="game-stats-box">
+                <p class="player-vs-text"><span id="player-vs-r" class="player-vs col-red">A</span> vs <span id="player-vs-b" class="player-vs col-blue">B</span></p>
+                <p class="player-turn-text">Player <span id="player-turn" class="col-red">1</span>'s turn</p>
+            </div>
         </div>
 
         <div class="player-box player-blue">
             <div class="player-info-box">
                 <p class="player-name">Player 2</p>
                 <image class="player-image"></image>
+            </div>
+
+            <div class="player-stats-box">
+                <p>R2: <span id="player-blue-r2">4x</span></p>
+                <p>R3: <span id="player-blue-r3">3x</span></p>
+                <p>R4: <span id="player-blue-r4">2x</span></p>
             </div>
         </div>
     </div>

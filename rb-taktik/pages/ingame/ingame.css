@@ -16,13 +16,6 @@
     height: 100%;
 }
 
-.game-box {
-    border: 1px solid black;
-    width: 500px;
-    height: 500px;
-    justify-self: center;
-}
-
 .player-red {
     border: 1px solid red;
     justify-self: left;
@@ -68,4 +61,134 @@
     background-color: white;
     border-radius: 100%;
     border-width: 8px;
+}
+
+
+.player-red .player-stats-box {
+    background-color: red;
+}
+
+.player-blue .player-stats-box {
+    background-color: blue;
+}
+
+.player-stats-box {
+    margin: 40px auto 20px auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.player-stats-box p {
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.game-container {
+    width: 500px;
+    height: 500px;
+    justify-self: center;
+    justify-items: center;
+}
+
+.game-box {
+    width: 500px;
+    height: 500px;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.game-field {
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 30px;
+}
+
+.game-field:hover {
+    background-color: darkgray;
+    color: white;
+}
+
+.game-stats-box {
+    margin-top: 10px;
+}
+
+.player-vs-text {
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.player-vs {
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.player-turn-text {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.col-red {
+    color: red;
+}
+
+.col-blue {
+    color: blue;
+}
+
+.chat-container {
+    background-color: aqua;
+    width: 80%;
+    height: 300px;
+    justify-self: center;
+    margin: 20px auto auto auto;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#chat-list {
+    margin: 0px;
+    bottom: 20px;
+    width: 100%;
+    list-style: none;
+    padding: 10px 0px 0px 0px;
+    overflow: auto;
+    height: 250px;
+}
+
+#chat-list li {
+    width: max-content;
+}
+
+#chat-input {
+    margin: 0px;
+    height: 40px;
+    width: 100%;
+    border-top: 4px solid black;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
 }
