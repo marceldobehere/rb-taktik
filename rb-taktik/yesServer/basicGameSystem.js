@@ -63,7 +63,83 @@ function checkWin(entry)
     let state = entry["state"];
     let board = state["board"];
 
+    if (state["gameWinner"] != undefined || !state["gameRunning"])
+        return false;
+
     // check for same player with the same rules as tic tac toe
+
+    // vertical
+    for (let i = 0; i < 3; i++)
+    {
+        if (board[i] != undefined &&
+            board[i+3] != undefined &&
+            board[i+6] != undefined &&
+            board[i]["player"] == board[i+3]["player"] &&
+            board[i]["player"] == board[i+6]["player"])
+        {
+            return true;
+        }
+    }
+
+    // horizontal
+    for (let i = 0; i < 9; i += 3)
+    {
+        if (board[i] != undefined &&
+            board[i+1] != undefined &&
+            board[i+2] != undefined &&
+            board[i]["player"] == board[i+1]["player"] &&
+            board[i]["player"] == board[i+2]["player"])
+        {
+            return true;
+        }
+    }
+
+    // diagonal 1
+    if (board[0] != undefined &&
+        board[4] != undefined &&
+        board[8] != undefined &&
+        board[0]["player"] == board[4]["player"] &&
+        board[0]["player"] == board[8]["player"])
+    {
+        return true;
+    }
+
+    // diagonal 2
+    if (board[2] != undefined &&
+        board[4] != undefined &&
+        board[6] != undefined &&
+        board[2]["player"] == board[4]["player"] &&
+        board[2]["player"] == board[6]["player"])
+    {
+        return true;
+    }
+
+    // check if player cannot place any pieces
+    for (let p = 0; p < 2; p++)
+    {
+        let canPlace = false;
+        for (let piece = 3; piece >= 0; piece--)
+        {
+            if (state["playerStacks"][p][piece] < 1)
+                continue;
+
+            for (let i = 0; i < 9; i++)
+            {
+                if (board[i] != undefined &&
+                    board[i]["piece"] >= piece)
+                    continue;
+
+                canPlace = true;
+                break;
+            }
+        }
+
+        if (!canPlace)
+        {
+            state["playerTurn"] = (p + 1) % 2;
+            return true;
+        }
+    }
 
     return false;
 }
@@ -270,27 +346,33 @@ function initApp(_app, _io) {
                 state["playerStacks"][state["playerTurn"]][piece] -= 1;
 
                 state["playerTurn"] = (state["playerTurn"] + 1) % 2;
+
+                socket.emit("game-move", {state});
             })();
 
             if (gameEntry)
             {
                 let won = checkWin(gameEntry);
                 if (won &&
-                    gameEntry["state"]["gameWinner"] != gameEntry["state"]["playerTurn"])
+                    gameEntry["state"]["gameWinner"] == undefined)
                 {
-                    gameEntry["state"]["gameWinner"] = gameEntry["state"]["playerTurn"];
-                    gameEntry["state"]["playerPoints"][gameEntry["state"]["playerTurn"]] += 1;
+                    gameEntry["state"]["gameWinner"] = (gameEntry["state"]["playerTurn"] + 1) % 2;
+                    gameEntry["state"]["playerPoints"][gameEntry["state"]["gameWinner"]] += 1;
+
                     gameEntry["state"]["gameRunning"] = false;
                 }
 
                 let state = gameEntry["state"];
-                for (let socket of gameEntry["sockets"])
-                    socket.emit("game-move", {state});
 
                 if (won)
                 {
                     for (let socket of gameEntry["sockets"])
                         socket.emit("game-win", {state});
+                }
+                else
+                {
+                    for (let socket of gameEntry["sockets"])
+                        socket.emit("game-move", {state});
                 }
             }
         });

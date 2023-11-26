@@ -19,7 +19,7 @@ function msgHook(channel, callback)
 
 function handleReply(channel, obj)
 {
-    console.log(`GOT REPLY: ${channel} ${JSON.stringify(obj)}`);
+    //console.log(`GOT REPLY: ${channel} ${JSON.stringify(obj)}`);
     if (replyDict[channel] != undefined)
     {
         let replyEntry = replyDict[channel];

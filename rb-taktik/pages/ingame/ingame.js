@@ -1,4 +1,5 @@
 let messagePopupBox = document.getElementById("msg-popup-box");
+let messagePopupText = document.getElementById("msg-popup-box-text");
 let gameRunning = false;
 let gameWinner = undefined;
 let playerNumber = 0;
@@ -186,12 +187,15 @@ function loadGameState(state)
     playerPoints = state["playerPoints"];
     playerNames = state["playerNames"];
 
+
     drawBoard();
 }
 
 
-function showMessage()
+function showMessage(msg)
 {
+    if (msg)
+        messagePopupText.textContent = msg;
     messagePopupBox.style.display = "block";
 }
 

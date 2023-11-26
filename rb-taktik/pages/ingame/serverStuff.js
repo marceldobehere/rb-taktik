@@ -3,6 +3,8 @@ async function createGame()
     // get username
     let username = prompt("Please enter your username");
     playerId = username;
+    if (username == null)
+        return;
 
     let result = await msgSendAndGetReply("game-create", {"username":username});
     if (result["error"] != undefined)
@@ -21,8 +23,12 @@ async function createGame()
 async function joinGame()
 {
     let roomId = prompt("Please enter the room ID");
+    if (roomId == null)
+        return;
     let username = prompt("Please enter your username");
     playerId = username;
+    if (username == null)
+        return;
 
     let result = await msgSendAndGetReply("game-join", {"username":username, "id":roomId});
     if (result["error"] != undefined)
@@ -77,7 +83,11 @@ async function init()
 
     msgHook("game-win", (data) => {
         console.log("Game won/lost!", data);
-        loadGameState(data);
+        loadGameState(data["state"]);
+        if (data["state"]["gameWinner"] == playerNumber)
+            showMessage("You won!");
+        else
+            showMessage("You lost");
     });
 }
 
