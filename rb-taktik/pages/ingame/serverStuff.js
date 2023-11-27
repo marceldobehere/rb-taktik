@@ -14,6 +14,7 @@ async function createGame()
     }
 
     console.log(result["id"]);
+    alert("Your room ID is: " + result["id"]);
 
     // red
     playerNumber = 0;

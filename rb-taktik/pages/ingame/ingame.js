@@ -134,6 +134,10 @@ function drawBoard()
     {
         let elem = document.getElementById("player-turn");
         elem.textContent = playerNames[playerTurn];
+        if (playerTurn == 0)
+            elem.className = "col-red";
+        else
+            elem.className = "col-blue";
     }
 }
 
