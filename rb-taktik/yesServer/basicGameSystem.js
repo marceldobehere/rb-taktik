@@ -136,7 +136,7 @@ function checkWin(entry)
 
         if (!canPlace)
         {
-            state["playerTurn"] = (p + 1) % 2;
+            //state["playerTurn"] = (p + 1) % 2;
             return true;
         }
     }
