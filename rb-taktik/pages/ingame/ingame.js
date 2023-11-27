@@ -96,7 +96,7 @@ function drawBoard()
         else
         {
             field.style.backgroundColor = playerColors[item["player"]];
-            field.textContent = "R"+(item["piece"] + 1);
+            field.textContent = playerChars[item["player"]].toUpperCase() + (item["piece"] + 1);
         }
     }
 
