@@ -4,7 +4,7 @@ body{
 
 .menu-tile {
     border: 1px solid black;
-    background-color: orangered;
+    background-color: #E01F16;
     font-size: 35px;
     text-align: center;
     display: flex;
@@ -14,4 +14,8 @@ body{
 
 .menu-tile:hover {
     background-color: red;
+}
+
+.drop-shadow-figma {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
