@@ -33,6 +33,8 @@ app.get('/*', (req, res) => {
     res.sendFile(__dirname + url);
 });
 
+const basicGameSystem = require("./yesServer/basicGameSystem.js");
+basicGameSystem.initApp(app, io);
 
 // const sessionStuff = require("./yesServer/sessionStuff.js");
 // sessionStuff.initApp(app, io);
@@ -48,7 +50,7 @@ app.get('/*', (req, res) => {
 // const registerManager = require("./yesServer/registerHandling");
 // registerManager.initApp(app, io, sessionStuff, dbStuff);
 //
-// const userManager = require("./yesServer/userManager.js");
+// const userManager = require("./yesServer/basicGameSystem.js");
 // userManager.initApp(app, io, sessionStuff, dbStuff);
 //
 // const roomManager = require("./yesServer/roomManager.js");

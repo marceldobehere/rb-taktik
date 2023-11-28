@@ -12,14 +12,15 @@
     <div id="main-content">
         <div class="player-box player-red">
             <div class="player-info-box">
-                <p class="player-name">Player 1</p>
+                <p class="player-name" id="player-name-r">Player 1</p>
                 <image class="player-image"></image>
             </div>
 
             <div class="player-stats-box">
-                <p>R2: <span id="player-red-r2">4x</span></p>
-                <p>R3: <span id="player-red-r3">3x</span></p>
-                <p>R4: <span id="player-red-r4">2x</span></p>
+                <p>R1: <span id="player-r-1">999x</span></p>
+                <p>R2: <span id="player-r-2">4x</span></p>
+                <p>R3: <span id="player-r-3">3x</span></p>
+                <p>R4: <span id="player-r-4">2x</span></p>
             </div>
 
             <div class="chat-container">
@@ -34,7 +35,7 @@
         </div>
 
         <div class="game-container">
-            <div class="game-box">
+            <div class="game-box" id="game-board">
                 <div class="game-field" onclick="fieldClicked(this)">A1</div>
                 <div class="game-field" onclick="fieldClicked(this)">A2</div>
                 <div class="game-field" onclick="fieldClicked(this)">A3</div>
@@ -50,34 +51,41 @@
             </div>
 
             <div class="game-stats-box">
-                <p class="player-vs-text"><span id="player-vs-r" class="player-vs col-red">A</span> vs <span id="player-vs-b" class="player-vs col-blue">B</span></p>
+                <p class="player-vs-text"><span id="player-vs-r" class="player-vs col-red">0</span> vs <span id="player-vs-b" class="player-vs col-blue">0</span></p>
                 <p class="player-turn-text">Player <span id="player-turn" class="col-red">1</span>'s turn</p>
             </div>
         </div>
 
         <div class="player-box player-blue">
             <div class="player-info-box">
-                <p class="player-name">Player 2</p>
+                <p class="player-name" id="player-name-b">Player 2</p>
                 <image class="player-image"></image>
             </div>
 
             <div class="player-stats-box">
-                <p>R2: <span id="player-blue-r2">4x</span></p>
-                <p>R3: <span id="player-blue-r3">3x</span></p>
-                <p>R4: <span id="player-blue-r4">2x</span></p>
+                <p>B1: <span id="player-b-1">999x</span></p>
+                <p>B2: <span id="player-b-2">4x</span></p>
+                <p>B3: <span id="player-b-3">3x</span></p>
+                <p>B4: <span id="player-b-4">2x</span></p>
             </div>
         </div>
     </div>
 
 
-
+    <div id="msg-popup-box" onclick="hideMessage()" style="display: none;">
+        <div id="msg-popup-box-text" onclick="event.stopPropagation()">
+            You won!
+            <br>
+            lmao
+        </div>
+    </div>
 
 
     <div style="border: 1px solid black;position:absolute; top:0px;left:350px; width: 300px; height: 60px;background-color: darkorange;">
-        <button>Be Player 1</button>
-        <button>Be Player 2</button><br>
-        <button>Start Game</button>
-        <button>Stop Game</button><br>
+        <button onclick="createGame()">Create Game</button>
+        <button onclick="startGame()">Start Game</button>
+        <br>
+        <button onclick="joinGame()">Join Game</button>
     </div>
 
     <div style="border: 1px solid black;position:absolute; top:25px;left:25px; width: 50px; height: 50px;">
@@ -89,6 +97,7 @@
     <script>
         importModule('/shared/js/basicModules.js');
         importModule('ingame.js');
+        importModule('serverStuff.js');
         startImporting();
     </script>
 </html>
