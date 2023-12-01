@@ -386,6 +386,7 @@ function initApp(_app, _io) {
         });
     });
 
+    console.log("> Basic Game System initialized");
 }
 
 /*

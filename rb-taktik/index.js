@@ -33,9 +33,6 @@ app.get('/*', (req, res) => {
     res.sendFile(__dirname + url);
 });
 
-const basicGameSystem = require("./yesServer/basicGameSystem.js");
-basicGameSystem.initApp(app, io);
-
 // const sessionStuff = require("./yesServer/sessionStuff.js");
 // sessionStuff.initApp(app, io);
 //
@@ -59,8 +56,18 @@ basicGameSystem.initApp(app, io);
 // const shell = require("./yesServer/shell");
 // shell.initApp(sessionStuff, dbStuff, loginManager, registerManager, userManager);
 
+
+const dbInterface = require("./yesServer/dbInterface.js");
+dbInterface.initApp();
+
+const accountInterface = require("./yesServer/accountInterface.js");
+accountInterface.initApp(dbInterface);
+
+const basicGameSystem = require("./yesServer/basicGameSystem.js");
+basicGameSystem.initApp(app, io);
+
 server.listen(80, () => {
-    console.log('listening on *:80');
+    console.log('> Started server on *:80');
 });
 
 //shell.start();
