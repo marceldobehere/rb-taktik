@@ -21,7 +21,21 @@ body{
 }
 
 .logo{
-    max-width: 40%;
+    margin-top: 11px;
+    max-width: 30%;
     min-width:20%;
     height: auto;
+}
+
+.general-button-style{
+    border-radius: 50px 50px 50px 50px;
+    border:2px solid #E01F16;
+    width:100px;
+    height:100px;
+    background-color: #E01F16;
+
+}
+
+.general-button-style:hover {
+    background-color: red;
 }
