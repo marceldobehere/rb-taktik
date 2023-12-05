@@ -11,6 +11,26 @@ function initApp()
     console.log("> Initialized DB interface");
 }
 
+async function _getTable(tableName)
+{
+    if (! await tableExists(tableName))
+        return;
+
+    let table = {};
+    try
+    {
+        JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
+    }
+    catch (e)
+    {
+        console.error("> ERROR READING DB:");
+        console.error(e);
+        console.error(`File Data: \"${fs.readFileSync(folderPath + tableName + ".json", "utf8")}\"`);
+    }
+
+    return table;
+}
+
 async function tableExists(tableName)
 {
     return fs.existsSync(folderPath + tableName + ".json");
@@ -20,7 +40,6 @@ async function createTable(tableName) {
     if (await tableExists(tableName))
         return;
 
-    //fs.writeFileSync(folderPath + tableName + ".json", "{}");
     await fsPromise.writeFile(folderPath + tableName + ".json", "{}");
 }
 
@@ -42,49 +61,49 @@ async function clearTable(tableName)
 
 async function addPair(tableName, key, value)
 {
-    if (! await tableExists(tableName))
+    let table = await _getTable(tableName);
+    if (!table)
         return;
 
-    let table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     table[key] = value;
     await fsPromise.writeFile(folderPath + tableName + ".json",  JSON.stringify(table));
 }
 
 async function getPair(tableName, key)
 {
-    if (! await tableExists(tableName))
+    let table = await _getTable(tableName);
+    if (!table)
         return;
 
-    let table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     return table[key];
 }
 
 async function updatePair(tableName, key, value)
 {
-    if (! await tableExists(tableName))
+    let table = await _getTable(tableName);
+    if (!table)
         return;
 
-    let table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     table[key] = value;
     await fsPromise.writeFile(folderPath + tableName + ".json",  JSON.stringify(table));
 }
 
 async function deletePair(tableName, key)
 {
-    if (! await tableExists(tableName))
+    let table = await _getTable(tableName);
+    if (!table)
         return;
 
-    let table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     delete table[key];
     await fsPromise.writeFile(folderPath + tableName + ".json",  JSON.stringify(table));
 }
 
 async function getAllKeys(tableName)
 {
-    if (! await tableExists(tableName))
+    let table = await _getTable(tableName);
+    if (!table)
         return;
 
-    let table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     return Object.keys(table);
 }
 

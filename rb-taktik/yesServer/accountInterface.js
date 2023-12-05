@@ -7,7 +7,7 @@ async function initApp(_dbInterface)
     if (! await dbInterface.tableExists("users"))
         await dbInterface.createTable("users");
 
-    createUser("test1234", {
+    await createUser("test1234", {
         "username": "Testo",
         "email": "test@test.com",
         "user-id": "test1234",
@@ -50,46 +50,46 @@ function makeUserObjectConform(userObject)
     return userObject;
 }
 
-function createUser(userId, userObject)
+async function createUser(userId, userObject)
 {
     if (!checkUserObject(userObject))
         return false;
 
     userObject = makeUserObjectConform(userObject);
 
-    dbInterface.addPair("users", userId, userObject);
+    await dbInterface.addPair("users", userId, userObject);
     return true;
 }
 
-function getUser(userId)
+async function getUser(userId)
 {
-    let userObject = dbInterface.getPair("users", userId);
+    let userObject = await dbInterface.getPair("users", userId);
     if (userObject == undefined)
         return undefined;
 
     return makeUserObjectConform(userObject);
 }
 
-function updateUser(userId, userObject)
+async function updateUser(userId, userObject)
 {
     if (!checkUserObject(userObject))
         return false;
 
     userObject = makeUserObjectConform(userObject);
 
-    dbInterface.updatePair("users", userId, userObject);
+    await dbInterface.updatePair("users", userId, userObject);
     return true;
 }
 
-function deleteUser(userId)
+async function deleteUser(userId)
 {
-    dbInterface.deletePair("users", userId);
+    await dbInterface.deletePair("users", userId);
     return true;
 }
 
-function getAllUsers()
+async function getAllUsers()
 {
-    let users = dbInterface.getAllKeys("users");
+    let users = await dbInterface.getAllKeys("users");
 
     let result = [];
     for (let i = 0; i < users.length; i++)

@@ -68,7 +68,7 @@ async function startUp()
 {
     dbInterface.initApp();
     await accountInterface.initApp(dbInterface);
-    securityInterface.initApp();
+    await securityInterface.initApp();
     accountSystem.initApp(app, io, accountInterface);
     basicGameSystem.initApp(app, io);
 
