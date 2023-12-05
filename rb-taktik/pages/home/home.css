@@ -19,3 +19,9 @@ body{
 .drop-shadow-figma {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
+
+.logo{
+    max-width: 40%;
+    min-width:20%;
+    height: auto;
+}
