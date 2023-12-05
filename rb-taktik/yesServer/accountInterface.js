@@ -1,8 +1,19 @@
 let dbInterface;
 
-function initApp(_dbInterface)
+async function initApp(_dbInterface)
 {
     dbInterface = _dbInterface;
+
+    if (! await dbInterface.tableExists("users"))
+        await dbInterface.createTable("users");
+
+    createUser("test1234", {
+        "username": "Testo",
+        "email": "test@test.com",
+        "user-id": "test1234",
+        "password-hash": "test",
+        "password-salt": "test"
+    });
 
     console.log("> Initialized account interface");
 }
