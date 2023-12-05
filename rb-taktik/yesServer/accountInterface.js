@@ -57,6 +57,9 @@ async function createUser(userId, userObject)
 
     userObject = makeUserObjectConform(userObject);
 
+    if (await getUserByUsername(userObject["username"]) != undefined)
+        return false;
+
     await dbInterface.addPair("users", userId, userObject);
     return true;
 }
@@ -68,6 +71,16 @@ async function getUser(userId)
         return undefined;
 
     return makeUserObjectConform(userObject);
+}
+
+async function getUserByUsername(username)
+{
+    let users = await getAllUsers();
+    for (let i = 0; i < users.length; i++)
+        if (users[i]["username"] == username)
+            return users[i];
+
+    return undefined;
 }
 
 async function updateUser(userId, userObject)
@@ -98,4 +111,4 @@ async function getAllUsers()
     return result;
 }
 
-module.exports = {initApp, createUser, getUser, updateUser, deleteUser, getAllUsers};
+module.exports = {initApp, createUser, getUser, updateUser, deleteUser, getAllUsers, getUserByUsername};

@@ -22,6 +22,11 @@ async function checkPassword(password, salt, hash) {
     return newHash == hash;
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 async function initApp()
 {
@@ -39,4 +44,4 @@ async function initApp()
     console.log("> Initialized security interface");
 }
 
-module.exports = {initApp, hashPassword, checkPassword};
+module.exports = {initApp, hashPassword, checkPassword, getRandomInt};

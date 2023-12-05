@@ -63,13 +63,15 @@ const accountInterface = require("./yesServer/accountInterface.js");
 const accountSystem = require("./yesServer/accountSystem.js");
 const basicGameSystem = require("./yesServer/basicGameSystem.js");
 const securityInterface = require("./yesServer/securityInterface.js");
+const sessionSystem = require("./yesServer/sessionSystem.js");
 
 async function startUp()
 {
     dbInterface.initApp();
     await accountInterface.initApp(dbInterface);
     await securityInterface.initApp();
-    accountSystem.initApp(app, io, accountInterface);
+    sessionSystem.initApp();
+    await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     basicGameSystem.initApp(app, io);
 
     server.listen(80, () => {
