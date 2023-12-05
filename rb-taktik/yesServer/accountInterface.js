@@ -1,8 +1,19 @@
 let dbInterface;
 
-function initApp(_dbInterface)
+async function initApp(_dbInterface)
 {
     dbInterface = _dbInterface;
+
+    if (! await dbInterface.tableExists("users"))
+        await dbInterface.createTable("users");
+
+    await createUser("test1234", {
+        "username": "Testo",
+        "email": "test@test.com",
+        "user-id": "test1234",
+        "password-hash": "test",
+        "password-salt": "test"
+    });
 
     console.log("> Initialized account interface");
 }
@@ -39,46 +50,59 @@ function makeUserObjectConform(userObject)
     return userObject;
 }
 
-function createUser(userId, userObject)
+async function createUser(userId, userObject)
 {
     if (!checkUserObject(userObject))
         return false;
 
     userObject = makeUserObjectConform(userObject);
 
-    dbInterface.addPair("users", userId, userObject);
+    if (await getUserByUsername(userObject["username"]) != undefined)
+        return false;
+
+    await dbInterface.addPair("users", userId, userObject);
     return true;
 }
 
-function getUser(userId)
+async function getUser(userId)
 {
-    let userObject = dbInterface.getPair("users", userId);
+    let userObject = await dbInterface.getPair("users", userId);
     if (userObject == undefined)
         return undefined;
 
     return makeUserObjectConform(userObject);
 }
 
-function updateUser(userId, userObject)
+async function getUserByUsername(username)
+{
+    let users = await getAllUsers();
+    for (let i = 0; i < users.length; i++)
+        if (users[i]["username"] == username)
+            return users[i];
+
+    return undefined;
+}
+
+async function updateUser(userId, userObject)
 {
     if (!checkUserObject(userObject))
         return false;
 
     userObject = makeUserObjectConform(userObject);
 
-    dbInterface.updatePair("users", userId, userObject);
+    await dbInterface.updatePair("users", userId, userObject);
     return true;
 }
 
-function deleteUser(userId)
+async function deleteUser(userId)
 {
-    dbInterface.deletePair("users", userId);
+    await dbInterface.deletePair("users", userId);
     return true;
 }
 
-function getAllUsers()
+async function getAllUsers()
 {
-    let users = dbInterface.getAllKeys("users");
+    let users = await dbInterface.getAllKeys("users");
 
     let result = [];
     for (let i = 0; i < users.length; i++)
@@ -87,4 +111,4 @@ function getAllUsers()
     return result;
 }
 
-module.exports = {initApp, createUser, getUser, updateUser, deleteUser, getAllUsers};
+module.exports = {initApp, createUser, getUser, updateUser, deleteUser, getAllUsers, getUserByUsername};

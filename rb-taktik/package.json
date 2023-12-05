@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon index.js"
   },
+  "nodemonConfig": {
+    "ignore": ["localDb/*"]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

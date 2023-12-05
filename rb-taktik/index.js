@@ -57,17 +57,28 @@ app.get('/*', (req, res) => {
 // shell.initApp(sessionStuff, dbStuff, loginManager, registerManager, userManager);
 
 
+
 const dbInterface = require("./yesServer/dbInterface.js");
-dbInterface.initApp();
-
 const accountInterface = require("./yesServer/accountInterface.js");
-accountInterface.initApp(dbInterface);
-
+const accountSystem = require("./yesServer/accountSystem.js");
 const basicGameSystem = require("./yesServer/basicGameSystem.js");
-basicGameSystem.initApp(app, io);
+const securityInterface = require("./yesServer/securityInterface.js");
+const sessionSystem = require("./yesServer/sessionSystem.js");
 
-server.listen(80, () => {
-    console.log('> Started server on *:80');
-});
+async function startUp()
+{
+    dbInterface.initApp();
+    await accountInterface.initApp(dbInterface);
+    await securityInterface.initApp();
+    sessionSystem.initApp();
+    await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
+    basicGameSystem.initApp(app, io);
 
-//shell.start();
+    server.listen(80, () => {
+        console.log('> Started server on *:80');
+    });
+
+    //shell.start();
+}
+
+startUp().then();

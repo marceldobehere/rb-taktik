@@ -1,7 +1,5 @@
 let app;
 let io;
-let sessionStuff;
-let dbStuff;
 
 let sessionDict = {};
 let gameDict = {};
