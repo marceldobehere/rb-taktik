@@ -10,7 +10,7 @@ async function initApp(_dbInterface)
     await createUser("test1234", {
         "username": "Testo",
         "email": "test@test.com",
-        "user-id": "test1234",
+        "userId": "test1234",
         "password-hash": "test",
         "password-salt": "test"
     });
@@ -21,7 +21,7 @@ async function initApp(_dbInterface)
 const defaultUserObject = {
     "username": "",
     "email": "",
-    "user-id": "",
+    "userId": "",
     "password-hash": "",
     "password-salt": ""
 }

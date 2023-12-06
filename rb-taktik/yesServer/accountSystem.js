@@ -29,7 +29,7 @@ if (await accountInterface.getUserByUsername(username))
     let userObject = {
         "username": username,
         "email": email,
-        "user-id": securityInterface.getRandomInt(10000, 10000000000),
+        "userId": securityInterface.getRandomInt(10000, 10000000000),
         "password-hash": passwordObject.hash,
         "password-salt": passwordObject.salt
     };
@@ -45,9 +45,12 @@ async function loginUser(username, password)
 
     if (await securityInterface.checkPassword(password, userObject["password-salt"], userObject["password-hash"]))
     {
-        throw new Error("TODO: IMPLEMENT SESSION");
-        // create session using socket and userid
-        let sessionId = undefined;
+        let sessionId = securityInterface.getRandomInt(1000000, 999999999999);
+        sessionSystem.createSession(sessionId, {
+            socket: undefined,
+            userId: userObject.userId,
+            sessionId: sessionId,
+        });
         return sessionId;
     }
 
@@ -56,22 +59,30 @@ async function loginUser(username, password)
 
 async function logoutUser(sessionId)
 {
-    throw new Error("TODO: IMPLEMENT SESSION");
-    //return await sessionSystem.deleteSession(sessionId);
+    sessionSystem.deleteSession(sessionId);
+    return true;
 }
 
 async function deleteUser(sessionId)
 {
-    throw new Error("TODO: IMPLEMENT SESSION");
-    //let userId = await sessionSystem.getUserId(sessionId);
-    //return await accountInterface.deleteUser(userId);
+    let userObj = sessionSystem.getSession(sessionId);
+    if (userObj == undefined)
+        return false;
+
+    let userId = userObj.userId;
+    sessionSystem.deleteSession(sessionId);
+
+    return await accountInterface.deleteUser(userId);
 }
 
 async function updateUser(sessionId, userObject)
 {
-    throw new Error("TODO: IMPLEMENT SESSION");
-    //let userId = await sessionSystem.getUserId(sessionId);
-    //return await accountInterface.updateUser(userId, userObject);
+    let user = await sessionSystem.getSession(sessionId);
+    if (user == undefined)
+        return false;
+
+    let userId = user.userId;
+    return await accountInterface.updateUser(userId, userObject);
 }
 
 module.exports = {initApp, loginUser, registerUser, logoutUser, deleteUser, updateUser};
