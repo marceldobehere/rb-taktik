@@ -13,9 +13,8 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
     sessionSystem = _sessionSystem;
 
     io.on('connection', (socket) => {
-
+        // TODO: Add code so that the user can do stuff here
     });
-
 
     console.log("> Initialized account system");
 }
@@ -57,6 +56,15 @@ async function loginUser(username, password)
     return false;
 }
 
+async function getUser(sessionId)
+{
+    let userObj = sessionSystem.getSession(sessionId);
+    if (userObj == undefined)
+        return undefined;
+
+    return await accountInterface.getUser(userObj.userId);
+}
+
 async function logoutUser(sessionId)
 {
     sessionSystem.deleteSession(sessionId);
@@ -85,4 +93,4 @@ async function updateUser(sessionId, userObject)
     return await accountInterface.updateUser(userId, userObject);
 }
 
-module.exports = {initApp, loginUser, registerUser, logoutUser, deleteUser, updateUser};
+module.exports = {initApp, loginUser, registerUser, logoutUser, deleteUser, updateUser, getUser};
