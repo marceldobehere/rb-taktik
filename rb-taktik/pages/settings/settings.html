@@ -7,18 +7,26 @@
 
     </head>
     <header>
-        <center><h1>Settings</h1></H1></center>
+        <center><h1 class="white_font">Settings</h1></H1></center>
 
     </header>
 
     <body>
-        <label>Volume Music</label>
+        <label class="white_font">Volume Music</label>
            
-        <!-- <div class="slidecontainer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="range">
-            <span id="volume"></span>
-        </div> -->
-
+        <div class="slidecontainer_big">
+            <div class="slidecontainer_middle">
+                <div class="slidecontainer">
+                
+                <input oninput="showValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100" value="50" class="slider">
+            </div>
+        </div>
+            
+            <div class="slidecontainer">
+                
+                <span id="volumeMusic"></span>
+            </div>
+        </div>
 
         <div id="slider">
            
