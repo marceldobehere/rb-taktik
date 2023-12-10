@@ -5,7 +5,7 @@ function joinGame()
 
 function openOptions()
 {
-    alert("<OPTIONS GO HERE>");
+    goPage("/settings")
 }
 
 function joinRankedGame()

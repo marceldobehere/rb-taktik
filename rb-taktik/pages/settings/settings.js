@@ -1,3 +1,3 @@
 function showValue(x, output){
-    output.innerText= x;
+    output.innerText= x + "%";
 }

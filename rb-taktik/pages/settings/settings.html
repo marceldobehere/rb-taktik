@@ -1,40 +1,61 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>RB-Taktik - Settings</title>
-        <link rel="stylesheet" type="text/css" href="settings.css">
-        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
-    </head>
-    <header>
-        <center><h1 class="white_font">Settings</h1></H1></center>
+<head>
+    <meta charset="utf-8">
+    <title>RB-Taktik - Settings</title>
+    <link rel="stylesheet" type="text/css" href="settings.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
-    </header>
+</head>
+<header>
+    <center>
+        <h1 style="font-size: 80px;" class="white_font">Settings</h1>
+        </H1>
+    </center>
 
-    <body>
-        <label class="white_font">Volume Music</label>
-           
-        <div class="slidecontainer_big">
-            <div class="slidecontainer_middle">
-                <div class="slidecontainer">
-                
-                <input oninput="showValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100" value="50" class="slider">
-            </div>
-        </div>
-            
+</header>
+
+<body onload="showValue(volumeMusicValue.value, volumeMusic)">
+    <label class="white_font">Volume Music</label>
+
+    <div class="slidecontainer_big">
+        <div class="slidecontainer_middle">
             <div class="slidecontainer">
-                
-                <span id="volumeMusic"></span>
+
+                <input oninput="showValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100"
+                    value="50" class="slider">
             </div>
         </div>
 
-        <div id="slider">
-           
+        <div class="slidecontainer">
+
+            <span id="volumeMusic"></span>
+        </div>
+    </div>
+
+    <div class="div_32px"></div>
+
+    <div>
+        <label class="white_font">Volume FX</label>
+    </div>
+    <div class="slidecontainer_big">
+        <div class="slidecontainer_middle">
+            <div class="slidecontainer">
+
+                <input oninput="showValue(this.value, volumeFX)" id="volumeFXValue" type="range" min="1" max="100"
+                    value="50" class="slider">
+            </div>
         </div>
 
-        <script src="settings.js"></script>
+        <div class="slidecontainer">
 
-    </body>
+            <span id="volumeFX"></span>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+
+</body>
 
 
 
