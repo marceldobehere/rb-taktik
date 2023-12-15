@@ -4,26 +4,26 @@
         <meta charset="UTF-8">
         <title>RB Taktik - Login</title>
         <link rel="stylesheet" href="/shared/css/entry_styles.css">
+        <link rel="stylesheet" href="login.css">
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     </head>
     <body>
+        <div style="">
+            <h1 id="welcomeDesign">Welcome</h1>
 
-    <h1>Welcome</h1>
+            <input class="form-input-big" id="input-username" type="text" value="" placeholder="Enter your username">
 
-    <input class="form-input-big" id="input-username" type="text" value="" placeholder="Enter your username">
+            <input class="form-input-big" id="input-password" type="password" value="" placeholder="Enter your password">
 
-    <input class="form-input-big" id="input-password" type="password" value="" placeholder="Enter your password">
+            <button class="form-button-big" id="btn-login" onclick="doLogin()">Login</button>
 
-    <button class="form-button-big" id="btn-login" onclick="doLogin()">Login</button>
+            <br>
+            <br>
 
-    <br>
-    <br>
+            <h2 id="noAcc">Don't have an account?</h2><a href="/register">Register</a>
 
-    <h2>Don't have an account? <a href="/register">Register</a></h2>
-
-    <h3><a href="/guest">Play as a Guest</a></h3>
-
-
-
+            <h3><a href="/guest">Play as a Guest</a></h3>
+        </div>
     </body>
     <script src="/shared/js/roccModule.js"></script>
     <script>
