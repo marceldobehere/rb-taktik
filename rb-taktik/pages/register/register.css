@@ -1,4 +1,4 @@
-body {
+body{
     margin: 0;
     background-image: url("/shared/images/repeatRBBackground.PNG");
     background-repeat: no-repeat;
@@ -11,7 +11,7 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-#noAcc {
+#alrAcc {
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
     font-size: 40px;
@@ -32,7 +32,7 @@ body {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.register-link{
+.login-link{
     border-bottom: 5px solid black;
     font-size: 30px;
 }
