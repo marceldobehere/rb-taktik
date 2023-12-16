@@ -1,8 +1,14 @@
 body {
+    margin: 0;
     background-image: url("/shared/images/repeatRBBackground.PNG");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
 }
 
 #noAcc {
@@ -19,7 +25,7 @@ body {
 #welcomeDesign{
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size:75px;
+    font-size:65px;
     line-height: 42px;
     color: #FF2E00;
     -webkit-text-stroke: 3px black;
@@ -28,6 +34,7 @@ body {
 
 .register-link{
     border-bottom: 5px solid black;
+    font-size: 30px;
 }
 
 #playAsGuest{
