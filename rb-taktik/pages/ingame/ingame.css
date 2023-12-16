@@ -41,6 +41,8 @@ body {
 }
 
 .player-name {
+    top: -55%;
+    position: relative;
     background-color: white;
     color: black;
     font-size: 25px;
@@ -62,6 +64,8 @@ body {
 }
 
 .player-image {
+    top: -70%;
+    position: relative;
     width: 100px;
     height: 100px;
     background-color: white;
@@ -76,17 +80,22 @@ body {
 .player-blue .player-stats-box {
     background-color: blue;
 }
+
 .player-stats-box {
-    margin: 10px auto; /* Reduziere den Abstand oben und unten */
-    width: 50%; /* Kleinere Breite für die Player-Stat-Box */
+    top: -14%;
+    position: relative;
+    margin: 10% auto;
+    width: 65%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-column-gap: 10px; /* Reduziere den Abstand zwischen den Spalten */
-    grid-row-gap: 10px; /* Reduziere den Abstand zwischen den Zeilen */
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
     align-items: center;
     justify-items: center;
 }
+
+
 
 .player-stats-box p {
     margin: 10px;
@@ -105,20 +114,22 @@ body {
 }
 
 .game-box {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 5px;  /* Reduziere den Abstand zwischen den Feldern */
+    grid-gap: 5px;
 }
 
 .game-field {
-    width: 90px;   /* Kleinere Breite für die Spielfelder */
-    height: 90px;  /* Kleinere Höhe für die Spielfelder */
+    top: 20%;
+    position: relative;
+    width: 100px;
+    height: 100px;
     background-color: white;
     color: black;
-    font-size: 15px;  /* Kleinere Schriftgröße */
+    font-size: 15px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -131,6 +142,7 @@ body {
 .game-field:hover {
     background-color: darkgray;
     color: white;
+
 }
 
 .game-stats-box {
@@ -138,7 +150,7 @@ body {
 }
 
 .player-vs-text {
-    margin-top: 0px;
+    top: -20%;
     font-weight: bold;
     font-size: 30px;
     text-align: center;
@@ -150,6 +162,8 @@ body {
 }
 
 .player-turn-text {
+    top: -20%;
+    position: relative;
     font-weight: bold;
     font-size: 30px;
     text-align: center;
@@ -164,15 +178,17 @@ body {
 }
 
 .chat-container {
+    position: relative;
+    top: -15%;
     background-color: aqua;
-    width: 80%; /* Kleinere Breite für die Chat-Box */
-    height: 150px; /* Kleinere Höhe für die Chat-Box */
+    width: 80%;
+    height: 200px;
     justify-self: center;
-    margin: 10px auto; /* Reduziere den Abstand oben und unten */
+    margin: 10px auto;
     color: black;
     border-radius: 10px;
-    overflow: hidden; /* Oder 'auto', je nach Bedarf */
-    position: relative; /* Position relativ setzen */
+    overflow: hidden;
+    position: relative;
 }
 #chat-input {
     margin: 0px;
@@ -182,9 +198,9 @@ body {
     border-left: none;
     border-right: none;
     border-bottom: none;
-    position: absolute; /* Position absolut setzen */
-    bottom: 0; /* An den unteren Rand setzen */
-    z-index: 1; /* Über anderen Elementen liegen */
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
 }
 
 #chat-list {
