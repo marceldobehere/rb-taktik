@@ -106,7 +106,7 @@ async function getAllUsers()
 
     let result = [];
     for (let i = 0; i < users.length; i++)
-        result.push(getUser(users[i]));
+        result.push(await getUser(users[i]));
 
     return result;
 }

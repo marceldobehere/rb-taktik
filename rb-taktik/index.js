@@ -30,7 +30,10 @@ app.get('/*', (req, res) => {
     if (url.indexOf("?") != -1)
         url = url.substring(0, url.indexOf("?"));// url.split("?")[0];
 
-    res.sendFile(__dirname + url);
+    if (url.endsWith(".html") && !fs.existsSync(__dirname + url))
+        res.redirect('/404/404.html');
+    else
+        res.sendFile(__dirname + url);
 });
 
 // const sessionStuff = require("./yesServer/sessionStuff.js");
@@ -64,6 +67,7 @@ const accountSystem = require("./yesServer/accountSystem.js");
 const basicGameSystem = require("./yesServer/basicGameSystem.js");
 const securityInterface = require("./yesServer/securityInterface.js");
 const sessionSystem = require("./yesServer/sessionSystem.js");
+const fs = require("fs");
 
 async function startUp()
 {

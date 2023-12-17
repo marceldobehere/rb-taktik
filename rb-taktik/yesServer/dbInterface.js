@@ -19,7 +19,7 @@ async function _getTable(tableName)
     let table = {};
     try
     {
-        JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
+        table = JSON.parse(fs.readFileSync(folderPath + tableName + ".json", "utf8"));
     }
     catch (e)
     {

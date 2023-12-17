@@ -13,7 +13,43 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
     sessionSystem = _sessionSystem;
 
     io.on('connection', (socket) => {
-        // TODO: Add code so that the user can do stuff here
+        socket.on('login', async (obj) => {
+            let sessionId = await loginUser(obj.username, obj.password);
+            if (sessionId == false)
+                return socket.emit('login', {error: "Invalid username or password"});
+
+
+            socket.emit('login', {sessionId: sessionId});
+        });
+
+        socket.on('register', async (obj) => {
+            console.log("Registering user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            if (await registerUser(obj.username, obj.email, obj.password) == false)
+                return socket.emit('register', {error: "Username already taken"});
+
+            console.log("Registered user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            // login aswell
+            let sessionId = await loginUser(obj.username, obj.password);
+            if (sessionId == false)
+                return socket.emit('register', {error: "Invalid username or password"});
+
+            console.log("Logged in user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            socket.emit('register', {sessionId: sessionId});
+        });
+
+        socket.on('get-user', async (obj) => {
+            let user = await getUser(obj.sessionId);
+            if (user == undefined)
+                return socket.emit('get-user', {error: "Invalid session"});
+
+            let userRes = {
+                username: user.username,
+                email: user.email,
+                userId: user.userId
+            }
+
+            socket.emit('get-user', userRes);
+        });
     });
 
     console.log("> Initialized account system");
@@ -21,7 +57,7 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
 async function registerUser(username, email, password)
 {
-if (await accountInterface.getUserByUsername(username))
+    if (await accountInterface.getUserByUsername(username))
         return false;
 
     let passwordObject = await securityInterface.hashPassword(password);
@@ -33,7 +69,7 @@ if (await accountInterface.getUserByUsername(username))
         "password-salt": passwordObject.salt
     };
 
-    return await accountInterface.createUser(username, userObject);
+    return await accountInterface.createUser(userObject.userId, userObject);
 }
 
 async function loginUser(username, password)
@@ -44,6 +80,11 @@ async function loginUser(username, password)
 
     if (await securityInterface.checkPassword(password, userObject["password-salt"], userObject["password-hash"]))
     {
+        let sessionObj = sessionSystem.getSessionByUserId(userObject.userId);
+        if (sessionSystem.getSessionByUserId(userObject.userId) != undefined)
+            sessionSystem.deleteSession(sessionObj.sessionId);
+
+
         let sessionId = securityInterface.getRandomInt(1000000, 999999999999);
         sessionSystem.createSession(sessionId, {
             socket: undefined,
