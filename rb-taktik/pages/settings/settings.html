@@ -5,6 +5,7 @@
     <title>RB-Taktik - Settings</title>
     <link rel="stylesheet" type="text/css" href="settings.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script src="settings.js"></script>
 
 </head>
 <header>
@@ -15,14 +16,14 @@
 
 </header>
 
-<body onload="showValue(volumeMusicValue.value, volumeMusic)">
+<body onload="showValue(volumeMusicValue.value, volumeMusic);showValue(volumeFXValue.value, volumeFX)">
     <label class="white_font">Volume Music</label>
 
     <div class="slidecontainer_big">
         <div class="slidecontainer_middle">
             <div class="slidecontainer">
 
-                <input oninput="showValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100"
+                <input oninput="updateValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100"
                     value="50" class="slider">
             </div>
         </div>
@@ -53,7 +54,6 @@
         </div>
     </div>
 
-    <script src="settings.js"></script>
 
 </body>
 
