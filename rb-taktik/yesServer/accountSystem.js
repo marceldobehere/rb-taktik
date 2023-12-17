@@ -13,7 +13,26 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
     sessionSystem = _sessionSystem;
 
     io.on('connection', (socket) => {
-        // TODO: Add code so that the user can do stuff here
+        socket.on('login', async (obj) => {
+            let sessionId = await loginUser(obj.username, obj.password);
+            if (sessionId == false)
+                return socket.emit('login', {error: "Invalid username or password"});
+
+
+            socket.emit('login', {sessionId: sessionId});
+        });
+
+        socket.on('register', async (obj) => {
+            if (await registerUser(obj.username, obj.email, obj.password) == false)
+                return socket.emit('register', {error: "Username already taken"});
+
+            // login aswell
+            let sessionId = await loginUser(obj.username, obj.password);
+            if (sessionId == false)
+                return socket.emit('login', {error: "Invalid username or password"});
+
+            socket.emit('login', {sessionId: sessionId});
+        });
     });
 
     console.log("> Initialized account system");
@@ -21,7 +40,7 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
 async function registerUser(username, email, password)
 {
-if (await accountInterface.getUserByUsername(username))
+    if (await accountInterface.getUserByUsername(username))
         return false;
 
     let passwordObject = await securityInterface.hashPassword(password);
@@ -44,6 +63,11 @@ async function loginUser(username, password)
 
     if (await securityInterface.checkPassword(password, userObject["password-salt"], userObject["password-hash"]))
     {
+        let sessionObj = sessionSystem.getSessionByUserId(userObject.userId);
+        if (sessionSystem.getSessionByUserId(userObject.userId) != undefined)
+            sessionSystem.deleteSession(sessionObj.sessionId);
+
+
         let sessionId = securityInterface.getRandomInt(1000000, 999999999999);
         sessionSystem.createSession(sessionId, {
             socket: undefined,

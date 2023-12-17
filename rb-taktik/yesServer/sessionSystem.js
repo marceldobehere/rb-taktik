@@ -23,6 +23,18 @@ function getSession(sessionId)
     return sessionDict[sessionId];
 }
 
+function getSessionByUserId(userId)
+{
+    let sessionIds = getAllSessionIds();
+    for (let i = 0; i < sessionIds.length; i++)
+    {
+        let sessionObj = getSession(sessionIds[i]);
+        if (sessionObj.userId == userId)
+            return sessionObj;
+    }
+    return undefined;
+}
+
 function updateSession(sessionId, sessionObj)
 {
     sessionDict[sessionId] = sessionObj;
@@ -55,4 +67,4 @@ function getAllSessionIds()
     return Object.keys(sessionDict);
 }
 
-module.exports = {initApp, createSession, deleteSession, getSession, updateSession, getAllSessionIds, updateSessionSocket, getSessionBySocket};
+module.exports = {initApp, createSession, deleteSession, getSession, updateSession, getAllSessionIds, updateSessionSocket, getSessionBySocket, getSessionByUserId};
