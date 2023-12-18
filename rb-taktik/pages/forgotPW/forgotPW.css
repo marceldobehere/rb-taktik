@@ -1,0 +1,14 @@
+body{
+    background: linear-gradient(248.46deg, #0075FF 0%, #00D1FF 100%);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.forgotPWContainer{
+    background-color: white;
+    width: 30%;
+    height: 50%;
+}

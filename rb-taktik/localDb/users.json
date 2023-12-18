@@ -1,16 +1,1 @@
-{
-  "1647441421": {
-    "username": "masl",
-    "email": "asdf",
-    "userId": 1647441421,
-    "password-hash": "+nQc6X3PHS50fMrj5SaYnmyvf57kNFi5j1qnlgj/ktQfffSaNWtwexd+fuWsoZdiVxcjWxthrCLvrNFB0N/M8g==",
-    "password-salt": "yaLFIYp64RZ0rDF5b9m1NNu2oHiMZPfWTuYOpfQ1DNGsTy9TZV4EQq+2BZZQ9x9oIaGSELd8yjOggAoALvNzbQ=="
-  },
-  "test1234": {
-    "username": "Testo",
-    "email": "test@test.com",
-    "userId": "test1234",
-    "password-hash": "test",
-    "password-salt": "test"
-  }
-}
+{"303888755":{"username":"wadwda","email":"dwadwa","userId":303888755,"password-hash":"DlHSze/4YizGM2mVxbCDtu0lFitZg4jbO79Es2kg5xmZr0m2y1ecEnr40Qn6D/woqTriQRS2SZDwaVllY/hJJg==","password-salt":"4QqcNHxfHJtKS/ExkxLygMOMkuAq6rCw+ny1H2KIViqABVg0LNAzqtofpTIOKKdqU0/A1DRErGq4kVZmiOCy1A=="},"1647441421":{"username":"masl","email":"asdf","userId":1647441421,"password-hash":"+nQc6X3PHS50fMrj5SaYnmyvf57kNFi5j1qnlgj/ktQfffSaNWtwexd+fuWsoZdiVxcjWxthrCLvrNFB0N/M8g==","password-salt":"yaLFIYp64RZ0rDF5b9m1NNu2oHiMZPfWTuYOpfQ1DNGsTy9TZV4EQq+2BZZQ9x9oIaGSELd8yjOggAoALvNzbQ=="},"test1234":{"username":"Testo","email":"test@test.com","userId":"test1234","password-hash":"test","password-salt":"test"}}
