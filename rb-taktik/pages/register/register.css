@@ -35,6 +35,7 @@ body{
 .login-link{
     border-bottom: 5px solid black;
     font-size: 30px;
+    -webkit-text-stroke: 2.5px black;
 }
 
 #playAsGuest{
@@ -43,4 +44,16 @@ body{
     font-weight: 800;
     font-size: 25px;
     -webkit-text-stroke: 2px black;
+}
+
+#input-email{
+    height: 55px;
+}
+
+#input-username{
+    height: 55px;
+}
+
+#input-password{
+    height: 55px;
 }

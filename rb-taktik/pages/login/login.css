@@ -35,6 +35,7 @@ body {
 .register-link{
     border-bottom: 5px solid black;
     font-size: 30px;
+    -webkit-text-stroke: 2.5px black;
 }
 
 #playAsGuest{

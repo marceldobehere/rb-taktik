@@ -8,7 +8,7 @@ async function doRegister()
     if (password == "")
         return alert("Please enter a password");
 
-    let email = prompt("Enter mail");// TODO: ADD document.getElementById("input-email").value;
+    let email = document.getElementById("input-email").value;
     if (email == "")
         return alert("Please enter an email");
 
