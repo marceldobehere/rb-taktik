@@ -24,3 +24,15 @@ function createGame()
     joinGame();
 }
 
+async function doLogout()
+{
+    let result = await msgSendAndGetReply("logout", {"sessionId": sessionId});
+    if (result["error"] != undefined)
+    {
+        alert("Error: " + result["error"])
+        return;
+    }
+
+    setSessionId(null);
+    goPage("/login")
+}
