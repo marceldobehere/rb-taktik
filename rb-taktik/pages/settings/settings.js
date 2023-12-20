@@ -3,6 +3,7 @@ let savedValue;
 function showValue(x, output){
     savedValue = x;
     output.innerText= savedValue + "%";
+       
 }
 
 function updateValue(x, output){
