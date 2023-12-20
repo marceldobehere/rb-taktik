@@ -1,8 +1,13 @@
 let savedValue;
 
-function showValue(x, output){
-    savedValue = x;
-    output.innerText= savedValue + "%";
+function loadSettings()
+{
+    try
+    {
+        settingsObj = JSON.parse(localStorage.getItem("settings"));     
+    }
+    catch (e)
+    {
        
 }
 
