@@ -9,8 +9,8 @@ html {
 
 #big_container {
 
-  margin-left: 256px;
-  margin-right: 256px;
+  margin-left: 384px;
+  margin-right: 384px;
 }
 
 .slidecontainer {
@@ -26,6 +26,7 @@ html {
   place-items: center;
   border-radius: 30px;
   border: 2px solid white;
+  margin-bottom: 32px;
 }
 
 .slidecontainer_big>div:first-child {
@@ -136,3 +137,24 @@ div label.white_font {
   margin-top: auto;
 }
 
+.btn{
+  width: 100%;
+  height: 64px;
+  background-color: #E01F16;
+  display: flex;
+  place-items: center;
+  border-radius: 30px;
+  border: 2px solid white;
+  margin-bottom: 32px;
+  transition: ease-in-out 0.2s;
+}
+
+.btn:hover span{
+display: none;  
+background-color: hsl(3, 82%, 55%);
+  cursor: pointer;
+}
+
+.btn:hover::before{
+  content: "marcel stinkt";
+}
