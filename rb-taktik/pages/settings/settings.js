@@ -1,4 +1,5 @@
-let savedValue;
+var settingsObj = undefined;
+loadSettings();
 
 function loadSettings()
 {
@@ -9,17 +10,39 @@ function loadSettings()
     catch (e)
     {
        
+    }
+    if (settingsObj == undefined || settingsObj == null)
+    {
+        // Default
+        settingsObj = {
+        "volumeMusic": 50,
+        "volumeFX": 50
+    };
+    }
+    console.log("Settings:", settingsObj)
 }
 
-function updateValue(x, output){
-    savedValue = x;
-    output.innerText= savedValue + "%";
+function saveSettings()
+{
+    localStorage.setItem("settings", JSON.stringify(settingsObj));
 }
 
-// window.addEventListener("load", myInit, true); 
+function getValue(name, output, slider){
+    val = settingsObj[name];
+    output.innerText = val + "%";
+    if (slider)
+        slider.value = val;
+    return val;
+}
 
-// function myInit(){  
+function setValue(name, x, output){
+    settingsObj[name] = x;
+    saveSettings();
+    getValue(name, output);
+    output.innerText = x + "%";
+}
 
-//     showValue(document.getElementById("volumeMusicValue").value, document.getElementById("volumeMusic"));
-//     showValue(document.getElementById("volumeFXValue").value, document.getElementById("volumeFX"));
-// }; 
+
+
+getValue('volumeMusic', volumeMusic, volumeMusicValue);
+getValue('volumeFX', volumeFX, volumeFXValue)

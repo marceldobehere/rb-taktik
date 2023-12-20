@@ -5,58 +5,72 @@
     <title>RB-Taktik - Settings</title>
     <link rel="stylesheet" type="text/css" href="settings.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <script src="settings.js"></script>
 
 </head>
-<header>
-    <center>
-        <h1 style="font-size: 80px;" class="white_font">Settings</h1>
-        </H1>
-    </center>
 
-</header>
 
-<body onload="showValue(volumeMusicValue.value, volumeMusic);showValue(volumeFXValue.value, volumeFX)">
-    <label class="white_font">Volume Music</label>
-
-    <div class="slidecontainer_big">
-        <div class="slidecontainer_middle">
+<body>
+    <div id="big_container">
+        <header>
+            <center>
+                <h1 style="font-size: 80px;" id ="white_font_title">Settings</h1>
+            </center>
+        
+        </header>
+        <label class="white_font">Volume Music</label>
+    
+        <div class="slidecontainer_big">
+            <div class="slidecontainer_middle">
+                <div class="slidecontainer">
+    
+                    <input oninput="setValue('volumeMusic', this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100"
+                        value="50" class="slider">
+                </div>
+            </div>
+    
             <div class="slidecontainer">
-
-                <input oninput="updateValue(this.value, volumeMusic)" id="volumeMusicValue" type="range" min="1" max="100"
-                    value="50" class="slider">
+    
+                <span id="volumeMusic"></span>
+            </div>
+        </div>
+    
+        <div class="div_32px"></div>
+    
+        <div>
+            <label class="white_font">Volume FX</label>
+        </div>
+        <div class="slidecontainer_big">
+            <div class="slidecontainer_middle">
+                <div class="slidecontainer">
+    
+                    <input oninput="setValue('volumeFX', this.value, volumeFX)" id="volumeFXValue" type="range" min="1" max="100"
+                        value="50" class="slider">
+                </div>
+            </div>
+    
+            <div class="slidecontainer">
+    
+                <span id="volumeFX"></span>
             </div>
         </div>
 
-        <div class="slidecontainer">
-
-            <span id="volumeMusic"></span>
-        </div>
     </div>
+   
+    <footer id="footer">
+        <div width="20%">
+            <button onclick="goPage('/home')" id="back_button">Back</button>
 
-    <div class="div_32px"></div>
-
-    <div>
-        <label class="white_font">Volume FX</label>
-    </div>
-    <div class="slidecontainer_big">
-        <div class="slidecontainer_middle">
-            <div class="slidecontainer">
-
-                <input oninput="showValue(this.value, volumeFX)" id="volumeFXValue" type="range" min="1" max="100"
-                    value="50" class="slider">
-            </div>
         </div>
-
-        <div class="slidecontainer">
-
-            <span id="volumeFX"></span>
+        <div width="80%">       
+        
         </div>
-    </div>
-
-
+    </footer>
 </body>
 
-
-
+<script src="/shared/js/roccModule.js"></script>
+<script>
+    importModule('/shared/js/basicModules.js');
+    importModule('settings.js');
+    startImporting();
+</script>
 </html>
