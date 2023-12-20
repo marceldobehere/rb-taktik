@@ -22,6 +22,11 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
             socket.emit('login', {sessionId: sessionId});
         });
 
+        socket.on('logout', async (obj) => {
+            let res = await logoutUser(obj.sessionId);
+            socket.emit('logout', {success: res});
+        });
+
         socket.on('register', async (obj) => {
             console.log("Registering user " + obj.username + " with password " + obj.password + " and email " + obj.email);
             if (await registerUser(obj.username, obj.email, obj.password) == false)
