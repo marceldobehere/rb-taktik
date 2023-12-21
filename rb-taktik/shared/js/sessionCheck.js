@@ -1,5 +1,6 @@
 var sessionId = null;
 var isGuest = true;
+var userData = {};
 
 function setSessionId(newSessionId)
 {
@@ -39,6 +40,7 @@ async function initSessionCheck()
             return;
         }
 
+        userData = result;
         isGuest = false;
         console.log("  > Logged in as " + result["username"] + " (" + result["userId"] + ")");
         //setSessionId(sessionId);

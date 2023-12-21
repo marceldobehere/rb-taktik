@@ -6,7 +6,7 @@
     --bg-col: #2076bf;
 }
 
-body {
+body, #loader-div {
     background-color: var(--bg-col);
     color: var(--text-col);
     font-family: 'Roboto', sans-serif;

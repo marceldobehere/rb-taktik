@@ -42,5 +42,24 @@ async function doLogout()
     goPage("/login")
 }
 
+async function homeInit()
+{
+    if (isGuest)
+    {
+        document.getElementById("info-username").textContent = "Guest";
+        document.getElementById("info-rank").textContent = "None";
+        document.getElementById("info-pfp").src = "/shared/images/guestPFP.png";
 
+        document.getElementById("acc-login-logout").textContent = "Login";
+    }
+    else
+    {
+        document.getElementById("info-username").textContent = userData["username"];
+        //document.getElementById("info-rank").textContent = userData["rank"];
+        document.getElementById("info-pfp").src = "/shared/images/placeHolderPFP.png";
 
+        document.getElementById("acc-login-logout").textContent = "Logout";
+    }
+}
+
+onModulesImported.push(homeInit);

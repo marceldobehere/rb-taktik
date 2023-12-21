@@ -1,4 +1,4 @@
-body{
+body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
 }
 

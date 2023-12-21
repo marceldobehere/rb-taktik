@@ -1,4 +1,4 @@
-body {
+body, #loader-div {
     background-image: url("/shared/images/backgroundInGame.png");
     background-repeat: no-repeat;
     background-size: cover;
