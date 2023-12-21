@@ -69,6 +69,7 @@ const basicGameSystem = require("./yesServer/basicGameSystem.js");
 const securityInterface = require("./yesServer/securityInterface.js");
 const sessionSystem = require("./yesServer/sessionSystem.js");
 const mailInterface = require("./yesServer/mailInterface.js");
+const passwordResetSystem = require("./yesServer/passwordResetSystem.js");
 
 async function startUp()
 {
@@ -79,6 +80,7 @@ async function startUp()
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     basicGameSystem.initApp(app, io);
     await mailInterface.initApp();
+    await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
 
     server.listen(80, () => {
         console.log('> Started server on *:80');

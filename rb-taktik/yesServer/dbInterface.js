@@ -8,7 +8,7 @@ const folderPath = "./localDB/";
 function initApp()
 {
 
-    console.log("> Initialized DB interface");
+    console.log("> Initialized db interface");
 }
 
 async function _getTable(tableName)

@@ -384,7 +384,7 @@ function initApp(_app, _io) {
         });
     });
 
-    console.log("> Basic Game System initialized");
+    console.log("> Initialized basic game System");
 }
 
 /*
