@@ -30,7 +30,7 @@ app.get('/*', (req, res) => {
     if (url.indexOf("?") != -1)
         url = url.substring(0, url.indexOf("?"));// url.split("?")[0];
 
-    if (url.endsWith(".html") && !fs.existsSync(__dirname + url))
+    if (url.indexOf(".") != -1 && !fs.existsSync(__dirname + url))
         res.redirect('/404/404.html');
     else
         res.sendFile(__dirname + url);
