@@ -24,9 +24,17 @@ function createGame()
     joinGame();
 }
 
-function toggleDropDown() {
-    var dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
+function toggleDropDown(event) {
+    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
     dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+
+    event.stopPropagation();
+}
+
+function hideDropDown()
+{
+    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
+    dropdownContent.style.display = "none";
 }
 
 async function doLogout()
