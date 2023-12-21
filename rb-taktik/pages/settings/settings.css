@@ -158,5 +158,4 @@ div label.white_font {
 }
 
 .btn:hover::before {
-  content: "marcel stinkt";
 }
