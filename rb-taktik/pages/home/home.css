@@ -16,6 +16,15 @@ body, #loader-div {
     background-color: red;
 }
 
+.menu-tile-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.menu-tile-disabled:hover {
+    background-color: #E01F16;
+}
+
 .drop-shadow-figma {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
