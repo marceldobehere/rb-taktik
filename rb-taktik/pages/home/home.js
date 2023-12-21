@@ -24,6 +24,11 @@ function createGame()
     joinGame();
 }
 
+function toggleDropDown() {
+    var dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+}
+
 async function doLogout()
 {
     let result = await msgSendAndGetReply("logout", {"sessionId": sessionId});
@@ -36,3 +41,6 @@ async function doLogout()
     setSessionId(null);
     goPage("/login")
 }
+
+
+
