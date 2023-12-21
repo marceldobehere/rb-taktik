@@ -60,6 +60,7 @@ app.get('/*', (req, res) => {
 // shell.initApp(sessionStuff, dbStuff, loginManager, registerManager, userManager);
 
 
+const fs = require("fs");
 
 const dbInterface = require("./yesServer/dbInterface.js");
 const accountInterface = require("./yesServer/accountInterface.js");
@@ -67,7 +68,7 @@ const accountSystem = require("./yesServer/accountSystem.js");
 const basicGameSystem = require("./yesServer/basicGameSystem.js");
 const securityInterface = require("./yesServer/securityInterface.js");
 const sessionSystem = require("./yesServer/sessionSystem.js");
-const fs = require("fs");
+const mailInterface = require("./yesServer/mailInterface.js");
 
 async function startUp()
 {
@@ -77,6 +78,7 @@ async function startUp()
     sessionSystem.initApp();
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     basicGameSystem.initApp(app, io);
+    await mailInterface.initApp();
 
     server.listen(80, () => {
         console.log('> Started server on *:80');
