@@ -8,18 +8,18 @@
         <link rel="icon" type="image/x-icon" href="../../shared/images/web_icon.png">
 
     </head>
-    <body>
+    <body onclick="hideDropDown()">
     <img src="/shared/images/Logo.png" alt="Logo" class="logo" style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
     <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
         <div class="inline" id="dropdown">
-            <image src="/shared/images/placeHolderPFP.png" class="inline" class="pfp" style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16" onclick="toggleDropDown()"></image>
+            <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline" class="pfp" style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16" onclick="toggleDropDown(event)"></image>
             <p class="inline">
-                <span>Shabarian der 2.</span><br>
-                Rank: <span>9999</span>
+                <span id="info-username">Shabarian der 2.</span><br>
+                Rank: <span id="info-rank">9999</span>
             </p>
             <div class="dropdown-content">
                 <a href="/404/404.html">Account Settings</a>
-                <a href="#" onclick="doLogout()">Log Out</a>
+                <a id="acc-login-logout" href="#" onclick="doLogout()">Log Out</a>
             </div>
 
 
@@ -39,22 +39,24 @@
     <br><br>
     <div style="border:2px solid green;margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
         <div class="inline" style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
-            <div style="border-radius: 30px 0 0 0;" class="menu-tile tile-tl drop-shadow-figma" onclick="joinRankedGame()">
+            <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma" onclick="joinRankedGame()">
                 Ranked Game
             </div>
-            <div style="border-radius: 0 30px 0 0" class="menu-tile tile-tr drop-shadow-figma" onclick="joinRandomGame()">
+            <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma" onclick="joinRandomGame()">
                 Random Game
             </div>
-            <div style="border-radius: 0 0 0 30px" class="menu-tile tile-bl drop-shadow-figma" onclick="openOptions()">
+            <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma" onclick="openOptions()">
                 Options
             </div>
-            <div style="border-radius: 0 0 30px 0" class="menu-tile tile-br drop-shadow-figma" onclick="createGame()">
+            <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma" onclick="createGame()">
                 Create Game
             </div>
         </div>
 
         <div class="inline drop-shadow-figma" style="border-radius: 30px 30px 30px 30px; border:2px solid black; background-color: #E01F16;">
-            [Friend List]
+            <div id="friend-list-cont">
+                [Friend List]
+            </div>
         </div>
     </div>
 

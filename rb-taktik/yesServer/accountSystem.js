@@ -77,6 +77,22 @@ async function registerUser(username, email, password)
     return await accountInterface.createUser(userObject.userId, userObject);
 }
 
+async function changeUserPassword(userId, password)
+{
+    let userObject = await accountInterface.getUser(userId);
+    if (userObject == undefined)
+        return false;
+
+    if (userObject.email != email)
+        return false;
+
+    let passwordObject = await securityInterface.hashPassword(password);
+    userObject["password-hash"] = passwordObject.hash;
+    userObject["password-salt"] = passwordObject.salt;
+
+    return await accountInterface.updateUser(userObject.userId, userObject);
+}
+
 async function loginUser(username, password)
 {
     let userObject = await accountInterface.getUserByUsername(username);
@@ -139,4 +155,4 @@ async function updateUser(sessionId, userObject)
     return await accountInterface.updateUser(userId, userObject);
 }
 
-module.exports = {initApp, loginUser, registerUser, logoutUser, deleteUser, updateUser, getUser};
+module.exports = {initApp, loginUser, registerUser, logoutUser, deleteUser, updateUser, getUser, changeUserPassword};

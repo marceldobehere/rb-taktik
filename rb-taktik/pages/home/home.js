@@ -24,9 +24,17 @@ function createGame()
     joinGame();
 }
 
-function toggleDropDown() {
-    var dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
+function toggleDropDown(event) {
+    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
     dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+
+    event.stopPropagation();
+}
+
+function hideDropDown()
+{
+    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
+    dropdownContent.style.display = "none";
 }
 
 async function doLogout()
@@ -42,5 +50,35 @@ async function doLogout()
     goPage("/login")
 }
 
+function disableBtn(id)
+{
+    let btn = document.getElementById(id);
+    btn.onclick = undefined;
+    btn.className = "menu-tile menu-tile-disabled drop-shadow-figma";
+}
 
+async function homeInit()
+{
+    if (isGuest)
+    {
+        document.getElementById("info-username").textContent = "Guest";
+        document.getElementById("info-rank").textContent = "None";
+        document.getElementById("info-pfp").src = "/shared/images/guestPFP.png";
 
+        document.getElementById("acc-login-logout").textContent = "Login";
+
+        disableBtn("btn-ranked");
+        disableBtn("btn-random");
+        document.getElementById("friend-list-cont").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("info-username").textContent = userData["username"];
+        //document.getElementById("info-rank").textContent = userData["rank"];
+        document.getElementById("info-pfp").src = "/shared/images/placeHolderPFP.png";
+
+        document.getElementById("acc-login-logout").textContent = "Logout";
+    }
+}
+
+onModulesImported.push(homeInit);

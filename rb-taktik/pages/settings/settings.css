@@ -1,4 +1,4 @@
-html {
+html, #loader-div {
   /* background: rgb(124, 0, 255);
   background: linear-gradient(135deg, rgb(0, 149, 255) 0%, rgb(0, 72, 255) 100%); */
   font-family: 'Source Sans Pro', sans-serif;

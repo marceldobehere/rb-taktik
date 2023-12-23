@@ -6,7 +6,7 @@
     --bg-col: #2076bf;
 }
 
-body {
+body, #loader-div {
     background-color: var(--bg-col);
     color: var(--text-col);
     font-family: 'Roboto', sans-serif;
@@ -46,5 +46,5 @@ a {
 
 .inline {
     display: inline-block;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }

@@ -1,4 +1,4 @@
-body{
+body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
 }
 
@@ -14,6 +14,15 @@ body{
 
 .menu-tile:hover {
     background-color: red;
+}
+
+.menu-tile-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.menu-tile-disabled:hover {
+    background-color: #E01F16;
 }
 
 .drop-shadow-figma {

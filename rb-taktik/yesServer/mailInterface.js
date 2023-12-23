@@ -43,7 +43,45 @@ async function initApp()
         console.log("You might need to extract the file from the secure rar file!");
         process.exit(1);
     }
+
+    console.log("> Initialized mail interface");
+}
+
+async function sendMail(to, subject, text, html)
+{
+    try
+    {
+        let res = await mailjet
+            .post('send', { version: 'v3.1' })
+            .request({
+                Messages: [
+                    {
+                        From: {
+                            Email: "rbtaktik@gmail.com",
+                            Name: "RB-Taktik"
+                        },
+                        To: [
+                            {
+                                Email: to/*,
+                                Name: "Test Spam"*/
+                            }
+                        ],
+                        Subject: subject,
+                        TextPart: text,
+                        HTMLPart: html
+                    }
+                ]
+            });
+
+        console.log(res);
+        return true;
+    }
+    catch (e)
+    {
+        console.log("Error sending mail: " + e);
+        return false;
+    }
 }
 
 
-module.exports = {initApp};
+module.exports = {initApp, sendMail};

@@ -30,7 +30,7 @@ app.get('/*', (req, res) => {
     if (url.indexOf("?") != -1)
         url = url.substring(0, url.indexOf("?"));// url.split("?")[0];
 
-    if (url.endsWith(".html") && !fs.existsSync(__dirname + url))
+    if (url.indexOf(".") != -1 && !fs.existsSync(__dirname + url))
         res.redirect('/404/404.html');
     else
         res.sendFile(__dirname + url);
@@ -69,6 +69,7 @@ const basicGameSystem = require("./yesServer/basicGameSystem.js");
 const securityInterface = require("./yesServer/securityInterface.js");
 const sessionSystem = require("./yesServer/sessionSystem.js");
 const mailInterface = require("./yesServer/mailInterface.js");
+const passwordResetSystem = require("./yesServer/passwordResetSystem.js");
 
 async function startUp()
 {
@@ -79,6 +80,7 @@ async function startUp()
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     basicGameSystem.initApp(app, io);
     await mailInterface.initApp();
+    await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
 
     server.listen(80, () => {
         console.log('> Started server on *:80');

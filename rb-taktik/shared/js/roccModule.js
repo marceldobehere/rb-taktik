@@ -1,6 +1,14 @@
 var importList = [];
 var onModulesImported = [];
 
+// add loader div
+{
+    let loaderDiv = document.createElement("div");
+    loaderDiv.id = "loader-div";
+    loaderDiv.style = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000;";
+    document.getElementsByTagName("BODY")[0].appendChild(loaderDiv);
+}
+
 async function actuallyDoNextImport()
 {
     if (importList.length < 1)
