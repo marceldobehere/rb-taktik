@@ -83,9 +83,6 @@ async function changeUserPassword(userId, password)
     if (userObject == undefined)
         return false;
 
-    if (userObject.email != email)
-        return false;
-
     let passwordObject = await securityInterface.hashPassword(password);
     userObject["password-hash"] = passwordObject.hash;
     userObject["password-salt"] = passwordObject.salt;

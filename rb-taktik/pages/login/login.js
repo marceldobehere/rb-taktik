@@ -27,6 +27,12 @@ function initLogin()
     console.log("  > Session id:", sessionId);
     if (sessionId != undefined)
         goPage("/home");
+
+
+    let inputUsername = document.getElementById("input-username");
+    let inputPassword = document.getElementById("input-password");
+    attachOnEnterHandler(inputUsername, () => inputPassword.focus());
+    attachOnEnterHandler(inputPassword, doLogin);
 }
 
 onModulesImported.push(initLogin);

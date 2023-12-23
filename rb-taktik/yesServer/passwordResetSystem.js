@@ -46,7 +46,7 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
                 email,
                 "Password reset",
                 "A password reset was requested for your account.",
-                "<h1>Password reset</h1><p>A password reset was requested for your account. If you did not request this, please ignore this email.</p><p><a href='" + RB_TAKTIK_ADDRESS + "/password-reset/password-reset.html?resetId=" + resetId + "'>Click here to reset your password</a></p>");
+                "<h1>Password reset</h1><p>A password reset was requested for your account. If you did not request this, please ignore this email.</p><p><a href='" + RB_TAKTIK_ADDRESS + "/reset-password/reset-password.html?resetId=" + resetId + "'>Click here to reset your password</a></p>");
 
             if (!mailRes)
                 return socket.emit('password-reset-request', {error: "Failed to send mail"});
@@ -64,7 +64,7 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
                 return socket.emit('password-reset-verify', {error: "Invalid reset id"});
 
             let user = await accountInterface.getUserByUsername(passwordResetRequests[resetId].username);
-            delete passwordResetRequests[resetId];
+            deleteAllRequestForUsername(user.username);
             if (user == undefined)
                 return socket.emit('password-reset-verify', {error: "Invalid username"});
 
@@ -75,6 +75,8 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
             socket.emit('password-reset-verify', {success: true});
         });
     });
+
+    console.log("> Initialized password reset system");
 }
 
 function removeOldResets()
@@ -84,6 +86,13 @@ function removeOldResets()
 
     for (let key in passwordResetRequests)
         if (now - passwordResetRequests[key].createdAt > 1000 * 60 * 60)
+            delete passwordResetRequests[key];
+}
+
+function deleteAllRequestForUsername(username)
+{
+    for (let key in passwordResetRequests)
+        if (passwordResetRequests[key].username == username)
             delete passwordResetRequests[key];
 }
 
