@@ -182,7 +182,7 @@ body, #loader-div {
     top: -15%;
     background-color: aqua;
     width: 80%;
-    height: 200px;
+    height: 280px;
     justify-self: center;
     margin: 10px auto;
     color: black;
@@ -210,7 +210,7 @@ body, #loader-div {
     list-style: none;
     padding: 10px 0px 0px 0px;
     overflow: auto;
-    height: 250px;
+    height: 220px;
 }
 
 #chat-list li {
@@ -253,4 +253,17 @@ body, #loader-div {
 
 .drop-shadow-game-box {
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.chat-red, .chat-blue {
+    font-weight: bold;
+}
+
+.chat-red {
+    color: red;
+}
+
+.chat-blue {
+    color: blue;
 }

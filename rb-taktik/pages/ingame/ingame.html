@@ -25,12 +25,12 @@
 
             <div class="chat-container">
                 <ul id="chat-list">
-                    <li>[XX:XX] Red: Blub 123</li>
-                    <li>[XX:XX] Blue: Blub 123</li>
-                    <li>[XX:XX] Red: Blub 121234123412343</li>
-                    <li>[XX:XX] Blue: Blub</li>
+                    <li><span class="chat-red">Red</span>: Blub 123</li>
+                    <li><span class="chat-blue">Blue</span>: Blub 123456</li>
+                    <li><span class="chat-red">Red</span>: Blub 123</li>
+                    <li><span class="chat-blue">Blue</span>: Blub 123456</li>
                 </ul>
-                <input id="chat-input" placehofder="Enter Chat message here">
+                <input id="chat-input" placeholder="Enter Chat message here">
             </div>
         </div>
 
@@ -99,6 +99,7 @@
     <script src="/shared/js/roccModule.js"></script>
     <script>
         importModule('/shared/js/basicModules.js');
+        importModule('chat.js');
         importModule('ingame.js');
         importModule('serverStuff.js');
         startImporting();

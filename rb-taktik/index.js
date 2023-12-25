@@ -78,9 +78,9 @@ async function startUp()
     await securityInterface.initApp();
     sessionSystem.initApp();
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
-    basicGameSystem.initApp(app, io);
     await mailInterface.initApp();
     await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
+    basicGameSystem.initApp(app, io, accountInterface, sessionSystem);
 
     server.listen(80, () => {
         console.log('> Started server on *:80');

@@ -1,12 +1,12 @@
 async function createGame()
 {
-    // get username
-    let username = prompt("Please enter your username");
-    playerId = username;
-    if (username == null)
-        return;
+    // // get username
+    // let username = prompt("Please enter your username");
+    // playerId = username;
+    // if (username == null)
+    //     return;
 
-    let result = await msgSendAndGetReply("game-create", {"username":username});
+    let result = await msgSendAndGetReply("game-create", {});
     if (result["error"] != undefined)
     {
         alert("Error: " + result["error"])
@@ -18,7 +18,8 @@ async function createGame()
 
     // red
     playerNumber = 0;
-    loadGameState(result["state"])
+    loadGameState(result["state"]);
+    clearChat();
 }
 
 async function joinGame()
@@ -26,12 +27,12 @@ async function joinGame()
     let roomId = prompt("Please enter the room ID");
     if (roomId == null)
         return;
-    let username = prompt("Please enter your username");
-    playerId = username;
-    if (username == null)
-        return;
+    // let username = prompt("Please enter your username");
+    // playerId = username;
+    // if (username == null)
+    //     return;
 
-    let result = await msgSendAndGetReply("game-join", {"username":username, "id":roomId});
+    let result = await msgSendAndGetReply("game-join", {"id":roomId});
     if (result["error"] != undefined)
     {
         alert("Error: " + result["error"])
@@ -41,6 +42,7 @@ async function joinGame()
     // blue
     playerNumber = 1;
     resetBoard();
+    clearChat();
 }
 
 async function startGame()
@@ -65,7 +67,8 @@ async function init()
 {
     msgHook("game-leave", (data) => {
         alert("The opponent has left the game.");
-        resetBoard();
+        //resetBoard();
+        goPage("/home")
     });
 
     msgHook("game-join", (data) => {
@@ -78,7 +81,6 @@ async function init()
     });
 
     msgHook("game-move", (data) => {
-        console.log("Game move received", data);
         loadGameState(data["state"]);
     });
 
@@ -89,6 +91,10 @@ async function init()
             showMessage("You won!");
         else
             showMessage("You lost");
+    });
+
+    msgHook("chat-message", (data) => {
+        addMessage(data["username"], (data["playerIndex"] == 0) ? "red" : "blue", data["message"]);
     });
 }
 

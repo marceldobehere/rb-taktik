@@ -1,7 +1,8 @@
 let app;
 let io;
+let accountInterface;
+let sessionSystem;
 
-let sessionDict = {};
 let gameDict = {};
 
 function removeGamesWithPlayer(playerSocket) {
@@ -142,28 +143,30 @@ function checkWin(entry)
     return false;
 }
 
-function initApp(_app, _io) {
+function initApp(_app, _io, _accountInterface, _sessionSystem) {
     app = _app;
     io = _io;
+    accountInterface = _accountInterface;
+    sessionSystem = _sessionSystem;
 
 
     io.on('connection', (socket) => {
         console.log("User connected");
-        sessionDict[socket] = {};
 
         socket.on('disconnect', () => {
             console.log("User disconnected");
             removeGamesWithPlayer(socket);
-
-            delete sessionDict[socket];
         });
 
-        socket.on('game-create', (obj) => {
+        socket.on('game-create', async (obj) => {
             console.log("Game create");
-            if (obj == undefined || obj["username"] == undefined)
-                return socket.emit("game-create", {"error": "Invalid Session"});
 
-            let username = obj["username"];
+            let session = sessionSystem.getSessionBySocket(socket);
+            let user = undefined;
+            if (session)
+                user = await accountInterface.getUser(session.userId);
+
+            let username = user ? user.username : "Guest";
 
             removeGamesWithPlayer(socket);
 
@@ -174,6 +177,7 @@ function initApp(_app, _io) {
             let gameEntry = {
                 "id": id,
                 "players": [username],
+                "playerIds": [session ? session.userId : undefined],
                 "sockets": [socket],
                 "settings": {},
                 "state": {}
@@ -195,26 +199,32 @@ function initApp(_app, _io) {
             console.log(gameDict);
         });
 
-        socket.on('game-join', (obj) => {
+        socket.on('game-join', async (obj) => {
             console.log("Game join");
-            if (obj == undefined || obj["username"] == undefined || obj["id"] == undefined)
-                return socket.emit("game-join", {"error": "Invalid Session"});
+            removeGamesWithPlayer(socket);
 
-            let username = obj["username"];
+            let session = sessionSystem.getSessionBySocket(socket);
+            let user = undefined;
+            if (session)
+                user = await accountInterface.getUser(session.userId);
+
+            let username = user ? user.username : "Guest";
+
             let id = obj["id"];
 
             if (!gameDict[id])
-                return socket.emit("game-join", {"error": "Invalid Game ID"});
+                return socket.emit("game-join", {"error": "Invalid Room ID"});
 
             let gameEntry = gameDict[id];
 
-            if (gameEntry["players"].indexOf(username) != -1)
+            if (gameEntry["sockets"].indexOf(socket) != -1)
                 return socket.emit("game-join", {"error": "Already in game"});
 
             if (gameEntry["players"].length >= 2)
                 return socket.emit("game-join", {"error": "Game is full"});
 
             gameEntry["players"].push(username);
+            gameEntry["playerIds"].push(session ? session.userId : undefined);
             gameEntry["sockets"].push(socket);
             gameEntry["state"]["playerNames"][1] = username;
 
@@ -245,10 +255,7 @@ function initApp(_app, _io) {
             console.log(game);
 
             if (!game)
-                return socket.emit("game-start", {"error": "Not in game"});
-
-            if (game["players"].indexOf(obj["username"]) == -1)
-                return socket.emit("game-start", {"error": "Not in game"});
+                return socket.emit("game-start", {"error": "Not in any game"});
 
             if (game["players"].length < 2)
                 return socket.emit("game-start", {"error": "Not enough players"});
@@ -277,9 +284,6 @@ function initApp(_app, _io) {
             if (!game)
                 return socket.emit("game-stop", {"error": "Not in game"});
 
-            if (game["players"].indexOf(obj["username"]) == -1)
-                return socket.emit("game-stop", {"error": "Not in game"});
-
             if (!game["state"]["gameRunning"])
                 return socket.emit("game-stop", {"error": "Game not running"});
 
@@ -296,16 +300,13 @@ function initApp(_app, _io) {
                 });
         });
 
-
-
         socket.on('game-move', (obj) => {
             let gameEntry = getGameWithPlayer(socket);
 
             (() => {
-                if (obj == undefined || obj["player"] == undefined || obj["field"] == undefined || obj["piece"] == undefined)
+                if (obj == undefined || obj["field"] == undefined || obj["piece"] == undefined)
                     return socket.emit("game-move", {"error": "Invalid Session"});
 
-                let username = obj["player"];
                 let field = obj["field"];
                 let piece = obj["piece"];
 
@@ -313,9 +314,6 @@ function initApp(_app, _io) {
 
                 if (!gameEntry)
                     return socket.emit("game-move", {"error": "Invalid Game ID"});
-
-                if (gameEntry["players"].indexOf(username) == -1)
-                    return socket.emit("game-move", {"error": "Not in game"});
 
                 let state = gameEntry["state"];
 
@@ -325,7 +323,7 @@ function initApp(_app, _io) {
                 if (state["gameWinner"] != undefined)
                     return socket.emit("game-move", {"error": "Game already over"});
 
-                if (state["playerTurn"] != gameEntry["players"].indexOf(username))
+                if (state["playerTurn"] != gameEntry["sockets"].indexOf(socket))
                     return socket.emit("game-move", {"error": "Not your turn"});
 
                 if (piece < 0 || piece > 3)
@@ -382,126 +380,35 @@ function initApp(_app, _io) {
         socket.on('game-message', (obj) => {
 
         });
+
+        socket.on('chat-message', (obj) => {
+            console.log("Chat message received", obj);
+            let game = getGameWithPlayer(socket);
+
+            if (!game)
+                return socket.emit("chat-message", {"error": "Not in game"});
+
+            let session = sessionSystem.getSessionBySocket(socket);
+            let user = undefined;
+            if (session)
+                user = accountInterface.getUser(session.userId);
+
+            let username = user ? user.username : "Guest";
+
+            socket.emit("chat-message", {success: true});
+
+            let playerIndex = game["sockets"].indexOf(socket);
+
+            for (let socket of game["sockets"])
+                socket.emit("chat-message", {
+                    "username": username,
+                    "playerIndex": playerIndex,
+                    "message": obj["message"]
+                });
+        })
     });
 
     console.log("> Initialized basic game System");
 }
-
-/*
-socket.on('disconnect', () => {
-            //console.log("User disconnected");
-            let sessionObj = sessionStuff.getSessionFromSocket(socket);
-            if (sessionObj)
-            {
-                sessionObj["session"]["socket"] = undefined;
-                sessionStuff.updateSession(sessionObj["id"], sessionObj["session"]);
-                //console.log(`> User disconnected: ${sessionObj["session"]["username"]}`);
-            }
-        });
-
-        socket.on('settings-account', (obj) => {
-        let session = obj["session"];
-        let action = obj["action"];
-
-            if (action == "update")
-            {
-                let username = sessionStuff.getUserNameFromSession(session);
-                if (!username)
-                {
-                    let data = obj["data"];
-                    let errorObj = {valid:false, action:action, data:data, error:"Invalid Session"};
-                    console.log(errorObj);
-                    socket.emit("settings-account", errorObj);
-                    return;
-                }
-                let tempSession = sessionStuff.getSessionFromId(session);
-                tempSession["socket"] = socket;
-                sessionStuff.updateSession(session, tempSession);
-                //console.log(`> User connected: ${username}`);
-                let data = obj["data"];
-                let dbEntry = dbStuff.getUser(username);
-                if (dbEntry)
-                {
-                    console.log('FIELD:')
-                    console.log(data);
-                    let field = data["field"];
-                    let error = undefined;
-                    if (field == "pfp")
-                    {
-                        let pfp = data["data"];
-                        dbEntry["profile-pic"] = pfp;
-                        dbStuff.saveUser(dbEntry);
-                    }
-                    else if (field == "email")
-                    {
-                        let email = data["data"];
-                        dbEntry["email"] = email;
-                        dbStuff.saveUser(dbEntry);
-                    }
-                    else
-                    {
-                        error = "invalid field";
-                    }
-
-
-                    socket.emit("settings-account",
-                        {
-                            valid:(!error),
-                            error:error,
-                            action:action,
-                            data:data
-                        });
-                    return;
-                }
-                else
-                {
-                    let data = obj["data"];
-                    let errorObj = {valid:false, action:action, data:data, error:"Invalid User"};
-                    console.log(errorObj);
-                    socket.emit("settings-account", errorObj);
-                    return;
-                }
-            }
-            });
-
-        socket.on('session', (obj) => {
-            let session = obj["session"];
-            let action = obj["action"];
-            //console.log(`> User Session Stuff: Action: \"${action}\", Session: \"${session}\"`);
-            if (action == "get data")
-            {
-                let username = sessionStuff.getUserNameFromSession(session);
-                if (!username)
-                {
-                    socket.emit("session", {valid:false});
-                    return;
-                }
-                let tempSession = sessionStuff.getSessionFromId(session);
-                tempSession["socket"] = socket;
-                sessionStuff.updateSession(session, tempSession);
-                //console.log(`> User connected: ${username}`);
-
-                let dbEntry = dbStuff.getUser(username);
-                if (dbEntry)
-                {
-                    socket.emit("session",
-                        {
-                            valid:true,
-                            "username":username,
-                            "email":dbEntry["email"],
-                            "profile-pic":dbEntry["profile-pic"]
-                        });
-                    return;
-                }
-                else
-                {
-                    sessionStuff.deleteSession(session);
-                    socket.emit("session", {valid:false});
-                    return;
-                }
-            }
-
-        });
-*/
 
 module.exports = {initApp};

@@ -14,7 +14,7 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
     io.on('connection', (socket) => {
         socket.on('login', async (obj) => {
-            let sessionId = await loginUser(obj.username, obj.password);
+            let sessionId = await loginUser(obj.username, obj.password, socket);
             if (sessionId == false)
                 return socket.emit('login', {error: "Invalid username or password"});
 
@@ -34,7 +34,7 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
             console.log("Registered user " + obj.username + " with password " + obj.password + " and email " + obj.email);
             // login aswell
-            let sessionId = await loginUser(obj.username, obj.password);
+            let sessionId = await loginUser(obj.username, obj.password, socket);
             if (sessionId == false)
                 return socket.emit('register', {error: "Invalid username or password"});
 
@@ -43,7 +43,7 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
         });
 
         socket.on('get-user', async (obj) => {
-            let user = await getUser(obj.sessionId);
+            let user = await getUser(obj.sessionId, socket);
             if (user == undefined)
                 return socket.emit('get-user', {error: "Invalid session"});
 
@@ -90,7 +90,7 @@ async function changeUserPassword(userId, password)
     return await accountInterface.updateUser(userObject.userId, userObject);
 }
 
-async function loginUser(username, password)
+async function loginUser(username, password, socket)
 {
     let userObject = await accountInterface.getUserByUsername(username);
     if (userObject == undefined)
@@ -105,7 +105,7 @@ async function loginUser(username, password)
 
         let sessionId = securityInterface.getRandomInt(1000000, 999999999999);
         sessionSystem.createSession(sessionId, {
-            socket: undefined,
+            socket: socket,
             userId: userObject.userId,
             sessionId: sessionId,
         });
@@ -115,11 +115,13 @@ async function loginUser(username, password)
     return false;
 }
 
-async function getUser(sessionId)
+async function getUser(sessionId, socket)
 {
     let userObj = sessionSystem.getSession(sessionId);
     if (userObj == undefined)
         return undefined;
+    userObj.socket = socket;
+    sessionSystem.updateSession(sessionId, userObj);
 
     return await accountInterface.getUser(userObj.userId);
 }

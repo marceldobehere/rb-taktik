@@ -3,7 +3,6 @@ let messagePopupText = document.getElementById("msg-popup-box-text");
 let gameRunning = false;
 let gameWinner = undefined;
 let playerNumber = 0;
-let playerId = undefined;
 let playerTurn = 0;
 let playerPoints = [0,0];
 let playerStacks = [[999,4,3,2], [999,4,3,2]];
@@ -167,7 +166,7 @@ async function fieldClicked(element) {
     //element.style.backgroundColor = playerColors[playerNumber];
     playerTurn = (playerTurn + 1) % 2;
 
-    let reply = await msgSendAndGetReply("game-move", {"player":playerId, "field":idx, "piece": selectedStack});
+    let reply = await msgSendAndGetReply("game-move", {"field":idx, "piece": selectedStack});
     if (reply["error"] != undefined)
     {
         console.log("Error: ", reply["error"]);

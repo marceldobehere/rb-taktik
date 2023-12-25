@@ -41,7 +41,6 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
             };
 
             // Send mail
-            // TODO: TEST + make the reset link work
             let mailRes = await mailInterface.sendMail(
                 email,
                 "Password reset",
