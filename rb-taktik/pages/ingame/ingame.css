@@ -41,13 +41,13 @@ body, #loader-div {
 }
 
 .player-name {
-    top: -55%;
+    top: -20px;
     position: relative;
     background-color: white;
     color: black;
     font-size: 25px;
     font-weight: bold;
-    padding: 5px 15px 5px 15px;
+    padding: 5px 15px;
     border-width: 5px;
 }
 
@@ -64,13 +64,14 @@ body, #loader-div {
 }
 
 .player-image {
-    top: -70%;
     position: relative;
+    top: -50px;
     width: 100px;
     height: 100px;
     background-color: white;
     border-radius: 100%;
     border-width: 8px;
+    margin-bottom: 20px;
 }
 
 .player-red .player-stats-box {
@@ -81,21 +82,21 @@ body, #loader-div {
     background-color: blue;
 }
 
+
 .player-stats-box {
-    top: -12.5%;
     position: relative;
-    margin: 10% auto;
+    top: -50px;
+    margin: 0 auto;
     width: 65%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
     grid-column-gap: 10px;
-    grid-row-gap: 0px;
+    grid-row-gap: 10px;
     align-items: center;
     justify-items: center;
+    margin-bottom: 20px;
 }
-
-
 
 .player-stats-box p {
     margin: 10px;
@@ -179,17 +180,17 @@ body, #loader-div {
 
 .chat-container {
     position: relative;
-    top: -15%;
+    top: -50px;
     background-color: aqua;
     width: 80%;
     height: 280px;
     justify-self: center;
-    margin: 10px auto;
+    margin: 0 auto;
     color: black;
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
 }
+
 #chat-input {
     margin: 0px;
     height: 40px;
