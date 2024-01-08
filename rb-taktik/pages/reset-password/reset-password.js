@@ -46,4 +46,17 @@ async function submitClick()
     goPage("/login");
 }
 
+function togglePWVisibility(passwordId) {
+    let password = document.getElementById(passwordId);
+    let eyeIcon = password.parentElement.querySelector(".eyeIcon");
+
+    if (password.type === "password") {
+        password.type = "text";
+        eyeIcon.src = "/shared/images/eyeIconOpen.png";
+    } else {
+        password.type = "password";
+        eyeIcon.src = "/shared/images/eyeIconClosed.png";
+    }
+}
+
 onModulesImported.push(ResetInit);
