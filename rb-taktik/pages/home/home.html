@@ -12,7 +12,7 @@
     <img src="/shared/images/Logo.png" alt="Logo" class="logo" style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
     <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
         <div class="inline" id="dropdown">
-            <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline" class="pfp" style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16" onclick="toggleDropDown(event)"></image>
+            <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp" style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16" onclick="toggleDropDown(event)"></image>
             <p class="inline">
                 <span id="info-username">Shabarian der 2.</span><br>
                 Rank: <span id="info-rank">9999</span>
@@ -37,25 +37,30 @@
         </div>
     </div>
     <br><br>
-    <div style="border:2px solid green;margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
+    <div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
         <div class="inline" style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
             <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma" onclick="joinRankedGame()">
-                Ranked Game
+                <span>Ranked Game</span>
             </div>
             <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma" onclick="joinRandomGame()">
-                Random Game
+                <span>Random Game</span>
             </div>
             <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma" onclick="openOptions()">
-                Options
+                <span>Options</span>
             </div>
             <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma" onclick="createGame()">
-                Create Game
+                <span>Create Game</span>
             </div>
         </div>
 
-        <div class="inline drop-shadow-figma" style="border-radius: 30px 30px 30px 30px; border:2px solid black; background-color: #E01F16;">
+        <div class="inline drop-shadow-figma" style="border-radius: 30px 30px 30px 30px; background-color: #E01F16;">
             <div id="friend-list-cont">
-                [Friend List]
+                <div>
+                    <div>
+                        
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>

@@ -1,19 +1,44 @@
+
+
 body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
 }
 
+.pfp{
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+
 .menu-tile {
-    border: 1px solid black;
+    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
     background-color: #E01F16;
     font-size: 35px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .menu-tile:hover {
     background-color: red;
+}
+
+.menu-tile span {
+    transition: transform 0.2s; 
+    transform: scale(1); 
+    transform-origin: center;
+}
+
+.menu-tile:active {
+    box-shadow: inset 0 0 10px black;
+}
+
+.menu-tile:active span {
+    transform: scale(0.9); 
 }
 
 .menu-tile-disabled {
@@ -42,6 +67,9 @@ body, #loader-div {
     width:100px;
     height:100px;
     background-color: #E01F16;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 
 }
 
