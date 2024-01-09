@@ -381,7 +381,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
 
         });
 
-        socket.on('chat-message', (obj) => {
+        socket.on('chat-message', async (obj) => {
             console.log("Chat message received", obj);
             let game = getGameWithPlayer(socket);
 
@@ -391,7 +391,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             let session = sessionSystem.getSessionBySocket(socket);
             let user = undefined;
             if (session)
-                user = accountInterface.getUser(session.userId);
+                user = await accountInterface.getUser(session.userId);
 
             let username = user ? user.username : "Guest";
 
