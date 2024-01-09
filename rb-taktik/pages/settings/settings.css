@@ -126,7 +126,7 @@ div label.white_font {
 }
 
 #back_button:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: red;
   cursor: pointer;
 }
 
