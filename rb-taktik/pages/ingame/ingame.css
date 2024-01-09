@@ -121,9 +121,7 @@ body, #loader-div {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 0.2vh;
-    margin: auto;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin: max(2vh, 20%) auto 2vh auto;
 }
 
 .game-field {
@@ -198,9 +196,11 @@ body, #loader-div {
     overflow: hidden;
 }
 
-#chat-input {
+.chat-input {
+    font-size: 3vh;
     margin: 0;
     height: 4vh;
+    max-height: 4vh;
     width: 100%;
     border-top: 0.4vh solid black;
     border-left: none;
@@ -210,6 +210,7 @@ body, #loader-div {
     bottom: 0;
     z-index: 1;
 }
+
 
 #chat-list {
     margin: 0;
