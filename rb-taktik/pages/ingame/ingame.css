@@ -7,10 +7,10 @@ body, #loader-div {
 
 #main-content {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
@@ -18,8 +18,8 @@ body, #loader-div {
 }
 
 .player-box {
-    width: 350px;
-    height: 100%;
+    width: 30vw;
+    height: 100vh;
 }
 
 .player-red {
@@ -31,26 +31,25 @@ body, #loader-div {
 }
 
 .player-info-box {
-    margin-top: 40px;
+    margin-top: 4vh;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
-    grid-row-gap: 20px;
+    grid-row-gap: 2vh;
     align-items: center;
     justify-items: center;
 }
 
 .player-name {
-    top: -20px;
+    top: -2vh;
     position: relative;
     background-color: white;
     color: black;
-    font-size: 25px;
+    font-size: 2.5vh;
     font-weight: bold;
-    padding: 5px 15px;
-    border-width: 5px;
+    padding: 0.5vh 1.5vh;
+    border-width: 0.5vh;
 }
-
 .player-red .player-name,
 .player-red .player-image {
     border-color: red;
@@ -65,14 +64,15 @@ body, #loader-div {
 
 .player-image {
     position: relative;
-    top: -50px;
-    width: 100px;
-    height: 100px;
+    top: -5vh;
+    width: 10vw;
+    height: 10vw;
     background-color: white;
-    border-radius: 100%;
-    border-width: 8px;
-    margin-bottom: 20px;
+    border-radius: 50%;
+    border-width: 1.6vh;
+    margin-bottom: 2vh;
 }
+
 
 .player-red .player-stats-box {
     background-color: red;
@@ -82,27 +82,27 @@ body, #loader-div {
     background-color: blue;
 }
 
-
 .player-stats-box {
     position: relative;
-    top: -50px;
+    top: -5vh;
     margin: 0 auto;
-    width: 65%;
+    width: 43%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 1vh;
+    grid-row-gap: 1vh;
     align-items: center;
     justify-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
+    border-radius: 1.8vh;
 }
 
 .player-stats-box p {
-    margin: 10px;
-    font-size: 30px;
+    margin: 1vh;
+    font-size: 4vh;
     font-weight: bold;
-    margin: 5px auto 5px auto;
+    margin: 0.5vh auto 0.5vh auto;
 }
 
 .game-container {
@@ -115,60 +115,67 @@ body, #loader-div {
 }
 
 .game-box {
-    width: 350px;
-    height: 350px;
+    width: 27vw;
+    height: 27vw;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 5px;
+    grid-gap: 0.2vh;
+    margin: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 .game-field {
-    top: 20%;
+    top: 13vh;
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 8vw;
+    height: 8vw;
     background-color: white;
     color: black;
-    font-size: 15px;
+    font-size: 1vh;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 2vh;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+
 }
+
 
 .game-field:hover {
     background-color: darkgray;
     color: white;
-
 }
 
 .game-stats-box {
-    margin-top: 10px;
-}
+    margin-top: 1vh;
 
+}
 .player-vs-text {
-    top: -20%;
+    position: relative;
+    top: 7vh;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 6vh;
     text-align: center;
 }
+
 
 .player-vs {
     font-weight: bolder;
-    font-size: 40px;
+    font-size: 6vh;
 }
 
 .player-turn-text {
-    top: -20%;
+    top: 1vh;
     position: relative;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3vh;
     text-align: center;
 }
+
 
 .col-red {
     color: red;
@@ -180,22 +187,22 @@ body, #loader-div {
 
 .chat-container {
     position: relative;
-    top: -50px;
+    top: -5vh;
     background-color: aqua;
     width: 80%;
-    height: 280px;
+    height: 28vh;
     justify-self: center;
     margin: 0 auto;
     color: black;
-    border-radius: 10px;
+    border-radius: 1vh;
     overflow: hidden;
 }
 
 #chat-input {
-    margin: 0px;
-    height: 40px;
+    margin: 0;
+    height: 4vh;
     width: 100%;
-    border-top: 4px solid black;
+    border-top: 0.4vh solid black;
     border-left: none;
     border-right: none;
     border-bottom: none;
@@ -205,27 +212,17 @@ body, #loader-div {
 }
 
 #chat-list {
-    margin: 0px;
-    bottom: 20px;
+    margin: 0;
+    bottom: 2vh;
     width: 100%;
     list-style: none;
-    padding: 10px 0px 0px 0px;
+    padding: 1vh 0 0 0;
     overflow: auto;
-    height: 220px;
+    height: 22vh;
 }
 
 #chat-list li {
-    width: max-content;
-}
-
-#chat-input {
-    margin: 0px;
-    height: 40px;
-    width: 100%;
-    border-top: 4px solid black;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+    width: auto;
 }
 
 #msg-popup-box {
@@ -237,25 +234,24 @@ body, #loader-div {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 1vh;
 }
 
 #msg-popup-box div,
 #msg-popup-box-text {
-    width: 600px;
-    height: 500px;
+    width: 60vw;
+    height: 50vh;
     background-color: white;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 1vh;
+    padding: 2vh;
     color: black;
     text-align: center;
-    font-size: 40px;
+    font-size: 4vh;
 }
 
 .drop-shadow-game-box {
-    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.4vh 0.4vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }
-
 
 .chat-red, .chat-blue {
     font-weight: bold;
@@ -267,4 +263,25 @@ body, #loader-div {
 
 .chat-blue {
     color: blue;
+}
+
+.log {
+    width: 30vw;
+}
+
+img.log {
+    position: fixed;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.home {
+    width: 5vw;
+    height: auto;
+}
+
+img.home {
+    position: fixed;
+    top: 0;
+    left: 0;
 }
