@@ -15,6 +15,8 @@ async function initApp(_dbInterface)
         "password-salt": "test"
     });
 
+    await deleteUser("test1234");
+
     console.log("> Initialized account interface");
 }
 
