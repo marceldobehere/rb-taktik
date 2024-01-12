@@ -45,3 +45,18 @@ body, #loader-div {
     font-size: 25px;
     -webkit-text-stroke: 2px black;
 }
+
+#forgotPW{
+    font-family: 'Helvetica', sans-serif;
+    font-style: normal;
+    color: #DFDFDF;
+    font-size: 28px;
+    font-weight: 800;
+    -webkit-text-stroke: 2px black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
