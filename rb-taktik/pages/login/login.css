@@ -35,14 +35,14 @@ body, #loader-div {
 .register-link{
     border-bottom: 5px solid black;
     font-size: 30px;
-    -webkit-text-stroke: 2.5px black;
+    -webkit-text-stroke: 2px black;
 }
 
 #playAsGuest{
     margin-top: -25px;
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size: 25px;
+    font-size: 28px;
     -webkit-text-stroke: 2px black;
 }
 
