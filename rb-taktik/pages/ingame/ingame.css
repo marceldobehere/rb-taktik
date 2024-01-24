@@ -139,7 +139,9 @@ body, #loader-div {
     border-radius: 2vh;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-
+    font-size: 5vh;
+    color: white;
+    font-weight: bold;
 }
 
 
