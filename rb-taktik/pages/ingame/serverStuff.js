@@ -14,6 +14,7 @@ async function createGame()
     }
 
     console.log(result["id"]);
+    currentRoomId = result["id"];
     alert("Your room ID is: " + result["id"]);
 
     // red
@@ -40,9 +41,18 @@ async function joinGame()
     }
 
     // blue
+    currentRoomId = roomId;
     playerNumber = 1;
     resetBoard();
     clearChat();
+}
+
+function createInviteLink()
+{
+    const urlWithoutParams = window.location.href.split("?")[0];
+    const url = urlWithoutParams + "?gameid=" + currentRoomId;
+
+    prompt("Please copy the following link:", url);
 }
 
 async function startGame()
@@ -96,6 +106,31 @@ async function init()
     msgHook("chat-message", (data) => {
         addMessage(data["username"], (data["playerIndex"] == 0) ? "red" : "blue", data["message"]);
     });
+
+    await attemptJoinFromUrl();
+}
+
+async function attemptJoinFromUrl()
+{
+    const params = Object.fromEntries(new URLSearchParams(window.location.search));
+    console.log("Url params:", params);
+    let roomId = params["gameid"];
+    if (roomId == undefined)
+        return;
+    console.log("Attempting to join game with id:", roomId);
+
+    let result = await msgSendAndGetReply("game-join", {"id":roomId});
+    if (result["error"] != undefined)
+    {
+        alert("Error: " + result["error"])
+        return;
+    }
+
+    // blue
+    currentRoomId = roomId;
+    playerNumber = 1;
+    resetBoard();
+    clearChat();
 }
 
 
