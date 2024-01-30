@@ -158,6 +158,13 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             removeGamesWithPlayer(socket);
         });
 
+        socket.on('game-exists', (obj) => {
+            console.log("Game exists");
+
+            let id = obj["id"];
+            socket.emit("game-exists", {"exists": (gameDict[id] != undefined)});
+        });
+
         socket.on('game-create', async (obj) => {
             console.log("Game create");
 

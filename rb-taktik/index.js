@@ -49,18 +49,20 @@ const sessionSystem = require("./yesServer/sessionSystem.js");
 const mailInterface = require("./yesServer/mailInterface.js");
 const passwordResetSystem = require("./yesServer/passwordResetSystem.js");
 const notificationInterface = require("./yesServer/notificationInterface.js");
+const notificationSystem = require("./yesServer/notificationSystem.js");
 
 async function startUp()
 {
     dbInterface.initApp();
     await accountInterface.initApp(dbInterface);
-    await notificationInterface.initApp(dbInterface, accountInterface);
     await securityInterface.initApp();
+    await notificationInterface.initApp(dbInterface, accountInterface, securityInterface);
     sessionSystem.initApp();
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     await mailInterface.initApp();
     await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
     basicGameSystem.initApp(app, io, accountInterface, sessionSystem);
+    notificationSystem.initApp(app, io, notificationInterface, accountInterface, sessionSystem);
 
     server.listen(80, () => {
         console.log('> Started server on *:80');

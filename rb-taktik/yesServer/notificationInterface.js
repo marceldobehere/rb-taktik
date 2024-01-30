@@ -1,10 +1,12 @@
 let dbInterface;
 let accountInterface;
+let securityInterface;
 
-async function initApp(_dbInterface, _accountInterface)
+async function initApp(_dbInterface, _accountInterface, _securityInterface)
 {
     dbInterface = _dbInterface;
     accountInterface = _accountInterface;
+    securityInterface = _securityInterface;
 
     if (! await dbInterface.tableExists("notifications"))
         await dbInterface.createTable("notifications");
@@ -58,6 +60,25 @@ async function readNotificationsForUser(userId)
     return true;
 }
 
+async function readNotificationForUser(userId, notificationId)
+{
+    let notEntry = await dbInterface.getPair("notifications", userId);
+    if (notEntry == undefined)
+        return false;
+
+    let index = notEntry.unread.findIndex((element) => {
+        return element.id == notificationId;
+    });
+
+    if (index == -1)
+        return false;
+
+    notEntry.read.push(notEntry.unread[index]);
+    notEntry.unread.splice(index, 1);
+    await dbInterface.updatePair("notifications", userId, notEntry);
+    return true;
+}
+
 async function clearAllNotificationsForUser(userId)
 {
     if (await dbInterface.getPair("notifications", userId) == undefined)
@@ -68,6 +89,40 @@ async function clearAllNotificationsForUser(userId)
         read: []
     });
     return true;
+}
+
+
+async function clearNotificationForUser(userId, notificationId)
+{
+    let notEntry = await dbInterface.getPair("notifications", userId);
+    if (notEntry == undefined)
+        return false;
+
+    let index = notEntry.unread.findIndex((element) => {
+        return element.id == notificationId;
+    });
+
+    if (index == -1)
+    {
+        index = notEntry.read.findIndex((element) => {
+            return element.id == notificationId;
+        });
+
+        if (index == -1)
+            return false;
+        else
+        {
+            notEntry.read.splice(index, 1);
+            await dbInterface.updatePair("notifications", userId, notEntry);
+            return true;
+        }
+    }
+    else
+    {
+        notEntry.unread.splice(index, 1);
+        await dbInterface.updatePair("notifications", userId, notEntry);
+        return true;
+    }
 }
 
 async function createNotificationForUser(userId, notification)
@@ -84,6 +139,8 @@ async function createNotificationForUser(userId, notification)
             read: []
         };
 
+    notification["id"] = securityInterface.getRandomInt(1000000, 999999999999);
+
     notEntry.unread.push(notification);
     await dbInterface.updatePair("notifications", userId, notEntry);
     return true;
@@ -95,4 +152,4 @@ async function deleteNotificationEntry(userId)
 }
 
 
-module.exports = {initApp};
+module.exports = {initApp, getAllNotificationsForUser, readNotificationsForUser, clearAllNotificationsForUser, createNotificationForUser, deleteNotificationEntry, clearNotificationForUser, readNotificationForUser};
