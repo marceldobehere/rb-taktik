@@ -105,3 +105,14 @@ input:-webkit-autofill:active {
     font-size: 25px !important;
     appearance: inherit;
 }
+
+.hidden{
+    display: none;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}

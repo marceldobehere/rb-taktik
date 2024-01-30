@@ -23,8 +23,8 @@
         <div class="slidecontainer_big">
             <div class="slidecontainer_middle">
                 <div class="slidecontainer">
-    
-                    <input oninput="setValue('volumeMusic', this.value, volumeMusic)" id="volumeMusicValue" type="range" min="0" max="100"
+                    <label for="volumeMusicValue" class="hidden" >Music Volume</label>
+                    <input  oninput="setValue('volumeMusic', this.value, volumeMusic)" id="volumeMusicValue" type="range" min="0" max="100"
                         value="50" class="slider">
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <div class="slidecontainer_big">
             <div class="slidecontainer_middle">
                 <div class="slidecontainer">
-    
+                    <label for="volumeFXValue" class="hidden" >Sound-effects Volume</label>
                     <input oninput="setValue('volumeFX', this.value, volumeFX)" id="volumeFXValue" type="range" min="0" max="100"
                         value="50" class="slider">
                 </div>
