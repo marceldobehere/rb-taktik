@@ -7,7 +7,7 @@ async function initApp()
 {
     try
     {
-        let authData = JSON.parse(fs.readFileSync("./secret/auth.json"));
+        let authData = JSON.parse(fs.readFileSync("./secret/auth.json", "utf8"));
         mailjet = new Mailjet({
             apiKey: authData["public"],
             apiSecret: authData["secret"]
@@ -29,7 +29,7 @@ async function initApp()
         //                     }
         //                 ],
         //                 Subject: "Test Email",
-        //                 TextPart: "Dasm ist ein Test",
+        //                 TextPart: "Das ist ein Test",
         //                 HTMLPart: "<h1>Hallo</h1><br><p>Das ist ein Test</p>"
         //             }
         //         ]

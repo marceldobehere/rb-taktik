@@ -29,7 +29,7 @@ function getSessionByUserId(userId)
     for (let i = 0; i < sessionIds.length; i++)
     {
         let sessionObj = getSession(sessionIds[i]);
-        if (sessionObj.userId == userId)
+        if (sessionObj.userId === userId)
             return sessionObj;
     }
     return undefined;
@@ -51,7 +51,7 @@ function getSessionBySocket(socket)
     for (let i = 0; i < sessionIds.length; i++)
     {
         let sessionObj = getSession(sessionIds[i]);
-        if (sessionObj.socket == socket)
+        if (sessionObj.socket === socket)
             return sessionObj;
     }
     return undefined;

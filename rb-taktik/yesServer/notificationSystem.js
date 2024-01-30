@@ -13,19 +13,21 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
     sessionSystem = _sessionSystem;
 
     io.on('connection', (socket) => {
-        socket.on('notification', async (obj) => {
+        socket.on('notification', async () => {
             let sessionObj = sessionSystem.getSessionBySocket(socket);
-            if (sessionObj == undefined)
+            if (sessionObj === undefined)
                 return socket.emit('notification', {error: "Invalid session"});
 
             await notifyUser(sessionObj.userId);
         });
 
         socket.on('read-notification', async (obj) => {
+            if (obj === undefined)
+                return socket.emit('read-notification', {error: "Invalid request"});
             let sessionObj = sessionSystem.getSessionBySocket(socket);
-            if (sessionObj == undefined)
+            if (sessionObj === undefined)
                 return socket.emit('read-notification', {error: "Invalid session"});
-            if (obj.notificationId == undefined)
+            if (obj.notificationId === undefined)
                 return socket.emit('read-notification', {error: "Invalid notification id"});
 
             if (await notificationInterface.readNotificationsForUser(sessionObj.userId, obj.notificationId))
@@ -37,9 +39,9 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
                 socket.emit('read-notification', {error: "Failed to read notification"});
         });
 
-        socket.on('clear-notifications', async (obj) => {
+        socket.on('clear-notifications', async () => {
             let sessionObj = sessionSystem.getSessionBySocket(socket);
-            if (sessionObj == undefined)
+            if (sessionObj === undefined)
                 return socket.emit('clear-notifications', {error: "Invalid session"});
 
             if (await notificationInterface.readNotificationsForUser(sessionObj.userId))
@@ -49,10 +51,12 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
         });
 
         socket.on('clear-notification', async (obj) => {
+            if (obj === undefined)
+                return socket.emit('read-notification', {error: "Invalid request"});
             let sessionObj = sessionSystem.getSessionBySocket(socket);
-            if (sessionObj == undefined)
+            if (sessionObj === undefined)
                 return socket.emit('clear-notification', {error: "Invalid session"});
-            if (obj.notificationId == undefined)
+            if (obj.notificationId === undefined)
                 return socket.emit('clear-notification', {error: "Invalid notification id"});
 
             if (await notificationInterface.clearNotificationForUser(sessionObj.userId, obj.notificationId))
@@ -68,7 +72,7 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
 async function notifyUser(userId)
 {
     let sessionObj = sessionSystem.getSessionByUserId(userId);
-    if (sessionObj == undefined)
+    if (sessionObj === undefined)
         return false;
 
     let notifications = await notificationInterface.getAllNotificationsForUser(userId);
@@ -81,7 +85,7 @@ async function sendFriendRequest(userIdFrom, userIdTo)
     let userFrom = await accountInterface.getUser(userIdFrom);
     let userTo = await accountInterface.getUser(userIdTo);
 
-    if (userFrom == undefined || userTo == undefined)
+    if (userFrom === undefined || userTo === undefined)
         return false;
 
     // TODO: Add check if userFrom is already friends with userTo
@@ -107,7 +111,7 @@ async function sendMatchRequest(userIdFrom, userIdTo, roomId)
     let userFrom = await accountInterface.getUser(userIdFrom);
     let userTo = await accountInterface.getUser(userIdTo);
 
-    if (userFrom == undefined || userTo == undefined)
+    if (userFrom === undefined || userTo === undefined)
         return false;
 
     let not = {

@@ -19,7 +19,7 @@ async function checkPassword(password, salt, hash) {
     let newHash = await pbkdf2(password, salt, iterations, 64, 'sha512');
     newHash = newHash.toString('base64');
 
-    return newHash == hash;
+    return newHash === hash;
 }
 
 function getRandomInt(min, max) {

@@ -73,7 +73,7 @@ async function getPair(tableName, key)
 {
     let table = await _getTable(tableName);
     if (!table)
-        return;
+        return undefined;
 
     return table[key];
 }

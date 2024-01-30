@@ -26,10 +26,10 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
             let username = obj.username;
 
             let user = await accountInterface.getUserByUsername(username);
-            if (user == undefined)
+            if (user === undefined)
                 return socket.emit('password-reset-request', {error: "Invalid username"});
 
-            if (user.email != email)
+            if (user.email !== email)
                 return socket.emit('password-reset-request', {error: "Invalid email"});
 
             let resetId = securityInterface.getRandomInt(1000000000, 9999999999);
@@ -59,12 +59,12 @@ async function initApp(_app, _io, _accountInterface, _accountSystem, _securityIn
             let resetId = obj.resetId;
             let newPassword = obj.newPassword;
 
-            if (passwordResetRequests[resetId] == undefined)
+            if (passwordResetRequests[resetId] === undefined)
                 return socket.emit('password-reset-verify', {error: "Invalid reset id"});
 
             let user = await accountInterface.getUserByUsername(passwordResetRequests[resetId].username);
-            deleteAllRequestForUsername(user.username);
-            if (user == undefined)
+            deleteAllRequestForUsername(passwordResetRequests[resetId].username);
+            if (user === undefined)
                 return socket.emit('password-reset-verify', {error: "Invalid username"});
 
             let res = await accountSystem.changeUserPassword(user.userId, newPassword);
@@ -91,7 +91,7 @@ function removeOldResets()
 function deleteAllRequestForUsername(username)
 {
     for (let key in passwordResetRequests)
-        if (passwordResetRequests[key].username == username)
+        if (passwordResetRequests[key].username === username)
             delete passwordResetRequests[key];
 }
 

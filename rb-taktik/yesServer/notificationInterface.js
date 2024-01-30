@@ -34,7 +34,7 @@ async function getAllNotificationsForUser(userId)
 {
     let notEntry = await dbInterface.getPair("notifications", userId);
 
-    if (notEntry == undefined)
+    if (notEntry === undefined)
         return {
             unread: [],
             read: []
@@ -49,7 +49,7 @@ async function getAllNotificationsForUser(userId)
 async function readNotificationsForUser(userId)
 {
     let notEntry = await dbInterface.getPair("notifications", userId);
-    if (notEntry == undefined)
+    if (notEntry === undefined)
         return false;
 
     // add all entries from unread to read and clear the unread array
@@ -63,14 +63,14 @@ async function readNotificationsForUser(userId)
 async function readNotificationForUser(userId, notificationId)
 {
     let notEntry = await dbInterface.getPair("notifications", userId);
-    if (notEntry == undefined)
+    if (notEntry === undefined)
         return false;
 
     let index = notEntry.unread.findIndex((element) => {
-        return element.id == notificationId;
+        return element.id === notificationId;
     });
 
-    if (index == -1)
+    if (index === -1)
         return false;
 
     notEntry.read.push(notEntry.unread[index]);
@@ -81,7 +81,7 @@ async function readNotificationForUser(userId, notificationId)
 
 async function clearAllNotificationsForUser(userId)
 {
-    if (await dbInterface.getPair("notifications", userId) == undefined)
+    if (await dbInterface.getPair("notifications", userId) === undefined)
         return false;
 
     await dbInterface.updatePair("notifications", userId, {
@@ -95,20 +95,20 @@ async function clearAllNotificationsForUser(userId)
 async function clearNotificationForUser(userId, notificationId)
 {
     let notEntry = await dbInterface.getPair("notifications", userId);
-    if (notEntry == undefined)
+    if (notEntry === undefined)
         return false;
 
     let index = notEntry.unread.findIndex((element) => {
-        return element.id == notificationId;
+        return element.id === notificationId;
     });
 
-    if (index == -1)
+    if (index === -1)
     {
         index = notEntry.read.findIndex((element) => {
-            return element.id == notificationId;
+            return element.id === notificationId;
         });
 
-        if (index == -1)
+        if (index === -1)
             return false;
         else
         {
@@ -133,7 +133,7 @@ async function createNotificationForUser(userId, notification)
 
     let notEntry = await dbInterface.getPair("notifications", userId);
 
-    if (notEntry == undefined)
+    if (notEntry === undefined)
         notEntry = {
             unread: [],
             read: []
