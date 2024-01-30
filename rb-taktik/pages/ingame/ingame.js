@@ -13,6 +13,7 @@ const playerColors = ["red", "blue"];
 let fields = [];
 let board = [];
 let playerNames = ["N/A", "N/A"];
+let currentRoomId;
 
 
 async function init()
