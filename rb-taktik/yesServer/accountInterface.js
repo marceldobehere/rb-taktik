@@ -34,7 +34,7 @@ function checkUserObject(userObject)
         return false;
 
     for (let key in defaultUserObject)
-        if (userObject[key] == undefined)
+        if (userObject[key] === undefined)
             return false;
 
     return true;
@@ -46,7 +46,7 @@ function makeUserObjectConform(userObject)
         return defaultUserObject;
 
     for (let key in defaultUserObject)
-        if (userObject[key] == undefined)
+        if (userObject[key] === undefined)
             userObject[key] = defaultUserObject[key];
 
     return userObject;
@@ -59,7 +59,7 @@ async function createUser(userId, userObject)
 
     userObject = makeUserObjectConform(userObject);
 
-    if (await getUserByUsername(userObject["username"]) != undefined)
+    if (await getUserByUsername(userObject["username"]) !== undefined)
         return false;
 
     await dbInterface.addPair("users", userId, userObject);
@@ -69,7 +69,7 @@ async function createUser(userId, userObject)
 async function getUser(userId)
 {
     let userObject = await dbInterface.getPair("users", userId);
-    if (userObject == undefined)
+    if (userObject === undefined)
         return undefined;
 
     return makeUserObjectConform(userObject);
@@ -79,7 +79,7 @@ async function getUserByUsername(username)
 {
     let users = await getAllUsers();
     for (let i = 0; i < users.length; i++)
-        if (users[i]["username"] == username)
+        if (users[i]["username"] === username)
             return users[i];
 
     return undefined;

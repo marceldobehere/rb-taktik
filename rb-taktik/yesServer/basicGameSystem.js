@@ -7,7 +7,7 @@ let gameDict = {};
 
 function removeGamesWithPlayer(playerSocket) {
     for (let key in gameDict) {
-        if (gameDict[key]["sockets"].indexOf(playerSocket) != -1) {
+        if (gameDict[key]["sockets"].indexOf(playerSocket) !== -1) {
             for (let socket of gameDict[key]["sockets"])
                 socket.emit("game-leave", {});
 
@@ -20,7 +20,7 @@ function removeGamesWithPlayer(playerSocket) {
 
 function getGameWithPlayer(playerSocket) {
     for (let key in gameDict) {
-        if (gameDict[key]["sockets"].indexOf(playerSocket) != -1) {
+        if (gameDict[key]["sockets"].indexOf(playerSocket) !== -1) {
             return gameDict[key];
         }
     }
@@ -62,19 +62,19 @@ function checkWin(entry)
     let state = entry["state"];
     let board = state["board"];
 
-    if (state["gameWinner"] != undefined || !state["gameRunning"])
+    if (state["gameWinner"] !== undefined || !state["gameRunning"])
         return false;
 
-    // check for same player with the same rules as tic tac toe
+    // check for same player with the same rules as Tic-Tac-Toe
 
     // vertical
     for (let i = 0; i < 3; i++)
     {
-        if (board[i] != undefined &&
-            board[i+3] != undefined &&
-            board[i+6] != undefined &&
-            board[i]["player"] == board[i+3]["player"] &&
-            board[i]["player"] == board[i+6]["player"])
+        if (board[i] !== undefined &&
+            board[i+3] !== undefined &&
+            board[i+6] !== undefined &&
+            board[i]["player"] === board[i+3]["player"] &&
+            board[i]["player"] === board[i+6]["player"])
         {
             return true;
         }
@@ -83,32 +83,32 @@ function checkWin(entry)
     // horizontal
     for (let i = 0; i < 9; i += 3)
     {
-        if (board[i] != undefined &&
-            board[i+1] != undefined &&
-            board[i+2] != undefined &&
-            board[i]["player"] == board[i+1]["player"] &&
-            board[i]["player"] == board[i+2]["player"])
+        if (board[i] !== undefined &&
+            board[i+1] !== undefined &&
+            board[i+2] !== undefined &&
+            board[i]["player"] === board[i+1]["player"] &&
+            board[i]["player"] === board[i+2]["player"])
         {
             return true;
         }
     }
 
     // diagonal 1
-    if (board[0] != undefined &&
-        board[4] != undefined &&
-        board[8] != undefined &&
-        board[0]["player"] == board[4]["player"] &&
-        board[0]["player"] == board[8]["player"])
+    if (board[0] !== undefined &&
+        board[4] !== undefined &&
+        board[8] !== undefined &&
+        board[0]["player"] === board[4]["player"] &&
+        board[0]["player"] === board[8]["player"])
     {
         return true;
     }
 
     // diagonal 2
-    if (board[2] != undefined &&
-        board[4] != undefined &&
-        board[6] != undefined &&
-        board[2]["player"] == board[4]["player"] &&
-        board[2]["player"] == board[6]["player"])
+    if (board[2] !== undefined &&
+        board[4] !== undefined &&
+        board[6] !== undefined &&
+        board[2]["player"] === board[4]["player"] &&
+        board[2]["player"] === board[6]["player"])
     {
         return true;
     }
@@ -124,7 +124,7 @@ function checkWin(entry)
 
             for (let i = 0; i < 9; i++)
             {
-                if (board[i] != undefined &&
+                if (board[i] !== undefined &&
                     board[i]["piece"] >= piece)
                     continue;
 
@@ -162,10 +162,10 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             console.log("Game exists");
 
             let id = obj["id"];
-            socket.emit("game-exists", {"exists": (gameDict[id] != undefined)});
+            socket.emit("game-exists", {"exists": (gameDict[id] !== undefined)});
         });
 
-        socket.on('game-create', async (obj) => {
+        socket.on('game-create', async () => {
             console.log("Game create");
 
             let session = sessionSystem.getSessionBySocket(socket);
@@ -224,7 +224,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
 
             let gameEntry = gameDict[id];
 
-            if (gameEntry["sockets"].indexOf(socket) != -1)
+            if (gameEntry["sockets"].indexOf(socket) !== -1)
                 return socket.emit("game-join", {"error": "Already in game"});
 
             if (gameEntry["players"].length >= 2)
@@ -253,11 +253,11 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             console.log(gameDict);
         });
 
-        socket.on('game-leave', (obj) => {
+        socket.on('game-leave', () => {
             removeGamesWithPlayer(socket);
         });
 
-        socket.on('game-start', (obj) => {
+        socket.on('game-start', () => {
             let game = getGameWithPlayer(socket);
             console.log(game);
 
@@ -285,7 +285,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 });
         });
 
-        socket.on('game-stop', (obj) => {
+        socket.on('game-stop', () => {
             let game = getGameWithPlayer(socket);
 
             if (!game)
@@ -311,7 +311,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             let gameEntry = getGameWithPlayer(socket);
 
             (() => {
-                if (obj == undefined || obj["field"] == undefined || obj["piece"] == undefined)
+                if (obj === undefined || obj["field"] === undefined || obj["piece"] === undefined)
                     return socket.emit("game-move", {"error": "Invalid Session"});
 
                 let field = obj["field"];
@@ -327,16 +327,16 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 if (!state["gameRunning"])
                     return socket.emit("game-move", {"error": "Game not running"});
 
-                if (state["gameWinner"] != undefined)
+                if (state["gameWinner"] !== undefined)
                     return socket.emit("game-move", {"error": "Game already over"});
 
-                if (state["playerTurn"] != gameEntry["sockets"].indexOf(socket))
+                if (state["playerTurn"] !== gameEntry["sockets"].indexOf(socket))
                     return socket.emit("game-move", {"error": "Not your turn"});
 
                 if (piece < 0 || piece > 3)
                     return socket.emit("game-move", {"error": "Invalid piece"});
 
-                if (state["board"][field] != undefined)
+                if (state["board"][field] !== undefined)
                 {
                     if (state["board"][field]["piece"] >= piece)
                         return socket.emit("game-move", {"error": "Field already occupied"});
@@ -357,7 +357,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             {
                 let won = checkWin(gameEntry);
                 if (won &&
-                    gameEntry["state"]["gameWinner"] == undefined)
+                    gameEntry["state"]["gameWinner"] === undefined)
                 {
                     gameEntry["state"]["gameWinner"] = (gameEntry["state"]["playerTurn"] + 1) % 2;
                     gameEntry["state"]["playerPoints"][gameEntry["state"]["gameWinner"]] += 1;
@@ -381,10 +381,6 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
         });
 
         socket.on('game-settings', (obj) => {
-
-        });
-
-        socket.on('game-message', (obj) => {
 
         });
 
