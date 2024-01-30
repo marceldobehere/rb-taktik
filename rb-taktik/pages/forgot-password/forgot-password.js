@@ -41,3 +41,12 @@ async function submitClick()
     console.log(result);
     alert("Password reset email sent! You can close this page now.");
 }
+function initPwForgot()
+{
+    let inputUsername = document.getElementById("input-username");
+    let inputMail = document.getElementById("input-email");
+    attachOnEnterHandler(inputUsername, () => inputMail.focus());
+    attachOnEnterHandler(inputMail,submitClick);
+}
+
+onModulesImported.push(initPwForgot);

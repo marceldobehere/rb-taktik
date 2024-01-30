@@ -6,6 +6,12 @@ let errorPasswordAgain = document.getElementById("error-password-again");
 
 async function ResetInit()
 {
+    let Password = document.getElementById("input-password");
+    let PasswordAgain = document.getElementById("input-password-again");
+    attachOnEnterHandler(Password, () => PasswordAgain.focus());
+    attachOnEnterHandler(PasswordAgain, submitClick);
+
+
     const urlParams = new URLSearchParams(window.location.search);
     resetId = urlParams.get('resetId');
     if (resetId == undefined)

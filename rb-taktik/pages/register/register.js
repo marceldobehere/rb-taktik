@@ -24,3 +24,15 @@ async function doRegister()
     setSessionId(result["sessionId"]);
     goPage("/home")
 }
+
+function initRegister()
+{
+    let inputUsername = document.getElementById("input-username");
+    let inputPassword = document.getElementById("input-password");
+    let inputMail = document.getElementById("input-email");
+    attachOnEnterHandler(inputMail, () => inputUsername.focus());
+    attachOnEnterHandler(inputUsername, () => inputPassword.focus());
+    attachOnEnterHandler(inputPassword, doRegister);
+}
+
+onModulesImported.push(initRegister);
