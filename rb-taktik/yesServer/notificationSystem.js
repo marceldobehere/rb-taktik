@@ -131,4 +131,4 @@ async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 }
 
 
-module.exports = {initApp};
+module.exports = {initApp, notifyUser, sendFriendRequest, sendMatchRequest};

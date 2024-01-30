@@ -50,6 +50,7 @@ const mailInterface = require("./yesServer/mailInterface.js");
 const passwordResetSystem = require("./yesServer/passwordResetSystem.js");
 const notificationInterface = require("./yesServer/notificationInterface.js");
 const notificationSystem = require("./yesServer/notificationSystem.js");
+const friendInterface = require("./yesServer/friendInterface.js");
 
 async function startUp()
 {
@@ -57,6 +58,7 @@ async function startUp()
     await accountInterface.initApp(dbInterface);
     await securityInterface.initApp();
     await notificationInterface.initApp(dbInterface, accountInterface, securityInterface);
+    await friendInterface.initApp(dbInterface, notificationInterface, accountInterface, securityInterface);
     sessionSystem.initApp();
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     await mailInterface.initApp();
