@@ -15,11 +15,15 @@ body{
     font-family: 'Helvetica', sans-serif;
     text-align: center;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #errorHeader{
-    font-size: 110px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: clamp(8vmax, 9vmax, 10vmax);
+    text-shadow: 0px 0.3vw 0.3vw rgba(0, 0, 0, 0.25);
     margin-bottom: 0;
 }
 
@@ -28,21 +32,28 @@ span{
 }
 
 #errText{
-    font-size: 25px;
+    font-size: clamp(1vmax, 1.5vmax, 2vmax);
     font-weight: bold;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 0.3vw 0.3vw rgba(0, 0, 0, 0.25);
 }
 
 #backButton{
-    width: 10vw;
-    height: 7vh;
+    width: clamp(10vmax, 11vmax, 12vmax);
+    height: clamp(2.5vmax, 3.5vmax, 8vmax);
     background-color: #FF2E00;
     color: white;
-    border-radius: 8px;
-    font-size: 25px;
+    border-radius: 0.5vw;
+    font-size: clamp(1.5vmax, 1.8vmax, 3vmax);
+
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0.3vw 0.3vw rgba(0, 0, 0, 0.35);
 }
 
 #homeIcon{
-    width: 30px;
+    height: clamp(1.5vmax, 2vmax, 3vmax);
+    padding-right: 0.3vw;
 }
+
