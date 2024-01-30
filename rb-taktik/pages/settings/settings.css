@@ -48,7 +48,7 @@ div label.white_font {
   margin: 8px;
 
 }
-                                      
+
 .white_font {
   color: #ffffff;
   font-size: x-large;
@@ -160,3 +160,12 @@ div label.white_font {
 .btn:hover::before {
 }
 
+.hidden{
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
