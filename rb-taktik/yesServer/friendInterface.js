@@ -33,6 +33,9 @@ async function getAllFriendsForUser(userId)
 
 async function areFriends(userId1, userId2)
 {
+    if (userId1 == userId2)
+        return false;
+
     let friendUser1 = await dbInterface.getPair("friends", userId1);
     if (friendUser1 === undefined)
         return false;
@@ -79,6 +82,9 @@ async function getOrCreateUserFriendEntry(userId)
 
 async function addFriend(userId1, userId2)
 {
+    if (userId1 == userId2)
+        return false;
+
     let friendUser1 = await getOrCreateUserFriendEntry(userId1);
     if (friendUser1 === undefined)
         return false;
@@ -101,6 +107,9 @@ async function addFriend(userId1, userId2)
 
 async function removeFriend(userId1, userId2)
 {
+    if (userId1 == userId2)
+        return false;
+
     let friendUser1 = await dbInterface.getPair("friends", userId1);
     if (friendUser1 === undefined)
         return false;

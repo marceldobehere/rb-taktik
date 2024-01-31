@@ -88,6 +88,9 @@ async function sendFriendRequest(userIdFrom, userIdTo)
     if (userFrom === undefined || userTo === undefined)
         return false;
 
+    if (userIdFrom == userIdTo)
+        return false;
+
     let not = {
         type: "friend-req",
         from: userIdFrom,
@@ -105,6 +108,9 @@ async function sendFriendRequest(userIdFrom, userIdTo)
 
 async function sendNowFriends(userIdFrom, userIdTo)
 {
+    if (userIdFrom == userIdTo)
+        return false;
+
     let userFrom = await accountInterface.getUser(userIdFrom);
     let userTo = await accountInterface.getUser(userIdTo);
 
@@ -129,6 +135,9 @@ async function sendNowFriends(userIdFrom, userIdTo)
 
 async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 {
+    if (userIdFrom == userIdTo)
+        return false;
+
     let userFrom = await accountInterface.getUser(userIdFrom);
     let userTo = await accountInterface.getUser(userIdTo);
 
