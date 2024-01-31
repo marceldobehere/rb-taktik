@@ -50,7 +50,8 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
             let userRes = {
                 username: user.username,
                 email: user.email,
-                userId: user.userId
+                userId: user.userId,
+                rank: user.rank
             }
 
             socket.emit('get-user', userRes);
@@ -63,7 +64,8 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
             let userRes = {
                 username: user.username,
-                userId: user.userId
+                userId: user.userId,
+                rank: user.rank
             }
 
             socket.emit('get-user-info', userRes);
@@ -84,7 +86,8 @@ async function registerUser(username, email, password)
         "email": email,
         "userId": securityInterface.getRandomInt(10000, 10000000000),
         "password-hash": passwordObject.hash,
-        "password-salt": passwordObject.salt
+        "password-salt": passwordObject.salt,
+        "rank": 0
     };
 
     return await accountInterface.createUser(userObject.userId, userObject);

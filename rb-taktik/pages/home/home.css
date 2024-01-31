@@ -139,6 +139,8 @@ body, #loader-div {
     outline: none;
     width: 100%;
     padding: 16px;
+    font-size: 1.5vw;
+    color: white;
 }
 
 .friend {

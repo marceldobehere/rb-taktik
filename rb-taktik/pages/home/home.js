@@ -81,7 +81,7 @@ async function homeInit()
     else
     {
         document.getElementById("info-username").textContent = userData["username"];
-        //document.getElementById("info-rank").textContent = userData["rank"];
+        document.getElementById("info-rank").textContent = userData["rank"];
         document.getElementById("info-pfp").src = "/shared/images/placeHolderPFP.png";
 
         document.getElementById("acc-login-logout").textContent = "Logout";
