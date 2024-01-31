@@ -12,7 +12,8 @@ async function initApp(_dbInterface)
         "email": "test@test.com",
         "userId": "test1234",
         "password-hash": "test",
-        "password-salt": "test"
+        "password-salt": "test",
+        "rank": 0,
     });
 
     await deleteUser("test1234");
@@ -25,7 +26,8 @@ const defaultUserObject = {
     "email": "",
     "userId": "",
     "password-hash": "",
-    "password-salt": ""
+    "password-salt": "",
+    "rank": 0,
 }
 
 function checkUserObject(userObject)
@@ -72,7 +74,13 @@ async function getUser(userId)
     if (userObject === undefined)
         return undefined;
 
-    return makeUserObjectConform(userObject);
+    if (!checkUserObject(userObject))
+    {
+        userObject = makeUserObjectConform(userObject);
+        await dbInterface.updatePair("users", userId, userObject);
+    }
+
+    return userObject;
 }
 
 async function getUserByUsername(username)
