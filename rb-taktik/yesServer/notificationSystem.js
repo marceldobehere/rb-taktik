@@ -88,9 +88,6 @@ async function sendFriendRequest(userIdFrom, userIdTo)
     if (userFrom === undefined || userTo === undefined)
         return false;
 
-    // TODO: Add check if userFrom is already friends with userTo
-
-
     let not = {
         type: "friend-req",
         from: userIdFrom,
@@ -105,6 +102,30 @@ async function sendFriendRequest(userIdFrom, userIdTo)
     await notifyUser(userIdTo);
     return true;
 }
+
+async function sendNowFriends(userIdFrom, userIdTo)
+{
+    let userFrom = await accountInterface.getUser(userIdFrom);
+    let userTo = await accountInterface.getUser(userIdTo);
+
+    if (userFrom === undefined || userTo === undefined)
+        return false;
+
+    let not = {
+        type: "friend-accept",
+        from: userIdFrom,
+        title: "Friend Status",
+        text: `You are now friends with ${userTo.username}!`,
+        date: Date.now()
+    };
+
+    if (await notificationInterface.createNotificationForUser(userIdFrom, not))
+        return false;
+
+    await notifyUser(userIdFrom);
+    return true;
+}
+
 
 async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 {
@@ -131,4 +152,5 @@ async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 }
 
 
-module.exports = {initApp, notifyUser, sendFriendRequest, sendMatchRequest};
+
+module.exports = {initApp, notifyUser, sendFriendRequest, sendNowFriends, sendMatchRequest};

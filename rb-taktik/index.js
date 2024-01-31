@@ -51,6 +51,8 @@ const passwordResetSystem = require("./yesServer/passwordResetSystem.js");
 const notificationInterface = require("./yesServer/notificationInterface.js");
 const notificationSystem = require("./yesServer/notificationSystem.js");
 const friendInterface = require("./yesServer/friendInterface.js");
+const friendSystem = require("./yesServer/friendSystem.js");
+
 
 async function startUp()
 {
@@ -65,6 +67,7 @@ async function startUp()
     await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
     basicGameSystem.initApp(app, io, accountInterface, sessionSystem);
     notificationSystem.initApp(app, io, notificationInterface, accountInterface, sessionSystem);
+    friendSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
 
     server.listen(80, () => {
         console.log('> Started server on *:80');

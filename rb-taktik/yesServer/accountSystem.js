@@ -55,6 +55,19 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
 
             socket.emit('get-user', userRes);
         });
+
+        socket.on('get-user-info', async (obj) => {
+            let user = await accountInterface.getUser(obj.userId);
+            if (user === undefined)
+                return socket.emit('get-user-info', {error: "Invalid user id"});
+
+            let userRes = {
+                username: user.username,
+                userId: user.userId
+            }
+
+            socket.emit('get-user-info', userRes);
+        });
     });
 
     console.log("> Initialized account system");
