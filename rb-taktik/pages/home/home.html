@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Home</title>
-        <link rel="stylesheet" href="home.css">
-        <link rel="stylesheet" href="/shared/css/main_styles.css">
-        <link rel="icon" type="image/x-icon" href="../../shared/images/web_icon.png">
 
-    </head>
-    <body onclick="hideDropDown()">
-    <img src="/shared/images/Logo.png" alt="Logo" class="logo" style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="/shared/css/main_styles.css">
+    <link rel="icon" type="image/x-icon" href="../../shared/images/web_icon.png">
+
+</head>
+
+<body onclick="hideDropDown(); hideDropDownNotification();">
+    <img src="/shared/images/Logo.png" alt="Logo" class="logo"
+        style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
     <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
         <div class="inline" id="dropdown">
-            <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp" style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16" onclick="toggleDropDown(event)"></image>
+            <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp"
+                style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
+                onclick="toggleDropDown(event)"></image>
             <p class="inline">
                 <span id="info-username">Shabarian der 2.</span><br>
                 Rank: <span id="info-rank">9999</span>
@@ -29,31 +34,99 @@
         </div>
 
         <div class="inline" id="statisticButton">
-            <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking" style="width: 80px"></button>
+            <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
+                    style="width: 80px"></button>
         </div>
 
         <div class="inline " id="dropdown-notify">
-            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
+            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img
+                    src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
             <div id="notfication-content" class="dropdown-notify-content">
                 <div class="triangle"></div>
-                <div class="notification-center"></div>
+                <div class="notification-center">
+                    <div class="notifications">
+                        Notifications <span id="notification-count">2</span>
+                    </div>
+                    <div style="background-color:white; border: 2px solid black;">
+                        <div style="display: flex;">
+                            <div>
+                                <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                            </div>
+                            <div>
+                                <span style="color: red;">MATCH REQUEST</span><br>
+                                <span style="color: black;font-size: smaller;">User 1 sent you a match request!</span>
+                            </div>
+                            <div>
+                                <button>x</button>
+                            </div>
+                        </div>
+
+                        <div>
+                             <button>ACCEPT</button>
+                             <button>DECLINE</button>
+                        </div>
+                    </div>
+                    <div style="background-color:white; border: 2px solid black;">
+                        <div style="display: flex;">
+                            <div>
+                                <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                            </div>
+                            <div>
+                                <span style="color: red;">FRIEND REQUEST</span><br>
+                                <span style="color: black;font-size: smaller;">User 1 sent you a friend request!</span>
+                            </div>
+                            <div>
+                                <button>x</button>
+                            </div>
+                        </div>
+
+                        <div>
+                             <button>ACCEPT</button>
+                             <button>DECLINE</button>
+                        </div>
+                    </div>
+                    <div style="background-color:white; border: 2px solid black;">
+                        <div style="display: flex;">
+                            <div>
+                                <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                            </div>
+                            <div>
+                                <span style="color: red;">MATCH REQUEST</span><br>
+                                <span style="color: black;font-size: smaller;">User 1 sent you a match request!</span>
+                            </div>
+                            <div>
+                                <button>x</button>
+                            </div>
+                        </div>
+
+                        <div>
+                             <button>ACCEPT</button>
+                             <button>DECLINE</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </div>
     <br><br>
     <div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
-        <div class="inline" style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
-            <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma" onclick="joinRankedGame()">
+        <div class="inline"
+            style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
+            <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma"
+                onclick="joinRankedGame()">
                 <span>Ranked Game</span>
             </div>
-            <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma" onclick="joinRandomGame()">
+            <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma"
+                onclick="joinRandomGame()">
                 <span>Random Game</span>
             </div>
-            <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma" onclick="openOptions()">
+            <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma"
+                onclick="openOptions()">
                 <span>Options</span>
             </div>
-            <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma" onclick="createGame()">
+            <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma"
+                onclick="createGame()">
                 <span>Create Game</span>
             </div>
         </div>
@@ -62,7 +135,7 @@
             <div id="friend-list-cont">
                 <div class="topbar">
                     <div class="searchbar">
-                        <label for="searchbar" class="hidden" >Search a friend</label>
+                        <label for="searchbar" class="hidden">Search a friend</label>
                         <input id="searchbar" type="text" placeholder="Search friend...">
                     </div>
                     <div class="addButton">
@@ -72,7 +145,8 @@
                 <div class="bottombar" id="actual-friend-list">
                     <div class="friend">
                         <div class="friend_pfp">
-                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px" alt="Profile Picture">
+                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                                alt="Profile Picture">
                         </div>
                         <div class="friend_username">
                             <span>User01</span>
@@ -83,7 +157,8 @@
                     </div>
                     <div class="friend">
                         <div class="friend_pfp">
-                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px" alt="Profile Picture">
+                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                                alt="Profile Picture">
                         </div>
                         <div class="friend_username">
                             <span>User02</span>
@@ -94,7 +169,8 @@
                     </div>
                     <div class="friend">
                         <div class="friend_pfp">
-                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px" alt="Profile Picture">
+                            <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                                alt="Profile Picture">
                         </div>
                         <div class="friend_username">
                             <span>User03</span>
@@ -108,11 +184,12 @@
         </div>
     </div>
 
-    </body>
-    <script src="/shared/js/roccModule.js"></script>
-    <script>
-        importModule('/shared/js/basicModules.js');
-        importModule('home.js');
-        startImporting();
-    </script>
+</body>
+<script src="/shared/js/roccModule.js"></script>
+<script>
+    importModule('/shared/js/basicModules.js');
+    importModule('home.js');
+    startImporting();
+</script>
+
 </html>
