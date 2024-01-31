@@ -32,8 +32,13 @@
             <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking" style="width: 80px"></button>
         </div>
 
-        <div class="inline" id="notificationsButton">
-            <button class="general-button-style"><img src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
+        <div class="inline " id="dropdown-notify">
+            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
+            <div id="notfication-content" class="dropdown-notify-content">
+                <div class="triangle"></div>
+                <div class="notification-center"></div>
+
+            </div>
         </div>
     </div>
     <br><br>

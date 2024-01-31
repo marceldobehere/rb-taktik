@@ -31,6 +31,13 @@ function toggleDropDown(event) {
     event.stopPropagation();
 }
 
+function toggleNotifications(event) {
+    let dropdownContent = document.getElementById("dropdown-notify").querySelector(".dropdown-notify-content");
+    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+
+    event.stopPropagation();
+}
+
 function hideDropDown()
 {
     let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");

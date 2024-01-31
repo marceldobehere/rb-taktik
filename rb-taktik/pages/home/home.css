@@ -195,3 +195,39 @@ body, #loader-div {
     vertical-align: middle;
 
 }
+.dropdown-notify-content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+}
+
+.notification-center{
+    position: relative;
+    background-color: rgb(215, 41, 41);
+    width: 100%;
+    height: 100px;
+}
+/* .dropdown-notify-content{
+    display: none;
+    position: absolute;
+    min-width: 260px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-color: #FFFFFF;
+    border: 3px solid #E01F16;
+    box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+} */
+
+.triangle {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left:60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 75px solid rgb(255, 255, 255);
+  }
