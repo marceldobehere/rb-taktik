@@ -300,3 +300,20 @@ body, #loader-div {
 .notification-read {
     background-color: #eFeFeF;
 }
+
+.notification-entry{
+    border-bottom: 2px solid #BAB6B6;
+}
+
+.flexify{
+    display: flex;
+}
+
+.message-title{
+    color: red;
+}
+
+.message-itself{
+    color: black;
+    font-size: smaller;
+}
