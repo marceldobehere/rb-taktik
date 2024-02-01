@@ -25,7 +25,7 @@ async function initApp(_dbInterface, _accountInterface, _securityInterface)
     await clearAllNotificationsForUser("test1234");
     //console.log(await getAllNotificationsForUser("test1234"));
     await deleteNotificationEntry("test1234");
-    
+
 
     console.log("> Initialized notification interface");
 }
@@ -53,7 +53,7 @@ async function readNotificationsForUser(userId)
         return false;
 
     // add all entries from unread to read and clear the unread array
-    notEntry.read.push(...notEntry.unread);
+    notEntry.read.unshift(...notEntry.unread);
     notEntry.unread = [];
 
     await dbInterface.updatePair("notifications", userId, notEntry);
@@ -73,7 +73,7 @@ async function readNotificationForUser(userId, notificationId)
     if (index === -1)
         return false;
 
-    notEntry.read.push(notEntry.unread[index]);
+    notEntry.read.unshift(notEntry.unread[index]);
     notEntry.unread.splice(index, 1);
     await dbInterface.updatePair("notifications", userId, notEntry);
     return true;
@@ -141,7 +141,7 @@ async function createNotificationForUser(userId, notification)
 
     notification["id"] = securityInterface.getRandomInt(1000000, 999999999999);
 
-    notEntry.unread.push(notification);
+    notEntry.unread.unshift(notification);
     await dbInterface.updatePair("notifications", userId, notEntry);
     return true;
 }

@@ -201,7 +201,7 @@ body, #loader-div {
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     align-items: center;
     right:50px;
 }
@@ -218,19 +218,6 @@ body, #loader-div {
     overflow-y: auto;
     overflow-x: hidden;
 }
-/* .dropdown-notify-content{
-    display: none;
-    position: absolute;
-    min-width: 260px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    background-color: #FFFFFF;
-    border: 3px solid #E01F16;
-    box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    text-align: center;
-    align-items: center;
-} */
 
 #notification-content{
 }
@@ -280,17 +267,19 @@ body, #loader-div {
     margin:8px;
 }
 
-.message{
+.message {
     margin-top:8px;
+    width: 230px;
+    display: inline-block;
 }
 
 .server-message{
+    width: 265px;
     margin: 16px 16px 16px 16px;
 }
 
 .message span{
     display: inline;
-
 }
 
 .notification-unread {
