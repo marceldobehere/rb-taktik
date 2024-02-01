@@ -9,6 +9,9 @@ async function loadNotifications(data)
     let read = data.read;
     let unread = data.unread;
 
+    let notificationCount = document.getElementById("notification-count");
+    notificationCount.textContent = unread.length;
+
     clearNotifications();
     for (let i = 0; i < unread.length; i++)
         addOneNotification(unread[i], true);

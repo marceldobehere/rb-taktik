@@ -214,6 +214,10 @@ body, #loader-div {
     border: 2px solid red;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+
+}
+
+#notification-list {
     max-height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
