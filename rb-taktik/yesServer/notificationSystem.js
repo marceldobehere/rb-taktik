@@ -66,7 +66,17 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
         });
     });
 
-    console.log("> Initialized notification system")
+    // (async () => {
+    //     await sendFriendRequest(1097865169, 1647441421);
+    //     await sendNowFriends(1097865169, 1647441421);
+    //     await sendNowFriends( 1647441421, 1097865169);
+    //     await sendMatchRequest(1097865169, 1647441421);
+    //     await notificationInterface.createNotificationForUser(1647441421, {title: "Test 1", type: "msg", text:"This is a test!"});
+    //     console.log("AAAA");
+    // })();
+
+
+    console.log("> Initialized notification system");
 }
 
 async function notifyUser(userId)

@@ -25,7 +25,7 @@ async function initApp(_dbInterface, _accountInterface, _securityInterface)
     await clearAllNotificationsForUser("test1234");
     //console.log(await getAllNotificationsForUser("test1234"));
     await deleteNotificationEntry("test1234");
-
+    
 
     console.log("> Initialized notification interface");
 }

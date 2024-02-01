@@ -40,7 +40,8 @@ app.get('/*', (req, res) => {
 
 const fs = require("fs");
 
-const dbInterface = require("./yesServer/dbInterface.js");
+const internalDbInterface = require("./yesServer/dbInterface.js");
+const dbInterface = require("./yesServer/dbLockInterface.js");
 const accountInterface = require("./yesServer/accountInterface.js");
 const accountSystem = require("./yesServer/accountSystem.js");
 const basicGameSystem = require("./yesServer/basicGameSystem.js");
@@ -56,7 +57,8 @@ const friendSystem = require("./yesServer/friendSystem.js");
 
 async function startUp()
 {
-    dbInterface.initApp();
+    await internalDbInterface.initApp();
+    await dbInterface.initApp(internalDbInterface);
     await accountInterface.initApp(dbInterface);
     await securityInterface.initApp();
     await notificationInterface.initApp(dbInterface, accountInterface, securityInterface);
