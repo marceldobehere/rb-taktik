@@ -22,7 +22,7 @@
                 <span id="info-username">Shabarian der 2.</span><br>
                 Rank: <span id="info-rank">9999</span>
             </p>
-            <div class="dropdown-content">
+            <div class="dropdown-content" style="display:none;" onclick="cancelClose(event)">
                 <a href="/account-settings">Account Settings</a>
                 <a id="acc-login-logout" href="#" onclick="doLogout()">Log Out</a>
             </div>
@@ -41,9 +41,9 @@
         <div class="inline " id="dropdown-notify">
             <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img
                     src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
-            <div id="notfication-content" class="dropdown-notify-content">
-                <div class="triangle"></div>
-                <div class="notification-center">
+            <div id="notification-content" class="dropdown-notify-content" style="display:none;">
+                <div class="triangle" onclick="cancelClose(event)"></div>
+                <div class="notification-center" onclick="cancelClose(event)">
                     <div class="notifications">
                         Notifications: <span id="notification-count">3</span>
                     </div>
@@ -188,6 +188,7 @@
 <script src="/shared/js/roccModule.js"></script>
 <script>
     importModule('/shared/js/basicModules.js');
+    importModule('popups.js');
     importModule('home.js');
     startImporting();
 </script>

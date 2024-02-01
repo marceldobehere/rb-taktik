@@ -24,31 +24,6 @@ function createGame()
     joinGame();
 }
 
-function toggleDropDown(event) {
-    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
-    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
-
-    event.stopPropagation();
-}
-
-function toggleNotifications(event) {
-    let dropdownContent = document.getElementById("dropdown-notify").querySelector(".dropdown-notify-content");
-    dropdownContent.style.display = (dropdownContent.style.display === "flex") ? "none" : "flex";
-
-    event.stopPropagation();
-}
-
-function hideDropDownNotification()
-{
-    let dropdownContent = document.getElementById("dropdown-notify").querySelector(".dropdown-notify-content");
-    dropdownContent.style.display = "none";
-}
-
-function hideDropDown()
-{
-    let dropdownContent = document.getElementById("dropdown").querySelector(".dropdown-content");
-    dropdownContent.style.display = "none";
-}
 
 async function doLogout()
 {
@@ -61,13 +36,6 @@ async function doLogout()
 
     setSessionId(null);
     goPage("/login")
-}
-
-function disableBtn(id)
-{
-    let btn = document.getElementById(id);
-    btn.onclick = undefined;
-    btn.className = "menu-tile menu-tile-disabled drop-shadow-figma";
 }
 
 async function homeInit()
