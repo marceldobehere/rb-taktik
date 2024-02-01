@@ -35,11 +35,3 @@ function disableBtn(id)
     btn.onclick = undefined;
     btn.className = "menu-tile menu-tile-disabled drop-shadow-figma";
 }
-
-
-function initPopup()
-{
-
-}
-
-onModulesImported.push(initPopup);

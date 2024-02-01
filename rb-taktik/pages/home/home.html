@@ -47,7 +47,7 @@
                     <div class="notifications">
                         Notifications: <span id="notification-count">3</span>
                     </div>
-                    <div style="background-color:#EEE2E2; border-bottom: 2px solid #BAB6B6;">
+                    <div style="border-bottom: 2px solid #BAB6B6;" class="notification-unread">
                         <div style="display: flex;">
                             <div style="display: flex;" >
                                 <div class="notify-pfp-div notify-pfp">
@@ -69,7 +69,7 @@
                              <button>DECLINE</button>
                         </div>
                     </div>
-                    <div style="background-color:#EEE2E2; border-bottom: 2px solid #BAB6B6;">
+                    <div style="border-bottom: 2px solid #BAB6B6;" class="notification-read">
                         <div style="display: flex;">
                             <div style="display: flex;">
                                 <div class="notify-pfp-div notify-pfp">
@@ -92,7 +92,7 @@
                              <button>DECLINE</button>
                         </div>
                     </div>
-                    <div style="background-color:#EEE2E2; border-bottom: 2px solid #BAB6B6;">
+                    <div style="border-bottom: 2px solid #BAB6B6;" class="notification-read">
                         <div style="display: flex;">
                             <div class="server-message">
                                 <span style="color: red;">SERVER MESSAGE</span><br>
@@ -189,6 +189,8 @@
 <script>
     importModule('/shared/js/basicModules.js');
     importModule('popups.js');
+    importModule('friends.js');
+    importModule('notifications.js');
     importModule('home.js');
     startImporting();
 </script>

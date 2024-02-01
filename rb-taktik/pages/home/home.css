@@ -292,3 +292,11 @@ body, #loader-div {
     display: inline;
 
 }
+
+.notification-unread {
+    background-color: #e1fffb;
+}
+
+.notification-read {
+    background-color: #eFeFeF;
+}
