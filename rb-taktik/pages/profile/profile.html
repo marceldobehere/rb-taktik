@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Profile Info</title>
+  <link rel="stylesheet" type="text/css" href="profile.css">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/x-icon" href="../../shared/images/web_icon.png">
+</head>
+
+<body>
+<img src="/shared/images/Logo.png" alt="Logo" class="logo"
+     style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
+  <a class="home-link" href="/home">Home</a>
+  <div class="main-container">
+    <span class="profile-name-text"><span id="username">Shabar</span>'s Profil</span>
+    <br>
+    <div>
+      <img class="profile-picture" id="pfp" src="/shared/images/placeHolderPFP.png">
+    </div>
+    <br>
+    <span class="profile-rank-text">Rank: <span id="rank">9999</span></span>
+    <br>
+    <br>
+
+    <div>
+      <div>
+        <button class="menu-button" id="friend-req-button">Send Friend Request</button>
+      </div>
+
+      <div>
+        <button class="menu-button" id="challenge-button">Challenge</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="/shared/js/roccModule.js"></script>
+<script>
+  importModule('/shared/js/basicModules.js');
+  importModule('profile.js');
+  startImporting();
+</script>
+</html>
