@@ -209,11 +209,14 @@ body, #loader-div {
 .notification-center{
     position: relative;
     background-color: rgb(255, 255, 255);
-    width: 100%;
+    width: 350px;
     height: auto;
     border: 2px solid red;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-
+    border-radius: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 /* .dropdown-notify-content{
     display: none;
@@ -229,6 +232,9 @@ body, #loader-div {
     align-items: center;
 } */
 
+#notfication-content{
+}
+
 .triangle {
     position: relative;
     width: 0;
@@ -242,3 +248,47 @@ body, #loader-div {
     color: black;
     text-align: center;
   }
+
+.decision-btns button{
+    background-color: red;
+    border:none;
+    border-radius: 45px;
+    color: white;
+    padding: 8px;
+    margin: 0px 0px 16px 16px;
+}
+
+.x-button button{
+    background-color: #9B9B9B;
+    color: white;
+    border-radius: 90px;
+    border: none;
+    padding:8px;
+    width: 30px;
+    height: 30px;
+    margin-top: 50%;
+    margin-right: 8px;
+}
+
+.notify-pfp img{
+    border-radius: 90px;
+}
+
+.notify-pfp-div{
+    width: 50px;
+    height: 70px;
+    margin:8px;
+}
+
+.message{
+    margin-top:8px;
+}
+
+.server-message{
+    margin: 16px 16px 16px 16px;
+}
+
+.message span{
+    display: inline;
+
+}
