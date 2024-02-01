@@ -39,15 +39,18 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
                 socket.emit('read-notification', {error: "Failed to read notification"});
         });
 
-        socket.on('clear-notifications', async () => {
+        socket.on('read-notifications', async () => {
             let sessionObj = sessionSystem.getSessionBySocket(socket);
             if (sessionObj === undefined)
-                return socket.emit('clear-notifications', {error: "Invalid session"});
+                return socket.emit('read-notifications', {error: "Invalid session"});
 
             if (await notificationInterface.readNotificationsForUser(sessionObj.userId))
-                return socket.emit('clear-notifications', {});
+            {
+                socket.emit('read-notifications', {});
+                await notifyUser(sessionObj.userId);
+            }
             else
-                return socket.emit('clear-notifications', {error: "Failed to clear notifications"});
+                return socket.emit('read-notifications', {error: "Failed to read notifications"});
         });
 
         socket.on('clear-notification', async (obj) => {
@@ -60,9 +63,26 @@ function initApp(_app, _io, _notificationInterface, _accountInterface, _sessionS
                 return socket.emit('clear-notification', {error: "Invalid notification id"});
 
             if (await notificationInterface.clearNotificationForUser(sessionObj.userId, obj.notificationId))
-                return socket.emit('clear-notification', {});
+            {
+                socket.emit('clear-notification', {});
+                await notifyUser(sessionObj.userId);
+            }
             else
                 return socket.emit('clear-notification', {error: "Failed to clear notification"});
+        });
+
+        socket.on('clear-notifications', async () => {
+            let sessionObj = sessionSystem.getSessionBySocket(socket);
+            if (sessionObj === undefined)
+                return socket.emit('clear-notifications', {error: "Invalid session"});
+
+            if (await notificationInterface.clearAllNotificationsForUser(sessionObj.userId))
+            {
+                socket.emit('clear-notifications', {});
+                await notifyUser(sessionObj.userId);
+            }
+            else
+                return socket.emit('clear-notifications', {error: "Failed to clear notifications"});
         });
     });
 

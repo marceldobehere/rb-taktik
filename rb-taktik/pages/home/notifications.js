@@ -2,6 +2,10 @@ let notificationList = document.getElementById("notification-list");
 
 async function loadNotifications(data)
 {
+
+    let notificationCount = document.getElementById("notification-count");    clearNotifications();
+    notificationCount.textContent = 0;
+
     console.log("Notifications: ", data);
     if (data["error"])
         return console.log("Error loading notifications: ", data["error"]);
@@ -9,10 +13,9 @@ async function loadNotifications(data)
     let read = data.read;
     let unread = data.unread;
 
-    let notificationCount = document.getElementById("notification-count");
-    notificationCount.textContent = unread.length;
 
-    clearNotifications();
+    notificationCount.textContent = `${unread.length} (${read.length + unread.length})`;
+
     for (let i = 0; i < unread.length; i++)
         addOneNotification(unread[i], true);
 
@@ -29,7 +32,6 @@ function addOneNotification(not, isUnread)
 {
     if (not === undefined)
         return;
-    console.log(not, isUnread);
 
     let type = not["type"];
     let elem;
@@ -50,7 +52,7 @@ function addOneNotification(not, isUnread)
         elem.className += " notification-read";
 }
 
-function createGenericMessage(title, text, hasPfp, hasButtons)
+function createGenericMessage(title, text, hasPfp, hasButtons, notId)
 {
     let topDiv = document.createElement("div");
     topDiv.className = "notification-entry";
@@ -102,7 +104,7 @@ function createGenericMessage(title, text, hasPfp, hasButtons)
 
     let xButton = document.createElement("button");
     xButton.textContent = "X";
-    xButton.onclick = () => {alert("NOT IMPLEMENTED YET!")};
+    xButton.onclick = () => {clearNotification(notId)};
     xButtonDiv.appendChild(xButton);
 
     let acceptBtn = undefined;
@@ -129,30 +131,53 @@ function createGenericMessage(title, text, hasPfp, hasButtons)
 
 function createFriendReqNotification(not)
 {
-    let res = createGenericMessage(not["title"], not["text"], true, true);
+    let res = createGenericMessage(not["title"], not["text"], true, true, not["id"]);
 
     return res["topDiv"];
 }
 
 function createNowFriendsNotification(not)
 {
-    let res = createGenericMessage(not["title"], not["text"], true, false);
+    let res = createGenericMessage(not["title"], not["text"], true, false, not["id"]);
 
     return res["topDiv"];
 }
 
 function createChallengeNotification(not)
 {
-    let res = createGenericMessage(not["title"], not["text"], true, true);
+    let res = createGenericMessage(not["title"], not["text"], true, true, not["id"]);
 
     return res["topDiv"];
 }
 
 function createServerNotification(not)
 {
-    let res = createGenericMessage(not["title"], not["text"], false, false);
+    let res = createGenericMessage(not["title"], not["text"], false, false, not["id"]);
 
     return res["topDiv"];
+}
+
+async function markAllNotificationsAsRead()
+{
+    let res = await msgSendAndGetReply("read-notifications", {});
+    if (res["error"] != undefined)
+    {
+        alert("Error: " + res["error"]);
+        return;
+    }
+}
+
+async function clearNotification(notId)
+{
+    console.log("Clearing notification: ", notId);
+
+    let res = await msgSendAndGetReply("clear-notification", {notificationId: notId});
+
+    if (res["error"] != undefined)
+    {
+        alert("Error: " + res["error"]);
+        return;
+    }
 }
 
 async function notInit()

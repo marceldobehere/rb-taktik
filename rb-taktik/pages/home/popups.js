@@ -12,6 +12,11 @@ function toggleDropDown(event) {
 
 function toggleNotifications(event) {
     let dropdownContent = document.getElementById("dropdown-notify").querySelector(".dropdown-notify-content");
+
+    if (dropdownContent.style.display === "flex")
+        markAllNotificationsAsRead().then();
+
+
     dropdownContent.style.display = (dropdownContent.style.display === "flex") ? "none" : "flex";
 
     cancelClose(event);
@@ -20,6 +25,8 @@ function toggleNotifications(event) {
 function hideDropDownNotification()
 {
     let dropdownContent = document.getElementById("dropdown-notify").querySelector(".dropdown-notify-content");
+    if (dropdownContent.style.display === "flex")
+        markAllNotificationsAsRead().then();
     dropdownContent.style.display = "none";
 }
 
