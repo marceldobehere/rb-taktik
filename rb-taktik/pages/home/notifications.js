@@ -133,6 +133,14 @@ function createFriendReqNotification(not)
 {
     let res = createGenericMessage(not["title"], not["text"], true, true, not["id"]);
 
+    let acceptBtn = res["acceptBtn"];
+    let declineBtn = res["declineBtn"];
+    let friendId = not["from"];
+    let notId = not["id"];
+
+    acceptBtn.onclick = async () => {await acceptFriend(friendId, notId);};
+    declineBtn.onclick = async () => {await declineFriend(friendId, notId);};
+
     return res["topDiv"];
 }
 

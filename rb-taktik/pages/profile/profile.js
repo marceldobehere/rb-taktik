@@ -116,7 +116,7 @@ async function sendFriendRequest()
         }
         console.log(reply);
 
-        alert("Friend request sent!");
+        await initProfileStuff();
     }
 }
 

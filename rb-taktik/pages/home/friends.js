@@ -65,3 +65,30 @@ async function sendFriendChallenge(friendId)
     alert('<NOT IMPLEMENTED YET>');
 }
 
+async function acceptFriend(friendId, notId)
+{
+    let reply = await msgSendAndGetReply("accept-friend", {"userId": friendId});
+
+    if (reply["error"] != undefined)
+    {
+        alert("Error: " + reply["error"]);
+        return;
+    }
+
+    await loadFriendList();
+    await clearNotification(notId);
+}
+
+async function declineFriend(friendId, notId)
+{
+    let reply = await msgSendAndGetReply("decline-friend", {"userId": friendId});
+
+    if (reply["error"] != undefined)
+    {
+        alert("Error: " + reply["error"]);
+        return;
+    }
+
+    await loadFriendList();
+    await clearNotification(notId);
+}
