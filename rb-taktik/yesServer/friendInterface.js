@@ -54,7 +54,7 @@ async function areFriends(userId1, userId2)
             friendUser1.friends.splice(friendUser1.friends.indexOf(userId2), 1);
             await dbInterface.updatePair("friends", userId1, friendUser1);
         }
-        else if (friendUser2.friends.includes(userId1))
+        if (friendUser2.friends.includes(userId1))
         {
             console.log(`${userId2} has ${userId1} as friend but ${userId1} doesn't have ${userId2} as friend. Deleting friendship.`);
             friendUser2.friends.splice(friendUser2.friends.indexOf(userId1), 1);

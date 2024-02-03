@@ -129,7 +129,7 @@ async function sendFriendRequest(userIdFrom, userIdTo)
         date: Date.now()
     };
 
-    if (await notificationInterface.createNotificationForUser(userIdTo, not))
+    if (!await notificationInterface.createNotificationForUser(userIdTo, not))
         return false;
 
     await notifyUser(userIdTo);
@@ -155,7 +155,7 @@ async function sendNowFriends(userIdFrom, userIdTo)
         date: Date.now()
     };
 
-    if (await notificationInterface.createNotificationForUser(userIdFrom, not))
+    if (!await notificationInterface.createNotificationForUser(userIdFrom, not))
         return false;
 
     await notifyUser(userIdFrom);
@@ -183,7 +183,7 @@ async function sendMatchRequest(userIdFrom, userIdTo, roomId)
         roomId: roomId
     };
 
-    if (await notificationInterface.createNotificationForUser(userIdTo, not))
+    if (!await notificationInterface.createNotificationForUser(userIdTo, not))
         return false;
 
     await notifyUser(userIdTo);

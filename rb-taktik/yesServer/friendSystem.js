@@ -31,6 +31,22 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
             socket.emit('get-friends', {friends: friends});
         });
 
+        socket.on('am-friends', async (obj) => {
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
+            if (userSess1 === undefined)
+                return socket.emit('am-friends', {error: "Invalid session"});
+            let userId1 = userSess1.userId;
+
+            let userId2 = obj.userId;
+            if (userId2 === undefined)
+                return socket.emit('am-friends', {error: "Invalid user id"});
+            if (await accountInterface.getUser(userId2) === undefined)
+                return socket.emit('am-friends', {error: "Invalid user id"});
+
+            let areFriends = await friendInterface.areFriends(userId1, userId2);
+            socket.emit('am-friends', {areFriends: areFriends});
+        });
+
         socket.on('get-pending-friends', async () => {
             let sessionObj = sessionSystem.getSessionBySocket(socket);
             if (sessionObj === undefined)
@@ -43,8 +59,24 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
             socket.emit('get-pending-friends', {pendingFriends: pendingFriends});
         });
 
+        socket.on('am-pending', async (obj) => {
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
+            if (userSess1 === undefined)
+                return socket.emit('am-pending', {error: "Invalid session"});
+            let userId1 = userSess1.userId;
+
+            let userId2 = obj.userId;
+            if (userId2 === undefined)
+                return socket.emit('am-pending', {error: "Invalid user id"});
+            if (await accountInterface.getUser(userId2) === undefined)
+                return socket.emit('am-pending', {error: "Invalid user id"});
+
+            let pending = isPending(userId1, userId2);
+            socket.emit('am-pending', {isPending: pending});
+        });
+
         socket.on('request-friend', async (obj) => {
-            let userSess1 = sessionSystem.getSessionBySocket(socket).userId;
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
             if (userSess1 === undefined)
                 return socket.emit('request-friend', {error: "Invalid session"});
             let userId1 = userSess1.userId;
@@ -71,7 +103,7 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
         });
 
         socket.on('accept-friend', async (obj) => {
-            let userSess1 = sessionSystem.getSessionBySocket(socket).userId;
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
             if (userSess1 === undefined)
                 return socket.emit('accept-friend', {error: "Invalid session"});
             let userId1 = userSess1.userId;
@@ -101,7 +133,7 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
         });
 
         socket.on('decline-friend', async (obj) => {
-            let userSess1 = sessionSystem.getSessionBySocket(socket).userId;
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
             if (userSess1 === undefined)
                 return socket.emit('decline-friend', {error: "Invalid session"});
             let userId1 = userSess1.userId;
@@ -147,6 +179,7 @@ function getAllPendingForUser(userId)
     }
     return pending;
 }
+
 
 function isPending(userId1, userId2)
 {
