@@ -1,10 +1,45 @@
 const express = require('express');
 const app = express();
 const http = require('http');
-const server = http.createServer(app);
+const https = require('https');
+const fs = require("fs");
+
+
+// if /data folder doesnt exist, create it
+if (!fs.existsSync(__dirname + "/data"))
+{
+    fs.mkdirSync(__dirname + "/data");
+}
+
+const USE_HTTPS = true;
+
+if (USE_HTTPS && !fs.existsSync(__dirname + "/data/ssl"))
+{
+    console.log("SSL FOLDER DOESNT EXIST");
+    console.log("> Either host the server using http (set USE_HTTPS to false) or create the ssl keys.");
+    console.log();
+    console.log("To create the ssl keys, open a terminal in the data folder and run the following commands:");
+    console.log("mkdir ssl");
+    console.log("cd ssl");
+    console.log("openssl genrsa -out key.pem");
+    console.log("openssl req -new -key key.pem -out csr.pem");
+    console.log("openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem");
+    return;
+}
+
+var server;
+if (!USE_HTTPS)
+    server = http.createServer(app);
+else
+    server = https.createServer(
+        {
+            key: fs.readFileSync(__dirname + "/data/ssl/key.pem"),
+            cert: fs.readFileSync(__dirname + "/data/ssl/cert.pem"),
+        },
+        app);
+
 const { Server } = require("socket.io");
 const io = new Server(server);
-
 
 io.setMaxListeners(1000);
 
@@ -38,8 +73,6 @@ app.get('/*', (req, res) => {
 
 
 
-const fs = require("fs");
-
 const internalDbInterface = require("./yesServer/dbInterface.js");
 const dbInterface = require("./yesServer/dbLockInterface.js");
 const accountInterface = require("./yesServer/accountInterface.js");
@@ -71,8 +104,9 @@ async function startUp()
     notificationSystem.initApp(app, io, notificationInterface, accountInterface, sessionSystem);
     friendSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
 
-    server.listen(80, () => {
-        console.log('> Started server on *:80');
+    let port = USE_HTTPS ? 443 : 80;
+    server.listen(port, () => {
+        console.log('> Started server on *:'+port);
     });
 
     //shell.start();

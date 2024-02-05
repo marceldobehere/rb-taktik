@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fsPromise = fs.promises;
-const folderPath = "./localDB/";
-// For now Our DB connection just writes the "tables" to files in the localDB folder
+const folderPath = "./localDb/";
+// For now Our DB connection just writes the "tables" to files in the localDb folder
 // This will be used until we hook it up to a MongoDB database
 
 

@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  rb_taktik_demo_v1:
+    container_name: rb-taktik-demo_v1
+    build: .
+    volumes:
+      - "/etc/letsencrypt:/etc/letsencrypt"
+      - "./rb-taktik/localDb:/srv/rb-taktik/localDb"
+    networks:
+      - "nginx-router_default"
+      - "default"
+    restart: always
+
+volumes:
+  data:
+networks:
+  default:
+  nginx-router_default:
+    external: true
