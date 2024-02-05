@@ -11,7 +11,13 @@ if (!fs.existsSync(__dirname + "/data"))
     fs.mkdirSync(__dirname + "/data");
 }
 
-const USE_HTTPS = false;
+let USE_HTTPS = false;
+
+if (process.argv[2] && process.argv[2] === '-https')
+    USE_HTTPS = true;
+else
+    USE_HTTPS = false;
+
 
 if (USE_HTTPS && !fs.existsSync(__dirname + "/data/ssl"))
 {
