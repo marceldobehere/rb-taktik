@@ -7,4 +7,4 @@ cp /etc/letsencrypt/live/rb-taktik.marceldobehere.com/privkey.pem ./rb-taktik/da
 
 
 cd rb-taktik
-exec node index.js 
+exec node index.js -https
