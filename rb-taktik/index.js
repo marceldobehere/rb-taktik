@@ -11,7 +11,7 @@ if (!fs.existsSync(__dirname + "/data"))
     fs.mkdirSync(__dirname + "/data");
 }
 
-const USE_HTTPS = true;
+const USE_HTTPS = false;
 
 if (USE_HTTPS && !fs.existsSync(__dirname + "/data/ssl"))
 {
