@@ -210,7 +210,6 @@ body, #loader-div {
     border-bottom: none;
     position: absolute;
     bottom: 0;
-    z-index: 1;
 }
 
 
@@ -229,15 +228,14 @@ body, #loader-div {
 }
 
 #msg-popup-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 1vh;
 }
 
 #msg-popup-box div,

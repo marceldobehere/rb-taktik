@@ -200,7 +200,7 @@ function showMessage(msg)
 {
     if (msg)
         messagePopupText.textContent = msg;
-    messagePopupBox.style.display = "block";
+    messagePopupBox.style.display = "flex";
 }
 
 function hideMessage()
