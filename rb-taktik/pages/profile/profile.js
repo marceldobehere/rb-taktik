@@ -11,7 +11,7 @@ let isPending = false;
 async function initProfileStuff()
 {
     friendReqButton.disabled = isGuest;
-    friendReqButton.textContent = "Send Friend Request";
+    friendReqButton.textContent = "FRIEND";
     challengeButton.disabled = isGuest;
 
     const params = Object.fromEntries(new URLSearchParams(window.location.search));
@@ -78,7 +78,7 @@ async function initProfileStuff()
 
     if (areFriends)
     {
-        friendReqButton.textContent = "Unfriend";
+        friendReqButton.textContent = "UNFRIEND";
         challengeButton.disabled = false;
     }
     else if (isPending)
@@ -88,7 +88,7 @@ async function initProfileStuff()
     }
     else
     {
-        friendReqButton.textContent = "Send Friend Request";
+        friendReqButton.textContent = "FRIEND";
         challengeButton.disabled = true;
     }
 }

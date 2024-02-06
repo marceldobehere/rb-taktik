@@ -9,29 +9,24 @@
 </head>
 
 <body>
-<img src="/shared/images/Logo.png" alt="Logo" class="logo"
-     style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
   <a class="home-link" href="/home">Home</a>
   <div class="main-container">
-    <span class="profile-name-text"><span id="username">Shabar</span>'s Profil</span>
-    <br>
+    <h1>Profile</h1>
     <div>
       <img class="profile-picture" id="pfp" src="/shared/images/placeHolderPFP.png">
     </div>
+    <div>
+      <button class="menu-button" id="challenge-button" onclick="challengeUser()">CHALLENGE</button>
+      <button class="menu-button" id="friend-req-button" onclick="sendFriendRequest()">FRIEND</button>
+    </div>
+
+    <span class="profile-name-text">Name: <span id="username">Shabar</span></span>
     <br>
     <span class="profile-rank-text">Rank: <span id="rank">9999</span></span>
     <br>
     <br>
 
-    <div>
-      <div>
-        <button class="menu-button" id="friend-req-button" onclick="sendFriendRequest()">Send Friend Request</button>
-      </div>
 
-      <div>
-        <button class="menu-button" id="challenge-button" onclick="challengeUser()">Challenge</button>
-      </div>
-    </div>
   </div>
 </body>
 
