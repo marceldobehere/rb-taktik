@@ -6,22 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
     <style>
-            body{
-                margin: 0px;
-                height: 100dvh;
-            }
-            header{
-                height: 20dvh;
-                background: linear-gradient(45deg, #00D1FF, #0C45EE);
-            }
+        body {
+            margin: 0px;
+            background-color: #eeeeee;
 
+        }
+
+
+        section {
+            margin: 10% 20% 20% 20%;    
+            font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+            font-size: clamp(20px, 2.5dvw, 2.5dvw);
+        }
+
+        header {
+            height: 10%;
+            background: linear-gradient(45deg, #00D1FF, #0C45EE);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen {
+            #text-logo {
+                font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+                color: #FF0000;
+
+                font-size: 8dvw;
+                -webkit-text-stroke: 0.25dvw #3A3AE2;
+            }
+        }
+
+        
     </style>
 </head>
 
 <body>
     <header>
-        RB-Taktik
+        <h1 id="text-logo">RB-Taktik</h1>
     </header>
+    <section>
+
+        Hi <span id="username">[user_name]!</span><br><br>
+
+        Click <a href="#" id="the-link">here</a> to reset your password as requested.<br><br>
+
+        If you are not the person who requested this, do not click on the link!<br><br>
+
+        Kind regards,<br>
+        RB-Taktik Team
+    </section>
+
 </body>
 
 </html>
