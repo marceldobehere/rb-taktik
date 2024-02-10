@@ -129,6 +129,17 @@ div label.white_font {
 
 }
 
+.slider::-moz-range-thumb  {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vh;
+  height: 4vh;
+  background-color: White;
+  cursor: pointer;
+  border-radius: 50%;
+
+}
+
 #volumeMusic {
   color: white;
   font-size: 3.5vh;
