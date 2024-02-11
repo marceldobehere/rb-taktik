@@ -14,7 +14,7 @@ body, #loader-div {
     position: absolute;
     top: 5vh;
     left: 5vh;
-
+    font-size: 1vw;
 }
 
 .main-container {
