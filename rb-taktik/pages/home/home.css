@@ -310,3 +310,20 @@ body, #loader-div {
     color: black;
     font-size: smaller;
 }
+
+.viewProfile {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    display: none;
+}
+
+
+
+
+

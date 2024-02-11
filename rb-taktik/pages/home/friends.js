@@ -33,12 +33,42 @@ async function loadFriendList()
         friendPfp.className = "friend_pfp";
         friendDiv.appendChild(friendPfp);
 
+        friendPfp.addEventListener("click", function() {
+            window.location.href = "http://localhost/profile/profile.html?userid=" + friendId;
+        });
+
+
+
         let friendPfpImg = document.createElement("img");
         friendPfpImg.src = "/shared/images/placeHolderPFP.png";
         friendPfpImg.width = 50;
         friendPfpImg.height = 50;
         friendPfpImg.alt = "Profile Picture";
         friendPfp.appendChild(friendPfpImg);
+
+
+
+        let viewProfile = document.createElement("span");
+        viewProfile.innerHTML = "View<br>Profile";
+        viewProfile.className = "viewProfile";
+        let imgPosition = friendPfpImg.getBoundingClientRect();
+        viewProfile.style.position = 'absolute';
+        viewProfile.style.top = imgPosition.top + 'px';
+        viewProfile.style.left = imgPosition.left + 'px';
+
+        friendPfp.appendChild(viewProfile);
+
+        friendPfp.addEventListener('mouseover', function() {
+            viewProfile.style.display = 'flex';
+            viewProfile.style.justifyContent = 'center';
+            viewProfile.style.alignItems = 'center';
+        });
+
+        friendPfp.addEventListener('mouseout', function() {
+            viewProfile.style.display = 'none';
+        });
+
+
 
         let friendUsername = document.createElement("div");
         friendUsername.className = "friend_username";
@@ -56,6 +86,8 @@ async function loadFriendList()
         friendChallengeButtonBtn.textContent = "Challenge";
         friendChallengeButtonBtn.onclick = () => {sendFriendChallenge(friendId)};
         friendChallengeButton.appendChild(friendChallengeButtonBtn);
+
+
 
     }
 }
@@ -92,3 +124,4 @@ async function declineFriend(friendId, notId)
     await loadFriendList();
     await clearNotification(notId);
 }
+

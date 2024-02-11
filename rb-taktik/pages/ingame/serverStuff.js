@@ -92,6 +92,7 @@ async function init()
 
     msgHook("game-move", (data) => {
         loadGameState(data["state"]);
+        console.log(data);
     });
 
     msgHook("game-win", (data) => {
