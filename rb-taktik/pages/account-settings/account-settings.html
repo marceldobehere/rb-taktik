@@ -1,15 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="utf-8">
   <title>Account Settings</title>
   <link rel="stylesheet" type="text/css" href="account-settings.css">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/x-icon" href="../../shared/images/web_icon.png">
+
 </head>
 
+
 <body>
-  <a href="/home">Home</a>
+  <div id="big_container">
+    <header>
+      <center>
+        <h1 style="font-size: 9vh;" id="white_font_title">Account Settings</h1>
+      </center>
+
+    </header>
+
+    <div id="edit-pfp">
+      <div id="pfp">
+        <image src="/shared/images/placeHolderPFP.png" class="inline pfp"
+          style="width: 300px; height: 300px; border-radius:100%; border: 3px solid #E01F16">
+        </image>
+      </div>
+      <div id="edit">
+        <button>Edit</button>
+      </div>
+    </div>
+
+
+    <div class="btn">
+      <label>Username</label>
+      <button><span id="username">Shabar</span></button>
+    </div>
+
+
+    <div class="btn">
+      <label>Email</label>
+      <button><span id="email">whatisbro@cooking.com</span></button>
+    </div>
+
+
+    <div class="btn">
+      <label>Password</label>
+      <button><span id="password">Change</span></button>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div>
+      <button onclick="goPage('/home')" id="back_button">Back</button>
+
+    </div>
+  </footer>
 </body>
 
 <script src="/shared/js/roccModule.js"></script>
@@ -18,4 +63,5 @@
   importModule('account-settings.js');
   startImporting();
 </script>
+
 </html>
