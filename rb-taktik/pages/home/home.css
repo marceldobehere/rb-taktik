@@ -28,8 +28,8 @@ body, #loader-div {
 }
 
 .menu-tile span {
-    transition: transform 0.2s; 
-    transform: scale(1); 
+    transition: transform 0.2s;
+    transform: scale(1);
     transform-origin: center;
 }
 
@@ -38,7 +38,7 @@ body, #loader-div {
 }
 
 .menu-tile:active span {
-    transform: scale(0.9); 
+    transform: scale(0.9);
 }
 
 .menu-tile-disabled {
@@ -104,20 +104,21 @@ body, #loader-div {
 .addButton {
     display: inline-block;
     vertical-align: middle;
-    width: 20%;
+    width: 5vh;
 }
 
 .addButton button {
-    width: 50px;
-    height: 50px;
-    border: 2px solid white;
+    width: 5vw;
+    height: 5vh;
+    border: 0.2vh solid white;
     background-color: black;
     color: white;
-    border-radius: 25%;
+    border-radius: 2vh;
     float:right;
     transition: 0.2s;
     cursor: pointer;
 }
+
 
 .addButton button:hover{
     background-color: rgb(32, 32, 32);
@@ -125,7 +126,7 @@ body, #loader-div {
 
 .searchbar {
     vertical-align: middle;
-    width: 80%;
+    width: 50vw;
 }
 .searchbar input::placeholder {
     color: white;
@@ -134,24 +135,25 @@ body, #loader-div {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid white;
+    border-bottom: 0.2vh solid white;
     background-color: transparent;
     outline: none;
-    width: 100%;
-    padding: 16px;
+    width: 45vw;
+    padding: 1.6vh;
     font-size: 1.5vw;
     color: white;
 }
 
 .friend {
-    border: 2px solid black;
+    border: 0.2vh solid black;
     display: flex;
     flex: 1;
-    border-radius: 15px;
-    margin-top: 8px;
+    border-radius: 1.5vh;
+    margin-top: 0.8vh;
     background-color: white;
     color: black;
 }
+
 
 .topbar{
     display: flex;
@@ -159,11 +161,17 @@ body, #loader-div {
 }
 
 .bottombar{
-    margin-top: 16px;
+    margin-top: 1.6vh;
 }
 
 #friend-list-cont{
-    padding: 32px;
+    padding: 3.2vh;
+}
+
+#modes{
+    width:350px;
+    height:350px;
+    display:inline-grid; grid-template-columns: auto auto; gap:10px;
 }
 
 .friend_pfp img{
@@ -310,3 +318,20 @@ body, #loader-div {
     color: black;
     font-size: smaller;
 }
+
+.viewProfile {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    display: none;
+}
+
+
+
+
+

@@ -12,8 +12,8 @@
 
 <body onclick="hideDropDown(); hideDropDownNotification();">
     <img src="/shared/images/Logo.png" alt="Logo" class="logo"
-        style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
-    <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
+        style="position:fixed;top:2vh;left:50%;transform: translate(-50%, 0)">
+    <div style="margin: 4vh auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
         <div class="inline" id="dropdown">
             <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp"
                 style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
@@ -35,7 +35,7 @@
 
         <div class="inline" id="statisticButton">
             <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
-                    style="width: 80px"></button>
+                    style="width: 8vw"></button>
         </div>
 
         <div class="inline " id="dropdown-notify">
@@ -113,10 +113,16 @@
         </div>
     </div>
     <br><br>
-    <div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
+<<<<<<< Updated upstream
+    <div style="margin: auto;width:80%;display:grid; grid-template-columns: 30vw 110vh auto;column-gap: 2vh;">
         <div class="inline"
-            style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
+            style=" width:40vh;height:35vh;display:inline-grid; grid-template-columns: auto auto; gap:1vh;">
+            <div id="btn-ranked" style="border-radius: 3vh 0 0 0;" class="menu-tile drop-shadow-figma"
+=======
+    <div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
+        <div class="inline" id="modes">
             <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma"
+>>>>>>> Stashed changes
                 onclick="joinRankedGame()">
                 <span>Ranked Game</span>
             </div>
@@ -134,7 +140,7 @@
             </div>
         </div>
 
-        <div class="inline drop-shadow-figma" style="border-radius: 30px 30px 30px 30px; background-color: #E01F16;">
+        <div class="inline drop-shadow-figma" style="border-radius: 3.0vh 3.0vh 3.0vh 3.0vh; background-color: #E01F16;" >
             <div id="friend-list-cont">
                 <div class="topbar">
                     <div class="searchbar">
@@ -150,6 +156,7 @@
                         <div class="friend_pfp">
                             <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
                                 alt="Profile Picture">
+                            <span class="viewProfile">View<br>Profile</span>
                         </div>
                         <div class="friend_username">
                             <span>User01</span>
