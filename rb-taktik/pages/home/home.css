@@ -167,19 +167,26 @@ body, #loader-div {
 
 .friend_pfp img{
     border-radius: 100%;
+    width: 5vw;
+    height: 5vh;
 }
 
 .challengeButton {
     display: flex;
     align-items: center;
+    margin-left: 66vh;
 }
 
 .challengeButton button {
+    font-size: 2vh;
+
     background-color: #CA0000;
-    width: 150px;
-    height: 30px;
-    margin-right: 8px;
-    border-radius: 30px;
+    width: 8vw;
+    height: 3vh;
+    margin-right: 0.8vw;
+    margin-left: 1vh;
+    padding: 0vh;
+    border-radius: 3vh;
     cursor: pointer;
     border: none;
     color: white;
@@ -189,11 +196,11 @@ body, #loader-div {
 .friend_username {
     display: flex;
     align-items: center;
-    width: 75%;
+    width: 8vw;
 }
 
 .friend_username span{
-    margin-left: 16px;
+    margin-left: 1.6vw;
     vertical-align: middle;
 
 }
@@ -267,13 +274,13 @@ body, #loader-div {
 }
 
 .notify-pfp img{
-    border-radius: 90px;
+    border-radius: 9vh;
 }
 
 .notify-pfp-div{
-    width: 50px;
-    height: 70px;
-    margin:8px;
+    width: 5vw;
+    height: 7vh;
+    margin:8vh;
 }
 
 .message {
@@ -317,14 +324,14 @@ body, #loader-div {
 }
 
 .viewProfile {
-    position: absolute;
-    font-size: 12px;
+    position: fixed;
+    font-size: 1.2vh;
     font-weight: bolder;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 55px;
-    height: 55px;
-    border-radius: 100%;
+    width: 5.5vw;
+    height: 5.5vh;
+    border-radius: 5vh;
     display: none;
 }
 
