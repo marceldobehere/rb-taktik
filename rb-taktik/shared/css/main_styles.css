@@ -10,7 +10,7 @@ body, #loader-div {
     background-color: var(--bg-col);
     color: var(--text-col);
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 2vh;
 
     width: 100vw;
     height: 100vh;

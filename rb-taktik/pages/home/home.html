@@ -12,14 +12,15 @@
 
 <body onclick="hideDropDown(); hideDropDownNotification();">
     <img src="/shared/images/Logo.png" alt="Logo" class="logo"
-        style="position:fixed;top:2vh;left:50%;transform: translate(-50%, 0)">
-    <div style="margin: 4vh auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
+        style="position:absolute; margin: auto; top:4vw; left:50%;transform: translate(-50%, 0)">
+    <div style="margin: 4vh auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%; ">
         <div class="inline" id="dropdown">
             <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp"
-                style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
-                onclick="toggleDropDown(event)"></image>
-            <p class="inline">
-                <span id="info-username">Shabarian der 2.</span><br>
+                   style="width: 10vw; height: 10vw; border-radius: 5vw;  border: 0.2vw solid #E01F16"
+
+                   onclick="toggleDropDown(event)"></image>
+            <p class="inline" style="font-size: 4vh; margin: auto ">
+                <span id="info-username" >Shabarian der 2.</span><br>
                 Rank: <span id="info-rank">9999</span>
             </p>
             <div class="dropdown-content" style="display:none;" onclick="cancelClose(event)">
@@ -34,17 +35,17 @@
         </div>
 
         <div class="inline" id="statisticButton">
-            <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
-                    style="width: 8vw"></button>
+            <button class="general-button-style"  style="width: 8vw; height: 16vh; margin-left: 1vh; margin-top: 3vh; border-radius:50vh; padding-top: 8vh"
+            ><img src="/shared/images/statisticsIcon.png" alt="Ranking" style="width: 8vw; position: fixed; height: 10vh; margin-left: -8.5vh; margin-top: -9vh; "></button>
         </div>
 
         <div class="inline " id="dropdown-notify">
-            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img
-                    src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
+            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style" style="width: 8vw; height: 16vh; margin-left: 1vh; margin-top: 3vh; border-radius:50vh; padding-top: 8vh"><img
+                    src="/shared/images/bellIcon.png" alt="Notifications" style="width: 8vw; position: fixed; height: 10vh; margin-left: -9vh; margin-top: -16.5vh;  padding-top: 8vh"></button>
             <div id="notification-content" class="dropdown-notify-content" style="display:none;">
                 <div class="triangle" onclick="cancelClose(event)"></div>
                 <div class="notification-center" onclick="cancelClose(event)">
-                    <div class="notifications">
+                    <div class="notifications" style="font-size: 3.5vh">
                         Notifications: <span id="notification-count">3</span>
                     </div>
 
@@ -53,7 +54,7 @@
                             <div class="flexify">
                                 <div class="flexify">
                                     <div class="notify-pfp-div notify-pfp">
-                                        <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                                        <img src="/shared/images/placeHolderPFP.png" width="5vw" alt="">
                                     </div>
                                     <div class="message">
                                         <span class="message-title">MATCH REQUEST</span><br>
@@ -71,11 +72,11 @@
                                 <button>DECLINE</button>
                             </div>
                         </div>
-                        <div class="notification-entry notification-read">
-                            <div class="flexify">
+                        <div class="notification-entry notification-read" >
+                            <div class="flexify" >
                                 <div class="flexify">
                                     <div class="notify-pfp-div notify-pfp">
-                                        <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                                        <img src="/shared/images/placeHolderPFP.png" width="5vw" alt="">
                                     </div>
                                     <div class="message">
                                         <span class="message-title">FRIEND REQUEST</span><br>
@@ -115,20 +116,20 @@
     <br><br>
     <div style="margin: auto;width:80%;display:grid; grid-template-columns: 30vw 110vh auto;column-gap: 2vh;">
         <div class="inline"
-            style=" width:40vh;height:35vh;display:inline-grid; grid-template-columns: auto auto; gap:1vh;">
-            <div id="btn-ranked" style="border-radius: 3vh 0 0 0;" class="menu-tile drop-shadow-figma"
+            style=" left: 7vw; width:40vh;height:35vh;display:inline-grid; grid-template-columns: auto auto; gap:1vh; ">
+            <div id="btn-ranked" style="border-radius: 3vh 0 0 0; font-size: 2vh" class="menu-tile drop-shadow-figma"
                 onclick="joinRankedGame()">
                 <span>Ranked Game</span>
             </div>
-            <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma"
+            <div id="btn-random" style="border-radius: 0 3vh 0 0; font-size: 2vh " class="menu-tile drop-shadow-figma"
                 onclick="joinRandomGame()">
                 <span>Random Game</span>
             </div>
-            <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma"
+            <div id="btn-options" style="border-radius: 0 0 0 3vh; font-size: 2vh" class="menu-tile drop-shadow-figma"
                 onclick="openOptions()">
                 <span>Options</span>
             </div>
-            <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma"
+            <div id="btn-create" style="border-radius: 0 0 3vh 0; font-size: 2vh" class="menu-tile drop-shadow-figma"
                 onclick="createGame()">
                 <span>Create Game</span>
             </div>

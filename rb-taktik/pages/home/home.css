@@ -5,22 +5,21 @@ body, #loader-div {
 }
 
 .pfp{
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
 }
 
 
 
 .menu-tile {
-    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
+    box-shadow: 0 0.4vh 0.4vh 0 #00000066, inset 0 0 1vh;
     background-color: #E01F16;
-    font-size: 35px;
+    font-size: 3.5vh;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .menu-tile:hover {
@@ -28,7 +27,6 @@ body, #loader-div {
 }
 
 .menu-tile span {
-    transition: transform 0.2s;
     transform: scale(1);
     transform-origin: center;
 }
@@ -115,7 +113,6 @@ body, #loader-div {
     color: white;
     border-radius: 2vh;
     float:right;
-    transition: 0.2s;
     cursor: pointer;
 }
 
@@ -188,6 +185,7 @@ body, #loader-div {
     color: white;
 }
 
+
 .friend_username {
     display: flex;
     align-items: center;
@@ -203,38 +201,43 @@ body, #loader-div {
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 35vw;
     align-items: center;
-    right:50px;
+    right:-3vh;
 }
 
 .notification-center{
-    position: relative;
+    position: fixed;
+    margin-left: 0vh;
+    margin-top: 10vh;
     background-color: rgb(255, 255, 255);
-    width: 350px;
+    width: 25vw;
     height: auto;
-    border: 2px solid red;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border: 0.2vh solid red;
+    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
+    border-radius: 1vh;
 
 }
 
 #notification-list {
-    max-height: 300px;
+    max-height: 25vw;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 #notification-content{
+    height: 30vh;
+    max-height: 50vh;
+
 }
 
 .triangle {
-    position: relative;
-    width: 0;
-    height: 0;
-    border-left:60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 75px solid rgb(255, 255, 255);
+    position: fixed;
+    margin-top: 2.5vh;
+    margin-left: 10vh;
+    border-left:6vw solid transparent;
+    border-right: 6vw solid transparent;
+    border-bottom: 7.5vh solid rgb(255, 255, 255);
   }
 
   .notifications{
