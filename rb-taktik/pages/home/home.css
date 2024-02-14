@@ -168,6 +168,12 @@ body, #loader-div {
     padding: 3.2vh;
 }
 
+#modes{
+    width:350px;
+    height:350px;
+    display:inline-grid; grid-template-columns: auto auto; gap:10px;
+}
+
 .friend_pfp img{
     border-radius: 100%;
 }
