@@ -35,13 +35,15 @@
         </div>
 
         <div class="inline" id="statisticButton">
-            <button class="general-button-style"  style="width: 8vw; height: 16vh; margin-left: 1vh; margin-top: 3vh; border-radius:50vh; padding-top: 8vh"
-            ><img src="/shared/images/statisticsIcon.png" alt="Ranking" style="width: 8vw; position: fixed; height: 10vh; margin-left: -8.5vh; margin-top: -9vh; "></button>
+            <button class="general-button-style"  style="width: 14vh; height: 15vh; margin-left: 1vh; margin-top: 3vh; border-radius: 50%; padding-top: 8vh;"
+            ><img src="/shared/images/statisticsIcon.png" alt="Ranking" style=" width: 9vh; position: fixed; height: 9vh;top: 10%; right: 26%; margin: auto; translateX(-50%)"></button>
+
+
         </div>
 
         <div class="inline " id="dropdown-notify">
-            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style" style="width: 8vw; height: 16vh; margin-left: 1vh; margin-top: 3vh; border-radius:50vh; padding-top: 8vh"><img
-                    src="/shared/images/bellIcon.png" alt="Notifications" style="width: 8vw; position: fixed; height: 10vh; margin-left: -9vh; margin-top: -16.5vh;  padding-top: 8vh"></button>
+            <button onclick="toggleNotifications(event)" class="notifyButton general-button-style" style="width: 14vh; height: 15vh; margin-left: 1vh; margin-top: 3vh; border-radius:50%; padding-top: 8vh"><img
+                    src="/shared/images/bellIcon.png" alt="Notifications" style="width: 9vh;  height: 9vh; margin: auto; translateX(-50%);"></button>
             <div id="notification-content" class="dropdown-notify-content" style="display:none;">
                 <div class="triangle" onclick="cancelClose(event)"></div>
                 <div class="notification-center" onclick="cancelClose(event)">
@@ -117,25 +119,25 @@
     <div style="margin: auto;width:80%;display:grid; grid-template-columns: 30vw 110vh auto;column-gap: 2vh;">
         <div class="inline"
             style=" left: 7vw; width:40vh;height:35vh;display:inline-grid; grid-template-columns: auto auto; gap:1vh; ">
-            <div id="btn-ranked" style="border-radius: 3vh 0 0 0; font-size: 2vh" class="menu-tile drop-shadow-figma"
+            <div id="btn-ranked" style="border-radius: 3vh 0 0 0; font-size: 3vh" class="menu-tile drop-shadow-figma"
                 onclick="joinRankedGame()">
                 <span>Ranked Game</span>
             </div>
-            <div id="btn-random" style="border-radius: 0 3vh 0 0; font-size: 2vh " class="menu-tile drop-shadow-figma"
+            <div id="btn-random" style="border-radius: 0 3vh 0 0; font-size: 3vh " class="menu-tile drop-shadow-figma"
                 onclick="joinRandomGame()">
                 <span>Random Game</span>
             </div>
-            <div id="btn-options" style="border-radius: 0 0 0 3vh; font-size: 2vh" class="menu-tile drop-shadow-figma"
+            <div id="btn-options" style="border-radius: 0 0 0 3vh; font-size: 3vh" class="menu-tile drop-shadow-figma"
                 onclick="openOptions()">
                 <span>Options</span>
             </div>
-            <div id="btn-create" style="border-radius: 0 0 3vh 0; font-size: 2vh" class="menu-tile drop-shadow-figma"
+            <div id="btn-create" style="border-radius: 0 0 3vh 0; font-size: 3vh; fon " class="menu-tile drop-shadow-figma"
                 onclick="createGame()">
                 <span>Create Game</span>
             </div>
         </div>
 
-        <div class="inline drop-shadow-figma" style="border-radius: 3.0vh 3.0vh 3.0vh 3.0vh; background-color: #E01F16;" >
+        <div class="inline drop-shadow-figma" style="border-radius: 3.0vh 3.0vh 3.0vh 3.0vh; background-color: #E01F16; margin: auto" >
             <div id="friend-list-cont">
                 <div class="topbar">
                     <div class="searchbar">
@@ -143,7 +145,7 @@
                         <input id="searchbar" type="text" placeholder="Search friend...">
                     </div>
                     <div class="addButton">
-                        <button style="font-size: 2vh">Add</button>
+                        <button style="font-size: 3vh; position: absolute ">Add</button>
                     </div>
                 </div>
                 <div class="bottombar" id="actual-friend-list">
