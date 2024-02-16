@@ -5,21 +5,22 @@ body, #loader-div {
 }
 
 .pfp{
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 
 
 .menu-tile {
-    box-shadow: 0 0.4vh 0.4vh 0 #00000066, inset 0 0 1vh;
+    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
     background-color: #E01F16;
-    font-size: 3.5vh;
+    font-size: 35px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .menu-tile:hover {
@@ -27,6 +28,7 @@ body, #loader-div {
 }
 
 .menu-tile span {
+    transition: transform 0.2s;
     transform: scale(1);
     transform-origin: center;
 }
@@ -49,7 +51,7 @@ body, #loader-div {
 }
 
 .drop-shadow-figma {
-    box-shadow: 0 0.4vh 0.4vw 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 .logo{
@@ -67,7 +69,7 @@ body, #loader-div {
     background-color: #E01F16;
     user-select: none;
     cursor: pointer;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 
 }
 
@@ -102,27 +104,20 @@ body, #loader-div {
 .addButton {
     display: inline-block;
     vertical-align: middle;
-    width: 5vh;
-    position: absolute;
-    margin: auto auto auto 95vh;
-    padding: 3vh;
+    width: 20%;
 }
 
 .addButton button {
-    width: 4vw;
-    height: 5vh;
-    max-height: 6vh;
-    border: 0.2vh solid white;
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
     background-color: black;
     color: white;
-    border-radius: 2vh;
+    border-radius: 25%;
     float:right;
+    transition: 0.2s;
     cursor: pointer;
-    padding-inline: 0.6vh;
-    padding-block: 0.1vh;
-
 }
-
 
 .addButton button:hover{
     background-color: rgb(32, 32, 32);
@@ -130,7 +125,7 @@ body, #loader-div {
 
 .searchbar {
     vertical-align: middle;
-    width: 50vh;
+    width: 80%;
 }
 .searchbar input::placeholder {
     color: white;
@@ -139,25 +134,24 @@ body, #loader-div {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 0.2vh solid white;
+    border-bottom: 2px solid white;
     background-color: transparent;
     outline: none;
-    width: 90vh;
-    padding: 1.6vh;
+    width: 100%;
+    padding: 16px;
     font-size: 1.5vw;
     color: white;
 }
 
 .friend {
-    border: 0.2vh solid black;
+    border: 2px solid black;
     display: flex;
     flex: 1;
-    border-radius: 1.5vh;
-    margin-top: 0.8vh;
+    border-radius: 15px;
+    margin-top: 8px;
     background-color: white;
     color: black;
 }
-
 
 .topbar{
     display: flex;
@@ -165,49 +159,41 @@ body, #loader-div {
 }
 
 .bottombar{
-    margin-top: 1.6vh;
+    margin-top: 16px;
 }
 
 #friend-list-cont{
-    padding: 3.2vh;
+    padding: 32px;
 }
 
 .friend_pfp img{
     border-radius: 100%;
-    width: 5vw;
-    height: 5vh;
 }
 
 .challengeButton {
     display: flex;
     align-items: center;
-    margin-left: 66vh;
 }
 
 .challengeButton button {
-    font-size: 2vh;
-
     background-color: #CA0000;
-    width: 8vw;
-    height: 3vh;
-    margin-right: 0.8vw;
-    margin-left: 1vh;
-    padding: 0vh;
-    border-radius: 3vh;
+    width: 150px;
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 30px;
     cursor: pointer;
     border: none;
     color: white;
 }
 
-
 .friend_username {
     display: flex;
     align-items: center;
-    width: 8vw;
+    width: 75%;
 }
 
 .friend_username span{
-    margin-left: 1.6vw;
+    margin-left: 16px;
     vertical-align: middle;
 
 }
@@ -215,49 +201,44 @@ body, #loader-div {
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 35vw;
+    width: 350px;
     align-items: center;
-    right:-3vh;
+    right:50px;
 }
 
 .notification-center{
-    position: fixed;
-    margin-left: 0vh;
-    margin-top: 10vh;
+    position: relative;
     background-color: rgb(255, 255, 255);
-    width: 25vw;
+    width: 350px;
     height: auto;
-    border: 0.2vh solid red;
-    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
-    border-radius: 1vh;
+    border: 2px solid red;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 
 }
 
 #notification-list {
-    max-height: 25vw;
+    max-height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 #notification-content{
-    height: 30vh;
-    max-height: 50vh;
-
 }
 
 .triangle {
-    position: fixed;
-    margin-top: 2.5vh;
-    margin-left: 10vh;
-    border-left:6vw solid transparent;
-    border-right: 6vw solid transparent;
-    border-bottom: 7.5vh solid rgb(255, 255, 255);
-  }
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left:60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 75px solid rgb(255, 255, 255);
+}
 
-  .notifications{
+.notifications{
     color: black;
     text-align: center;
-  }
+}
 
 .decision-btns button{
     background-color: red;
@@ -281,13 +262,13 @@ body, #loader-div {
 }
 
 .notify-pfp img{
-    border-radius: 9vh;
+    border-radius: 90px;
 }
 
 .notify-pfp-div{
-    width: 5vw;
-    height: 7vh;
-    margin:8vh;
+    width: 50px;
+    height: 70px;
+    margin:8px;
 }
 
 .message {
@@ -331,18 +312,13 @@ body, #loader-div {
 }
 
 .viewProfile {
-    position: fixed;
-    font-size: 1.2vh;
+    position: absolute;
+    font-size: 12px;
     font-weight: bolder;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 5.5vw;
-    height: 5.5vh;
-    border-radius: 5vh;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
     display: none;
 }
-
-
-
-
-
