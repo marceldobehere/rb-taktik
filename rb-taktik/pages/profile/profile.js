@@ -97,11 +97,33 @@ async function sendFriendRequest()
 {
     if (areFriends)
     {
-        alert('Not implemented yet!');
+        let check = confirm("Are you sure you want to unfriend this user?");
+        if (!check)
+            return;
+
+        let reply = await msgSendAndGetReply("remove-friend", {userId: otherUserId});
+        if (reply["error"])
+        {
+            alert("Error: " + reply["error"]);
+            return;
+        }
+
+        await initProfileStuff();
     }
     else if (isPending)
     {
-        alert('Not implemented yet!');
+        let check = confirm("Are you sure you want to cancel the friend request?");
+        if (!check)
+            return;
+
+        let reply = await msgSendAndGetReply("cancel-pending", {userId: otherUserId});
+        if (reply["error"])
+        {
+            alert("Error: " + reply["error"]);
+            return;
+        }
+
+        await initProfileStuff();
     }
     else
     {
@@ -114,7 +136,6 @@ async function sendFriendRequest()
             alert("Error: " + reply["error"]);
             return;
         }
-        console.log(reply);
 
         await initProfileStuff();
     }

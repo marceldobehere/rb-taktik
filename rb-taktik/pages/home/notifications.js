@@ -39,6 +39,10 @@ function addOneNotification(not, isUnread)
         elem = createFriendReqNotification(not);
     else if (type == "friend-accept")
         elem = createNowFriendsNotification(not);
+    else if (type == "friend-decline")
+        elem = createNowFriendsNotification(not);
+    else if (type == "friend-remove")
+        elem = createNowFriendsNotification(not);
     else if (type == "match-req")
         elem = createChallengeNotification(not);
     else if (type == "msg")

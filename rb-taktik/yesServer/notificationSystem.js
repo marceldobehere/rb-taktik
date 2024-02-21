@@ -162,6 +162,58 @@ async function sendNowFriends(userIdFrom, userIdTo)
     return true;
 }
 
+async function sendDeclinedFriend(userIdFrom, userIdTo)
+{
+    if (userIdFrom == userIdTo)
+        return false;
+
+    let userFrom = await accountInterface.getUser(userIdFrom);
+    let userTo = await accountInterface.getUser(userIdTo);
+
+    if (userFrom === undefined || userTo === undefined)
+        return false;
+
+    let not = {
+        type: "friend-decline",
+        from: userIdFrom,
+        title: "Friend Status",
+        text: `${userTo.username} declined your friend request!`,
+        date: Date.now()
+    };
+
+    if (!await notificationInterface.createNotificationForUser(userIdFrom, not))
+        return false;
+
+    await notifyUser(userIdFrom);
+    return true;
+}
+
+async function sendRemovedFriend(userIdFrom, userIdTo)
+{
+    if (userIdFrom == userIdTo)
+        return false;
+
+    let userFrom = await accountInterface.getUser(userIdFrom);
+    let userTo = await accountInterface.getUser(userIdTo);
+
+    if (userFrom === undefined || userTo === undefined)
+        return false;
+
+    let not = {
+        type: "friend-remove",
+        from: userIdFrom,
+        title: "Friend Status",
+        text: `You are no longer friends with ${userTo.username}!`,
+        date: Date.now()
+    };
+
+    if (!await notificationInterface.createNotificationForUser(userIdFrom, not))
+        return false;
+
+    await notifyUser(userIdFrom);
+    return true;
+
+}
 
 async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 {
@@ -192,4 +244,4 @@ async function sendMatchRequest(userIdFrom, userIdTo, roomId)
 
 
 
-module.exports = {initApp, notifyUser, sendFriendRequest, sendNowFriends, sendMatchRequest};
+module.exports = {initApp, notifyUser, sendFriendRequest, sendNowFriends, sendMatchRequest, sendRemovedFriend, sendDeclinedFriend};
