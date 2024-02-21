@@ -2,12 +2,38 @@ let dbInterface;
 
 class AsyncLock {
     constructor () {
-        this.disable = () => {}
-        this.promise = Promise.resolve()
+        this.promiseArr = [];
+        this.resolveArr = [];
     }
 
-    enable () {
-        this.promise = new Promise(resolve => this.disable = resolve)
+    disable ()
+    {
+        if (this.resolveArr.length > 0)
+        {
+            console.log("Disabling lock");
+
+            this.promiseArr.shift();
+            this.resolveArr.shift()();
+        }
+        else
+            alert("Invalid lock disable")
+    }
+
+    async enable ()
+    {
+        console.log("Enabling lock");
+
+        let tempPromises = [];
+        for (let prom of this.promiseArr)
+            tempPromises.push(prom);
+        let bigPromise = Promise.all(tempPromises);
+
+        let resolve;
+        let promise = new Promise(r => resolve = r);
+        this.promiseArr.push(promise);
+        this.resolveArr.push(resolve);
+
+        await bigPromise;
     }
 }
 const lock = new AsyncLock();
@@ -22,9 +48,8 @@ async function initApp(_dbInterface)
 
 async function tableExists(tableName)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.tableExists(tableName);
     }
@@ -38,9 +63,8 @@ async function tableExists(tableName)
 
 async function createTable(tableName)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.createTable(tableName);
     }
@@ -54,9 +78,8 @@ async function createTable(tableName)
 
 async function deleteTable(tableName)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.deleteTable(tableName);
     }
@@ -70,9 +93,8 @@ async function deleteTable(tableName)
 
 async function clearTable(tableName)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.clearTable(tableName);
     }
@@ -86,9 +108,8 @@ async function clearTable(tableName)
 
 async function addPair(tableName, key, value)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.addPair(tableName, key, value);
     }
@@ -102,9 +123,8 @@ async function addPair(tableName, key, value)
 
 async function getPair(tableName, key)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.getPair(tableName, key);
     }
@@ -118,9 +138,8 @@ async function getPair(tableName, key)
 
 async function updatePair(tableName, key, value)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.updatePair(tableName, key, value);
     }
@@ -134,9 +153,8 @@ async function updatePair(tableName, key, value)
 
 async function deletePair(tableName, key)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.deletePair(tableName, key);
     }
@@ -150,9 +168,8 @@ async function deletePair(tableName, key)
 
 async function getAllKeys(tableName)
 {
-    await lock.promise
-    lock.enable();
-    res = false;
+    await lock.enable();
+    let res = false;
     try {
         res = await dbInterface.getAllKeys(tableName);
     }
@@ -165,3 +182,4 @@ async function getAllKeys(tableName)
 }
 
 module.exports = {initApp, tableExists, createTable, deleteTable, clearTable, addPair, getPair, updatePair, deletePair, getAllKeys};
+
