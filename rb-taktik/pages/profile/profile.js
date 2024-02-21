@@ -97,10 +97,18 @@ async function sendFriendRequest()
 {
     if (areFriends)
     {
+        let check = confirm("Are you sure you want to unfriend this user?");
+        if (!check)
+            return;
+
         alert('Not implemented yet!');
     }
     else if (isPending)
     {
+        let check = confirm("Are you sure you want to cancel the friend request?");
+        if (!check)
+            return;
+
         alert('Not implemented yet!');
     }
     else

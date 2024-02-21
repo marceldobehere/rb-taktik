@@ -59,6 +59,24 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
             socket.emit('get-pending-friends', {pendingFriends: pendingFriends});
         });
 
+        socket.on('cancel-pending', async (obj) => {
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
+            if (userSess1 === undefined)
+                return socket.emit('cancel-pending', {error: "Invalid session"});
+            let userId1 = userSess1.userId;
+
+            let userId2 = obj.userId;
+            if (userId2 === undefined)
+                return socket.emit('cancel-pending', {error: "Invalid user id"});
+            if (await accountInterface.getUser(userId2) === undefined)
+                return socket.emit('cancel-pending', {error: "Invalid user id"});
+
+            if (!removePending(userId1, userId2))
+                return socket.emit('cancel-pending', {error: "Failed to remove pending"});
+
+            socket.emit('cancel-pending', {});
+        });
+
         socket.on('am-pending', async (obj) => {
             let userSess1 = sessionSystem.getSessionBySocket(socket);
             if (userSess1 === undefined)
