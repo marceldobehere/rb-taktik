@@ -140,7 +140,6 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
 
             if (!await notificationSystem.sendNowFriends(userId1, userId2))
                 return socket.emit('accept-friend', {error: "Failed to send notification"});
-
             if (!await notificationSystem.sendNowFriends(userId2, userId1))
                 return socket.emit('accept-friend', {error: "Failed to send notification"});
 
@@ -168,7 +167,36 @@ function initApp(_app, _io, _notificationSystem, _friendInterface, _accountInter
             if (!removePending(userId1, userId2))
                 return socket.emit('decline-friend', {error: "Failed to remove pending"});
 
+            if (!await notificationSystem.sendDeclinedFriend(userId2, userId1))
+                return socket.emit('decline-friend', {error: "Failed to send notification"});
+
             socket.emit('decline-friend', {});
+        });
+
+        socket.on('remove-friend', async (obj) => {
+            let userSess1 = sessionSystem.getSessionBySocket(socket);
+            if (userSess1 === undefined)
+                return socket.emit('remove-friend', {error: "Invalid session"});
+            let userId1 = userSess1.userId;
+
+            let userId2 = obj.userId;
+            if (userId2 === undefined)
+                return socket.emit('remove-friend', {error: "Invalid user id"});
+            if (await accountInterface.getUser(userId2) === undefined)
+                return socket.emit('remove-friend', {error: "Invalid user id"});
+
+            if (!await friendInterface.areFriends(userId1, userId2))
+                return socket.emit('remove-friend', {error: "Not friends"});
+
+            if (!await friendInterface.removeFriend(userId1, userId2))
+                return socket.emit('remove-friend', {error: "Failed to remove friend"});
+
+            if (!await notificationSystem.sendRemovedFriend(userId1, userId2))
+                return socket.emit('remove-friend', {error: "Failed to send notification"});
+            if (!await notificationSystem.sendRemovedFriend(userId2, userId1))
+                return socket.emit('remove-friend', {error: "Failed to send notification"});
+
+            socket.emit('remove-friend', {});
         });
     });
 
