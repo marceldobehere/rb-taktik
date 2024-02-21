@@ -15,7 +15,7 @@
      style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
 <div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
     <div class="inline" id="dropdown">
-        <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp"
+        <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp sound"
                style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
                onclick="toggleDropDown(event)"></image>
         <p class="inline">
@@ -23,8 +23,8 @@
             Rank: <span id="info-rank">9999</span>
         </p>
         <div class="dropdown-content" style="display:none;" onclick="cancelClose(event)">
-            <a href="/account-settings">Account Settings</a>
-            <a id="acc-login-logout" href="#" onclick="doLogout()">Log Out</a>
+            <a class=" sound" href="/account-settings">Account Settings</a>
+            <a class=" sound" id="acc-login-logout" href="#" onclick="doLogout()">Log Out</a>
         </div>
 
 
@@ -34,12 +34,12 @@
     </div>
 
     <div class="inline" id="statisticButton">
-        <button class="general-button-style"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
+        <button class="general-button-style sound"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
                                                   style="width: 80px"></button>
     </div>
 
     <div class="inline " id="dropdown-notify">
-        <button onclick="toggleNotifications(event)" class="notifyButton general-button-style"><img
+        <button onclick="toggleNotifications(event)" class="notifyButton general-button-style sound"><img
                 src="/shared/images/bellIcon.png" alt="Notifications" style="width: 80px"></button>
         <div id="notification-content" class="dropdown-notify-content" style="display:none;">
             <div class="triangle" onclick="cancelClose(event)"></div>
@@ -116,19 +116,19 @@
 <div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
     <div class="inline"
          style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
-        <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma"
+        <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma sound"
              onclick="joinRankedGame()">
             <span>Ranked Game</span>
         </div>
-        <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma"
+        <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma sound"
              onclick="joinRandomGame()">
             <span>Random Game</span>
         </div>
-        <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma"
+        <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma sound"
              onclick="openOptions()">
             <span>Options</span>
         </div>
-        <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma"
+        <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma sound"
              onclick="createGame()">
             <span>Create Game</span>
         </div>
@@ -139,10 +139,10 @@
             <div class="topbar">
                 <div class="searchbar">
                     <label for="searchbar" class="hidden">Search a friend</label>
-                    <input id="searchbar" type="text" placeholder="Search friend...">
+                    <input class=" sound" id="searchbar" type="text" placeholder="Search friend...">
                 </div>
                 <div class="addButton">
-                    <button>Add</button>
+                    <button class=" sound">Add</button>
                 </div>
             </div>
             <div class="bottombar" id="actual-friend-list">
