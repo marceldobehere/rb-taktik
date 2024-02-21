@@ -83,6 +83,7 @@ async function init()
 
     msgHook("game-join", (data) => {
         console.log("The opponent has joined the game.");
+        console.log(data);
         loadGameState(data["state"]);
     });
 

@@ -199,6 +199,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             socket.emit("game-create", {
                 "id": gameEntry["id"],
                 "players": gameEntry["players"],
+                "playerIds": gameEntry["playerIds"],
                 "settings": gameEntry["settings"],
                 "state": gameEntry["state"]
             });
@@ -238,6 +239,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
             socket.emit("game-join", {
                 "id": gameEntry["id"],
                 "players": gameEntry["players"],
+                "playerIds": gameEntry["playerIds"],
                 "settings": gameEntry["settings"],
                 "state": gameEntry["state"]
             });
@@ -246,6 +248,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 socket.emit("game-join", {
                     "id": gameEntry["id"],
                     "players": gameEntry["players"],
+                    "playerIds": gameEntry["playerIds"],
                     "settings": gameEntry["settings"],
                     "state": gameEntry["state"]
                 });
@@ -280,6 +283,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 socket.emit("game-start", {
                     "id": game["id"],
                     "players": game["players"],
+                    "playerIds": game["playerIds"],
                     "settings": game["settings"],
                     "state": game["state"]
                 });

@@ -8,6 +8,22 @@ function setSessionId(newSessionId)
     sessionId = newSessionId;
 }
 
+async function refreshUserData()
+{
+    let result = await msgSendAndGetReply("get-user", {"sessionId":sessionId});
+    if (result["error"] != undefined)
+    {
+        isGuest = true;
+        console.log("Error: ", result["error"]);
+        setSessionId(null);
+        return result;
+    }
+
+    userData = result;
+    isGuest = false;
+    return result;
+}
+
 async function initSessionCheck()
 {
     console.log("> Checking session...");
@@ -31,17 +47,7 @@ async function initSessionCheck()
     }
     else
     {
-        let result = await msgSendAndGetReply("get-user", {"sessionId":sessionId});
-        if (result["error"] != undefined)
-        {
-            isGuest = true;
-            console.log("Error: ", result["error"]);
-            setSessionId(null);
-            return;
-        }
-
-        userData = result;
-        isGuest = false;
+        let result = await refreshUserData();
         console.log("  > Logged in as " + result["username"] + " (" + result["userId"] + ")");
         //setSessionId(sessionId);
     }
