@@ -10,8 +10,6 @@ class AsyncLock {
     {
         if (this.resolveArr.length > 0)
         {
-            console.log("Disabling lock");
-
             this.promiseArr.shift();
             this.resolveArr.shift()();
         }
@@ -21,8 +19,6 @@ class AsyncLock {
 
     async enable ()
     {
-        console.log("Enabling lock");
-
         let tempPromises = [];
         for (let prom of this.promiseArr)
             tempPromises.push(prom);

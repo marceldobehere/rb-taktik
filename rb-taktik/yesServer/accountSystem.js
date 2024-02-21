@@ -42,6 +42,53 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
             socket.emit('register', {sessionId: sessionId});
         });
 
+        socket.on('change-password', async (obj) => {
+            let user = await getUser(obj.sessionId, socket);
+            if (user === undefined)
+                return socket.emit('change-password', {error: "Invalid session"});
+            let userId = user.userId;
+
+            let res = await changeUserPassword(userId, obj.newPassword);
+            if (res === false)
+                return socket.emit('change-password', {error: "Invalid session"});
+
+            socket.emit('change-password', {});
+        });
+
+        socket.on('change-email', async (obj) => {
+            let user = await getUser(obj.sessionId, socket);
+            if (user === undefined)
+                return socket.emit('change-email', {error: "Invalid session"});
+            let userId = user.userId;
+
+            let userObject = await accountInterface.getUser(userId);
+            userObject.email = obj.newEmail;
+            let res = await accountInterface.updateUser(userId, userObject);
+            if (res === false)
+                return socket.emit('change-email', {error: "Invalid session"});
+
+            socket.emit('change-email', {});
+        });
+
+        socket.on('change-username', async (obj) => {
+            let user = await getUser(obj.sessionId, socket);
+            if (user === undefined)
+                return socket.emit('change-username', {error: "Invalid session"});
+            let userId = user.userId;
+
+            let possibleUser = await accountInterface.getUserByUsername(obj.newUsername);
+            if (possibleUser !== undefined)
+                return socket.emit('change-username', {error: "Username already taken"});
+
+            let userObject = await accountInterface.getUser(userId);
+            userObject.username = obj.newUsername;
+            let res = await accountInterface.updateUser(userId, userObject);
+            if (res === false)
+                return socket.emit('change-username', {error: "Invalid session"});
+
+            socket.emit('change-username', {});
+        });
+
         socket.on('get-user', async (obj) => {
             let user = await getUser(obj.sessionId, socket);
             if (user === undefined)
