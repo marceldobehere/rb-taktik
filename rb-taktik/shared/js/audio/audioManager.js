@@ -46,6 +46,27 @@ function initAudio() {
     fxAudioWin.src = win;
 
     console.log("> Audio Init done!")
+
+}
+
+function startBgm(audio)
+{
+    setInterval(() => {
+        bgmStarter(audio);
+    }, 200);
+}
+
+async function bgmStarter(audioElement)
+{
+    if (audioElement.paused)
+    {
+        try {
+            await audioElement.play();
+        } catch (e)
+        {
+            //console.log("BRUH", e)
+        }
+    }
 }
 
 onModulesImported.push(initAudio);

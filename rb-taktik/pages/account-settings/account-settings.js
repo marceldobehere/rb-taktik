@@ -104,3 +104,5 @@ async function accSettingInit()
 }
 
 onModulesImported.push(accSettingInit);
+
+startBgm(bgmMenuAudio);

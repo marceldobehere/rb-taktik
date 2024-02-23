@@ -94,3 +94,5 @@ btns.forEach(function(btn) {
     }
   });
 });
+
+startBgm(bgmMenuAudio);

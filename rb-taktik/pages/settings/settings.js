@@ -17,3 +17,5 @@ onModulesImported.push(() => {
     getValue('volumeMusic', volumeMusic, volumeMusicValue);
     getValue('volumeFX', volumeFX, volumeFXValue);
 });
+
+startBgm(bgmMenuAudio);

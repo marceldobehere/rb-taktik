@@ -14,6 +14,9 @@ let fields = [];
 let board = [];
 let playerNames = ["N/A", "N/A"];
 let currentRoomId;
+// Get all buttons with the class "soundIngame"
+const btns2 = document.querySelectorAll(".soundIngame");
+
 
 
 async function init()
@@ -210,3 +213,92 @@ function hideMessage()
 
 
 onModulesImported.push(init);
+
+// Get all buttons with the class "sound"
+const btns = document.querySelectorAll(".sound");
+
+
+
+// Function to play the hover sound
+function playHoverSound() {
+    fxAudioMenuButtonHover.volume = 0.25;
+    fxAudioMenuButtonHover.play()
+        .then(() => {
+            console.log("Hover sound played");
+        })
+        .catch(() => {
+            console.error("Error playing hover sound");
+        });
+}
+
+// Function to play the click sound for btns
+function playClickSound() {
+    fxAudioMenuClick.play()
+        .then(() => {
+            console.log("Click sound played for btns");
+        })
+        .catch(() => {
+            console.error("Error playing click sound for btns");
+        });
+}
+
+// Function to play the click sound for btns2
+function playClickSound2() {
+    fxAudioplace.play()
+        .then(() => {
+            console.log("Click sound played for btns2");
+        })
+        .catch(() => {
+            console.error("Error playing click sound for btns2");
+        });
+}
+
+// Attach event listeners to btns
+btns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        playClickSound();
+    });
+
+    btn.addEventListener("mouseover", function() {
+        playHoverSound();
+    });
+
+    let hoverSoundPlayed = false;
+
+    btn.addEventListener("mouseout", function(event) {
+        const relatedTarget = event.relatedTarget;
+        if (!relatedTarget || (relatedTarget !== btn && !btn.contains(relatedTarget))) {
+            hoverSoundPlayed = false;
+        }
+    });
+});
+
+// Attach event listeners to btns2
+btns2.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        playClickSound2();
+    });
+
+    btn.addEventListener("mouseover", function() {
+        playHoverSound();
+    });
+
+    let hoverSoundPlayed = false;
+
+    btn.addEventListener("mouseout", function(event) {
+        const relatedTarget = event.relatedTarget;
+        if (!relatedTarget || (relatedTarget !== btn && !btn.contains(relatedTarget))) {
+            hoverSoundPlayed = false;
+        }
+    });
+});
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+ 
+  
+
+const randomMusicIndex = getRandomInt(1,2);
+const ingameBgms = [bgm1Audio, bgm2Audio];
+startBgm(ingameBgms[randomMusicIndex]);
