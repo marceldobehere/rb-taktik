@@ -1,4 +1,5 @@
 let notificationList = document.getElementById("notification-list");
+let notifyButtonImg = document.getElementById("notifyButtonImg");
 
 async function loadNotifications(data)
 {
@@ -15,6 +16,11 @@ async function loadNotifications(data)
 
     await checkAndRemoveExpiredNotifications(read);
     await checkAndRemoveExpiredNotifications(unread);
+
+    if (unread.length > 0)
+        notifyButtonImg.className = "notifyButton-unread";
+    else
+        notifyButtonImg.className = "notifyButton-normal";
 
     notificationCount.textContent = `${unread.length} (${read.length + unread.length})`;
 

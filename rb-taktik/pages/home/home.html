@@ -47,9 +47,34 @@
                     <div class="notifications">
                         Notifications: <span id="notification-count">3</span>
                     </div>
+    <div class="inline " id="dropdown-notify">
+        <button onclick="toggleNotifications(event)" class="general-button-style sound"><img id="notifyButtonImg" class="notifyButton"
+                src="/shared/images/bellIcon.png" alt="Notifications"></button>
+        <div id="notification-content" class="dropdown-notify-content" style="display:none;">
+            <div class="triangle" onclick="cancelClose(event)"></div>
+            <div class="notification-center" onclick="cancelClose(event)">
+                <div class="notifications">
+                    Notifications: <span id="notification-count">3</span>
+                </div>
 
-                    <div id="notification-list">
-                        <div class="notification-entry notification-unread">
+    <div class="inline" id="statisticButton">
+        <button class="general-button-style sound"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
+                                                  style="width: 80px"></button>
+    </div>
+
+    <div class="inline " id="dropdown-notify">
+        <button onclick="toggleNotifications(event)" class="general-button-style sound"><img id="notifyButtonImg" class="notifyButton"
+                src="/shared/images/bellIcon.png" alt="Notifications"></button>
+        <div id="notification-content" class="dropdown-notify-content" style="display:none;">
+            <div class="triangle" onclick="cancelClose(event)"></div>
+            <div class="notification-center" onclick="cancelClose(event)">
+                <div class="notifications">
+                    Notifications: <span id="notification-count">3</span>
+                </div>
+
+                <div id="notification-list">
+                    <div class="notification-entry notification-unread">
+                        <div class="flexify">
                             <div class="flexify">
                                 <div class="flexify">
                                     <div class="notify-pfp-div notify-pfp">
