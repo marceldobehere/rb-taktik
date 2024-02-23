@@ -13,8 +13,8 @@ async function loadNotifications(data)
     let read = data.read;
     let unread = data.unread;
 
-    read = await checkAndRemoveExpiredNotifications(read);
-    unread = await checkAndRemoveExpiredNotifications(unread);
+    await checkAndRemoveExpiredNotifications(read);
+    await checkAndRemoveExpiredNotifications(unread);
 
     notificationCount.textContent = `${unread.length} (${read.length + unread.length})`;
 
@@ -36,7 +36,15 @@ async function checkAndRemoveExpiredNotifications(msgs)
         let type = msg["type"];
         if (type == "friend-req")
         {
-
+            let isPendingReply = await msgSendAndGetReply("am-pending", {userId: msg["from"]});
+            if (isPendingReply["error"])
+            {
+                alert("Error: " + isPendingReply["error"]);
+                return;
+            }
+            let pending = isPendingReply["isPending"];
+            if (!pending)
+                expired = true;
         }
         else if (type == "match-req")
         {
@@ -57,9 +65,6 @@ async function checkAndRemoveExpiredNotifications(msgs)
             i--;
         }
     }
-
-
-    return msgs;
 }
 
 function clearNotifications()
