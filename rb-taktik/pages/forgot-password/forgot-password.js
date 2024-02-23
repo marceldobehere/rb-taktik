@@ -62,7 +62,7 @@ btns.forEach(function(btn) {
         console.log("fx played");
       })
       .catch(() => {
-        console.error("error");
+        //console.error("error");
       });
   });
 
@@ -74,7 +74,7 @@ btns.forEach(function(btn) {
           console.log("hover sound played");
         })
         .catch(() => {
-          console.error("error");
+          //console.error("error");
         });
       hoverSoundPlayed = true;
     }
