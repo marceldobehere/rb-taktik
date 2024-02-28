@@ -95,7 +95,7 @@ async function loadFriendList()
 
 async function sendFriendChallenge(friendId)
 {
-    alert('<NOT IMPLEMENTED YET>');
+    await challengeUserFunc(friendId);
 }
 
 async function acceptFriend(friendId, notId)

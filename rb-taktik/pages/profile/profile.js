@@ -146,7 +146,7 @@ async function challengeUser()
     if (otherUserId == undefined)
         return;
 
-    alert('Not implemented yet!');
+    await challengeUserFunc(otherUserId);
 }
 
 onModulesImported.push(initProfileStuff);

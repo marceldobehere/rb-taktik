@@ -15,7 +15,7 @@ async function createGame()
 
     console.log(result["id"]);
     currentRoomId = result["id"];
-    alert("Your room ID is: " + result["id"]);
+    //alert("Your room ID is: " + result["id"]);
 
     // red
     playerNumber = 0;
@@ -55,10 +55,10 @@ function createInviteLink()
     prompt("Please copy the following link:", url);
 }
 
-async function startGame()
+async function startGame(ignoreError)
 {
     let result = await msgSendAndGetReply("game-start", {username:playerNames[playerNumber]});
-    if (result["error"] != undefined)
+    if (result["error"] != undefined && !ignoreError)
     {
         alert("Error: " + result["error"])
         return;
@@ -81,14 +81,20 @@ async function init()
         goPage("/home")
     });
 
-    msgHook("game-join", (data) => {
+    msgHook("game-join", async (data) => {
         console.log("The opponent has joined the game.");
         console.log(data);
         loadGameState(data["state"]);
+
+        if (playerNumber == 0)
+        {
+            await startGame();
+        }
     });
 
     msgHook("game-start", (data) => {
         gameStarted(data);
+        hideMessage(true);
     });
 
     msgHook("game-move", (data) => {
@@ -109,6 +115,20 @@ async function init()
         addMessage(data["username"], (data["playerIndex"] == 0) ? "red" : "blue", data["message"]);
     });
 
+    msgHook('decline-challenge', (data) => {
+        console.log("DECLINE: ", data);
+        let tempRoomId = data["roomId"];
+        let tempUserId = data["userId"];
+        if (tempRoomId === undefined || tempUserId === undefined)
+            return;
+
+        if (tempRoomId != currentRoomId)
+            return;
+
+        alert(`The user has declined your match request!`);
+        goPage("/home")
+    });
+
     await attemptJoinFromUrl();
 }
 
@@ -116,6 +136,30 @@ async function attemptJoinFromUrl()
 {
     const params = Object.fromEntries(new URLSearchParams(window.location.search));
     console.log("Url params:", params);
+
+    let challengeFriendId = params["challengeFriend"];
+    if (challengeFriendId != undefined)
+    {
+        challengeFriendId = parseInt(challengeFriendId);
+
+        alert("CHALLENGING: " + challengeFriendId);
+
+
+        await createGame();
+
+        alert("ROOM ID: " + currentRoomId);
+
+        let challengeSent = await msgSendAndGetReply('challenge-user', {userId: challengeFriendId, roomId: currentRoomId});
+
+        if (challengeSent["error"])
+        {
+            alert(`There was an error challenging the user: ${challengeSent["error"]}`);
+            goPage("/home");
+        }
+
+        return;
+    }
+
     let roomId = params["gameid"];
     if (roomId == undefined)
         return;

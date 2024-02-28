@@ -206,9 +206,19 @@ function showMessage(msg)
     messagePopupBox.style.display = "flex";
 }
 
-function hideMessage()
+function hideMessage(dontStart)
 {
     messagePopupBox.style.display = "none";
+
+    if (!dontStart)
+        setTimeout(tryStartNextRound, 1000);
+}
+
+async function tryStartNextRound()
+{
+    // check if game over
+
+    await startGame(true);
 }
 
 
@@ -299,6 +309,6 @@ function getRandomInt(min, max) {
  
   
 
-const randomMusicIndex = getRandomInt(1,2);
+const randomMusicIndex = getRandomInt(0,1);
 const ingameBgms = [bgm1Audio, bgm2Audio];
 startBgm(ingameBgms[randomMusicIndex]);

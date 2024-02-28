@@ -209,6 +209,17 @@ function createChallengeNotification(not)
 {
     let res = createGenericMessage(not["title"], not["text"], true, true, not["id"]);
 
+    let acceptBtn = res["acceptBtn"];
+    let declineBtn = res["declineBtn"];
+    let roomId = not["roomId"];
+    let userId = not["from"];
+    let notId = not["id"];
+
+    acceptBtn.onclick = async () =>
+    {await markAllNotificationsAsRead(); await clearNotification(notId); await acceptChallenge(userId, roomId, notId);};
+    declineBtn.onclick = async () =>
+    {await markAllNotificationsAsRead(); await clearNotification(notId); await declineChallenge(userId, roomId, notId);};
+
     return res["topDiv"];
 }
 
@@ -224,7 +235,7 @@ async function markAllNotificationsAsRead()
     let res = await msgSendAndGetReply("read-notifications", {});
     if (res["error"] != undefined)
     {
-        alert("Error: " + res["error"]);
+        console.log("Error: ", res["error"]);
         return;
     }
 }
