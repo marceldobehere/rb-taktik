@@ -48,13 +48,60 @@ body, #loader-div {
 }
 
 #input-email{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    font-size: 3vh;
 }
 
 #input-username{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    font-size: 3vh;
 }
 
 #input-password{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    font-size: 3vh;
+}
+#btn-register{
+    height: 6.5vh;
+    width: 30vh;
+    border-radius: 4vh;
+    font-size: 3vh;
+}
+
+@media screen and (max-aspect-ratio: 8/5) {
+    #input-email{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+    }
+
+    #input-username{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+
+    }
+
+    #input-password{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+
+    }
+    #btn-register{
+        height: 5.5vh;
+        width: 20vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+
+    }
 }
