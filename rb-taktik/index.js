@@ -92,6 +92,7 @@ const notificationInterface = require("./yesServer/notificationInterface.js");
 const notificationSystem = require("./yesServer/notificationSystem.js");
 const friendInterface = require("./yesServer/friendInterface.js");
 const friendSystem = require("./yesServer/friendSystem.js");
+const challengeSystem = require("./yesServer/challengeSystem");
 
 
 async function startUp()
@@ -109,6 +110,7 @@ async function startUp()
     basicGameSystem.initApp(app, io, accountInterface, sessionSystem);
     notificationSystem.initApp(app, io, notificationInterface, accountInterface, sessionSystem);
     friendSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
+    challengeSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
 
     let port = USE_HTTPS ? 443 : 80;
     server.listen(port, () => {

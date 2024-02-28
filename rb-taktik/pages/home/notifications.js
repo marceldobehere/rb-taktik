@@ -1,4 +1,5 @@
 let notificationList = document.getElementById("notification-list");
+let notifyButtonImg = document.getElementById("notifyButtonImg");
 
 async function loadNotifications(data)
 {
@@ -13,6 +14,13 @@ async function loadNotifications(data)
     let read = data.read;
     let unread = data.unread;
 
+    await checkAndRemoveExpiredNotifications(read);
+    await checkAndRemoveExpiredNotifications(unread);
+
+    if (unread.length > 0)
+        notifyButtonImg.className = "notifyButton-unread";
+    else
+        notifyButtonImg.className = "notifyButton-normal";
 
     notificationCount.textContent = `${unread.length} (${read.length + unread.length})`;
 
@@ -21,6 +29,48 @@ async function loadNotifications(data)
 
     for (let i = 0; i < read.length; i++)
         addOneNotification(read[i], false);
+}
+
+async function checkAndRemoveExpiredNotifications(msgs)
+{
+    console.log("Checking and removing expired notifications");
+    for (let i = 0; i < msgs.length; i++)
+    {
+        let msg = msgs[i];
+        let expired = false;
+
+        let type = msg["type"];
+        if (type == "friend-req")
+        {
+            let isPendingReply = await msgSendAndGetReply("am-pending", {userId: msg["from"]});
+            if (isPendingReply["error"])
+            {
+                alert("Error: " + isPendingReply["error"]);
+                return;
+            }
+            let pending = isPendingReply["isPending"];
+            if (!pending)
+                expired = true;
+        }
+        else if (type == "match-req")
+        {
+            console.log("TODO: Check if match request is expired");
+        }
+
+        if (expired)
+        {
+            console.log("Removing expired notification: ", msg);
+            let res = await msgSendAndGetReply("clear-notification", {notificationId: msg["id"]});
+            if (res["error"] != undefined)
+            {
+                alert("Error: " + res["error"]);
+                return;
+            }
+
+            msgs.splice(i, 1);
+            i--;
+        }
+    }
 }
 
 function clearNotifications()
@@ -159,6 +209,17 @@ function createChallengeNotification(not)
 {
     let res = createGenericMessage(not["title"], not["text"], true, true, not["id"]);
 
+    let acceptBtn = res["acceptBtn"];
+    let declineBtn = res["declineBtn"];
+    let roomId = not["roomId"];
+    let userId = not["from"];
+    let notId = not["id"];
+
+    acceptBtn.onclick = async () =>
+    {await markAllNotificationsAsRead(); await clearNotification(notId); await acceptChallenge(userId, roomId, notId);};
+    declineBtn.onclick = async () =>
+    {await markAllNotificationsAsRead(); await clearNotification(notId); await declineChallenge(userId, roomId, notId);};
+
     return res["topDiv"];
 }
 
@@ -174,7 +235,7 @@ async function markAllNotificationsAsRead()
     let res = await msgSendAndGetReply("read-notifications", {});
     if (res["error"] != undefined)
     {
-        alert("Error: " + res["error"]);
+        console.log("Error: ", res["error"]);
         return;
     }
 }
