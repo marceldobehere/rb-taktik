@@ -217,6 +217,13 @@ function hideMessage(dontStart)
 async function tryStartNextRound()
 {
     // check if game over
+    if (playerPoints[0] >= 3 || playerPoints[1] >= 3)
+    {
+        gameWinner = playerPoints[0] > playerPoints[1] ? 0 : 1;
+        // TODO: Add important game data as url params
+        goPage("/results/results.html");
+        return;
+    }
 
     await startGame(true);
 }

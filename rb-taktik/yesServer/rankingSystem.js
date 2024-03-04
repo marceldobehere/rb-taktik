@@ -101,6 +101,6 @@ async function playerWonMatch(winnerId, loserId)
     await accountInterface.updateUser(loser.userId, loser);
 }
 
-module.exports = {initApp};
+module.exports = {initApp, playerWonMatch};
 
 

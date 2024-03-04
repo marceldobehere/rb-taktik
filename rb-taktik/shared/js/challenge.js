@@ -1,6 +1,6 @@
 async function challengeUserFunc(userId)
 {
-    alert('BRUH: ' + userId);
+   // alert('BRUH: ' + userId);
 
     // check if friend
 
