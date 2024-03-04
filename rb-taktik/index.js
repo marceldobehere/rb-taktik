@@ -72,7 +72,7 @@ app.get('/*', (req, res) => {
     if (url.indexOf("?") != -1)
         url = url.substring(0, url.indexOf("?"));// url.split("?")[0];
 
-    console.log("URL: " + __dirname + url);
+    //console.log("URL: " + __dirname + url);
 
     if (url.indexOf(".") != -1 && !fs.existsSync(__dirname + url))
         res.redirect('/404/404.html');
