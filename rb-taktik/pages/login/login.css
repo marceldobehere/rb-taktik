@@ -10,53 +10,108 @@ body, #loader-div {
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
 }
+h2, h3 {
+    padding: 0;
+    margin: 0;
+}
 
 #noAcc {
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size: 40px;
-    line-height: 42px;
+    font-size: 4vh;
+    line-height: 4.2vh;
     color: #FF2E00;
-    -webkit-text-stroke: 2.5px black;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 0.25vh black;
+    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+    padding: 0vh;
+    margin: 0vh 0vh 0vh 0vh;
 
 }
 
 #welcomeDesign{
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size:65px;
-    line-height: 42px;
+    font-size:6.5vh;
+    line-height: 4.2vh;
     color: #FF2E00;
-    -webkit-text-stroke: 3px black;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 0.3vh black;
+    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+    margin: 4vh 0vh 8vh 0vh;
 }
 
 .register-link{
-    border-bottom: 5px solid black;
-    font-size: 30px;
-    -webkit-text-stroke: 2px black;
+    border-bottom: 0.5vh solid black;
+    font-size: 3vh;
+    -webkit-text-stroke: 0.2vh black;
 }
 
 #playAsGuest{
-    margin-top: -25px;
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size: 28px;
-    -webkit-text-stroke: 2px black;
+    font-size: 2.5vh;
+    -webkit-text-stroke: 0.2vh black;
+    padding: 0;
+    text-align: center;
+    margin: auto;
+    display: block;
 }
 
 #forgotPW{
     font-family: 'Helvetica', sans-serif;
     font-style: normal;
     color: #DFDFDF;
-    font-size: 28px;
+    font-size: 2.8vh;
     font-weight: 800;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 0.2vh black;
     position: absolute;
     bottom: 0;
     left: 0;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-left: 2vh;
+    margin-bottom: 2vh;
 }
 
+#btn-login{
+    height: 6.5vh;
+    width: 30vh;
+    border-radius: 4vh;
+    font-size: 3vh;
+    border-width: 0.55vh;
+    margin-bottom: 4vh;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-aspect-ratio: 8/5) {
+
+    #input-username{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 4vh;
+        margin-bottom: 1vh;
+
+    }
+
+    #input-password{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 4vh;
+        margin-bottom: 1vh;
+
+    }
+    #btn-login{
+        height: 8vh;
+        width: 40vh;
+        border-radius: 4vh;
+        font-size: 4vh;
+        border-width: 0.55vh;
+        margin-bottom: 4vh;
+        padding: 0;
+    }
+
+}

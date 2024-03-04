@@ -93,6 +93,7 @@ h3 {
     font-size: 3vh;
     border-width: 0.55vh;
     margin-bottom: 4vh;
+    padding: 0;
 }
 #welcomeDesign{
     height: 6.5vh;
