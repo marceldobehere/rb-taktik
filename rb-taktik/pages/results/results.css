@@ -1,4 +1,4 @@
-body{
+body {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
     width: 100vw;
     height: 100vh;
@@ -17,22 +17,72 @@ body{
     height: 70vh;
     aspect-ratio: 4 / 3;
     text-align: center;
-    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: 0px 1vh 1vh rgba(0, 0, 0, 0.25);
+    border-radius: 3vh;
     color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pfp {
+    width: 12vw;
+    margin: 0;
+    padding: 0;
+    border: 3px solid red;
+    border-radius: 50%;
+}
+
+#crown-icon {
+    width: 8vw;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 4vh;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 6vh;
+    margin: 0;
+    padding: 0;
 }
 
 @media (min-aspect-ratio: 16/9) {
     .results-container {
         height: 70vh;
-        width: 40vw;
+    }
+
+    #pfp {
+        width: 8vw;
+    }
+
+    #crown-icon {
+        width: 8vw;
     }
 }
 
 @media (max-aspect-ratio: 4/3) {
     .results-container {
-        height: 70vh;
         width: 60vw;
+    }
+
+    #pfp {
+        width: 15vw;
     }
 }
 
+#home-button {
+    width: 8vw;
+    height: 6vh;
+    font-size: 3vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 1vh;
+    background-color: #FF2E00;
+}
