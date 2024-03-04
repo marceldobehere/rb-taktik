@@ -6,3 +6,4 @@ importModule("/shared/js/nav.js");
 importModule("/shared/js/challenge.js");
 importModule("/shared/js/extras.js");
 importModule("/shared/js/audio/audioManager.js");
+importModule("/shared/js/rankStuff.js");

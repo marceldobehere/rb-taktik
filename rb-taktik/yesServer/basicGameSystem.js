@@ -2,6 +2,7 @@ let app;
 let io;
 let accountInterface;
 let sessionSystem;
+let rankingSystem;
 
 let gameDict = {};
 
@@ -143,12 +144,12 @@ function checkWin(entry)
     return false;
 }
 
-function initApp(_app, _io, _accountInterface, _sessionSystem) {
+function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem) {
     app = _app;
     io = _io;
     accountInterface = _accountInterface;
     sessionSystem = _sessionSystem;
-
+    rankingSystem = _rankingSystem;
 
     io.on('connection', (socket) => {
         console.log("User connected");
