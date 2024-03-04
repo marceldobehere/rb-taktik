@@ -11,7 +11,15 @@ body, #loader-div {
     font-family: 'Inter', sans-serif;
 }
 
+* {
+    margin: 0;
+}
 
+h3 {
+    font-size: 2.5vh;
+    margin: 0;
+    padding: 0;
+}
 
 #welcomeDesign{
     font-family: 'Helvetica', sans-serif;
@@ -32,6 +40,7 @@ body, #loader-div {
 
 #playAsGuest{
     margin:auto;
+    margin-top: 4vh;
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
     font-size: 2.5vh;
@@ -45,7 +54,7 @@ body, #loader-div {
     color: #FF2E00;
     -webkit-text-stroke: 0.25vh black;
     text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
-
+    margin-bottom: 2vh;
 }
 
 #input-email{
@@ -83,8 +92,7 @@ body, #loader-div {
     border-radius: 4vh;
     font-size: 3vh;
     border-width: 0.55vh;
-    margin-bottom: 1vh;
-
+    margin-bottom: 4vh;
 }
 #welcomeDesign{
     height: 6.5vh;
