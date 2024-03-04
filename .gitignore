@@ -4,3 +4,6 @@
 *.xml
 */.idea/**
 rb-taktik/secret/auth.json
+rb-taktik/localDb/friends.json
+rb-taktik/localDb/notifications.json
+rb-taktik/localDb/users.json
