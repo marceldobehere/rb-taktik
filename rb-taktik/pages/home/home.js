@@ -42,6 +42,8 @@ async function homeInit() {
         disableBtn("btn-ranked");
         disableBtn("btn-random");
         document.getElementById("friend-list-cont").style.display = "none";
+
+        document.getElementById("rankImg").style.display = "none";
     }
     else {
         document.getElementById("info-username").textContent = userData["username"];
@@ -49,6 +51,10 @@ async function homeInit() {
         document.getElementById("info-pfp").src = "/shared/images/placeHolderPFP.png";
 
         document.getElementById("acc-login-logout").textContent = "Logout";
+
+        let rankImg = document.getElementById("rankImg");
+        rankImg.style.display = "";
+        rankImg.src = getRankImageFromLevel(userData["rank"]);
     }
 
     await loadFriendList();

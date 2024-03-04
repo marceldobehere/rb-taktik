@@ -56,6 +56,7 @@ app.get('/', (req, res) => {
 
 app.get('/*', (req, res) => {
     let url = req.url;
+    url = decodeURI(url);
     if (!url.startsWith('/shared/'))
     {
         if (url.indexOf(".") == -1)
@@ -70,6 +71,8 @@ app.get('/*', (req, res) => {
 
     if (url.indexOf("?") != -1)
         url = url.substring(0, url.indexOf("?"));// url.split("?")[0];
+
+    console.log("URL: " + __dirname + url);
 
     if (url.indexOf(".") != -1 && !fs.existsSync(__dirname + url))
         res.redirect('/404/404.html');
@@ -108,11 +111,11 @@ async function startUp()
     await accountSystem.initApp(app, io, accountInterface, securityInterface, sessionSystem);
     await mailInterface.initApp();
     await passwordResetSystem.initApp(app, io, accountInterface, accountSystem, securityInterface, sessionSystem, mailInterface);
-    basicGameSystem.initApp(app, io, accountInterface, sessionSystem);
+    basicGameSystem.initApp(app, io, accountInterface, sessionSystem, rankingSystem);
     notificationSystem.initApp(app, io, notificationInterface, accountInterface, sessionSystem);
     friendSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
     challengeSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
-    await rankingSystem.initApp();
+    await rankingSystem.initApp(accountInterface, sessionSystem);
 
     let port = USE_HTTPS ? 443 : 80;
     server.listen(port, () => {
