@@ -25,7 +25,7 @@
                 <div class="slidecontainer">
                     <label for="volumeMusicValue" class="hidden" >Music Volume</label>
                     <input  oninput="setValue('volumeMusic', this.value, volumeMusic)" id="volumeMusicValue" type="range" min="0" max="100"
-                        value="50" class="slider">
+                        value="50" class="slider sound">
                 </div>
             </div>
     
@@ -37,14 +37,14 @@
     
     
         <div>
-            <label class="white_font">Volume FX</label>
+            <label class="white_font">Volume SFX</label>
         </div>
         <div class="slidecontainer_big">
             <div class="slidecontainer_middle">
                 <div class="slidecontainer">
                     <label for="volumeFXValue" class="hidden" >Sound-effects Volume</label>
                     <input oninput="setValue('volumeFX', this.value, volumeFX)" id="volumeFXValue" type="range" min="0" max="100"
-                        value="50" class="slider">
+                        value="50" class="slider sound">
                 </div>
             </div>
     
@@ -57,7 +57,7 @@
    
     <footer id="footer">
         <div>
-            <button onclick="goPage('/home')" id="back_button">Back</button>
+            <button onclick="goPage('/home')" class="sound" id="back_button">Back</button>
 
         </div>
         <div>
