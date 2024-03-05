@@ -7,6 +7,8 @@ const folderPath = "./localDb/";
 
 function initApp()
 {
+    if (!fs.existsSync(folderPath))
+        fs.mkdirSync(folderPath);
 
     console.log("> Initialized db interface");
 }
@@ -102,7 +104,7 @@ async function getAllKeys(tableName)
 {
     let table = await _getTable(tableName);
     if (!table)
-        return;
+        return [];
 
     return Object.keys(table);
 }
