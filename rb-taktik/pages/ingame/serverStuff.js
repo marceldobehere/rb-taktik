@@ -75,10 +75,19 @@ async function gameStarted(obj)
 
 async function init()
 {
-    msgHook("game-leave", (data) => {
-        alert("The opponent has left the game.");
+    msgHook("game-leave",  (data) => {
         //resetBoard();
-        goPage("/home")
+
+        setTimeout(() => {
+            if (playerPoints[0] >= 3 || playerPoints[1] >= 3)
+            {
+                hideMessage();
+                return;
+            }
+
+            alert("The opponent has left the game.");
+            goPage("/home")
+        }, 500);
     });
 
     msgHook("game-join", async (data) => {
@@ -142,12 +151,12 @@ async function attemptJoinFromUrl()
     {
         challengeFriendId = parseInt(challengeFriendId);
 
-        alert("CHALLENGING: " + challengeFriendId);
+        //alert("CHALLENGING: " + challengeFriendId);
 
 
         await createGame();
 
-        alert("ROOM ID: " + currentRoomId);
+        //alert("ROOM ID: " + currentRoomId);
 
         let challengeSent = await msgSendAndGetReply('challenge-user', {userId: challengeFriendId, roomId: currentRoomId});
 
@@ -162,7 +171,10 @@ async function attemptJoinFromUrl()
 
     let roomId = params["gameid"];
     if (roomId == undefined)
+    {
+        await createGame();
         return;
+    }
     console.log("Attempting to join game with id:", roomId);
 
     let result = await msgSendAndGetReply("game-join", {"id":roomId});

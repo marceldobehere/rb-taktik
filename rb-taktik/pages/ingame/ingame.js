@@ -217,6 +217,41 @@ function hideMessage(dontStart)
 async function tryStartNextRound()
 {
     // check if game over
+    if (playerPoints[0] >= 3 || playerPoints[1] >= 3)
+    {
+        gameWinner = playerPoints[0] > playerPoints[1] ? 0 : 1;
+        // TODO: Add important game data as url params
+
+        let resultInfos;
+
+        if (isGuest)
+        {
+            resultInfos = {
+                "winner": gameWinner,
+                "playerNumber": playerNumber,
+                "playerNames": JSON.stringify(playerNames),
+                "playerPoints": JSON.stringify(playerPoints),
+            };
+        }
+        else
+        {
+            resultInfos = {
+                "winner": gameWinner,
+                "playerNumber": playerNumber,
+                "playerNames": JSON.stringify(playerNames),
+                "playerPoints": JSON.stringify(playerPoints),
+                "oldRank": userData["rank"],
+                "newRank": userData["rank"], // will update
+            };
+
+            await refreshUserData();
+            resultInfos["newRank"] = userData["rank"];
+        }
+
+        let queryParams = new URLSearchParams(resultInfos).toString();
+        goPage(`/results/results.html?${queryParams}`);
+        return;
+    }
 
     await startGame(true);
 }

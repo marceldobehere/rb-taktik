@@ -1,0 +1,110 @@
+body, #loader-div {
+    background: linear-gradient(to top right, #32E8FF, #0075FF);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.results-container {
+    background-color: white;
+    width: 40vw;
+    height: 70vh;
+    aspect-ratio: 4 / 3;
+    text-align: center;
+    box-shadow: 0px 1vh 1vh rgba(0, 0, 0, 0.25);
+    border-radius: 3vh;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pfp {
+    width: 10vw;
+    margin-top: 4vh;
+    padding: 0;
+    border: 1vh solid red;
+    border-radius: 50%;
+}
+
+#crown-icon {
+    width: 8vw;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 63.5vh;
+}
+
+p {
+    font-size: 5vh;
+    margin: 0;
+    padding: 0;
+    color: #FF2E00;
+    -webkit-text-stroke: 0.2vh black;
+    font-weight: bold;
+}
+
+#points-gained{
+    color: white;
+}
+
+.res-info-text{
+    color: white;
+}
+
+h1 {
+    font-size: 6vh;
+    margin: 0;
+    padding: 0;
+    color: red;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .results-container {
+        height: 70vh;
+    }
+
+    #pfp {
+        width: 10vw;
+    }
+
+    #crown-icon {
+        width: 20vw;
+    }
+}
+
+@media (max-aspect-ratio: 4/3) {
+    .results-container {
+        width: 60vw;
+    }
+
+    #pfp {
+        width: 15vw;
+    }
+}
+
+#home-button {
+    width: 8vw;
+    height: 7vh;
+    font-size: 3vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 1vh;
+    background-color: #FF2E00;
+    color: white;
+}
+
+.rank-image{
+    padding: 0;
+    margin: 0;
+    width: 3vw;
+}

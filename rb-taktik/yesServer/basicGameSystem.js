@@ -2,6 +2,7 @@ let app;
 let io;
 let accountInterface;
 let sessionSystem;
+let rankingSystem;
 
 let gameDict = {};
 
@@ -143,12 +144,12 @@ function checkWin(entry)
     return false;
 }
 
-function initApp(_app, _io, _accountInterface, _sessionSystem) {
+function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem) {
     app = _app;
     io = _io;
     accountInterface = _accountInterface;
     sessionSystem = _sessionSystem;
-
+    rankingSystem = _rankingSystem;
 
     io.on('connection', (socket) => {
         console.log("User connected");
@@ -187,7 +188,8 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 "playerIds": [session ? session.userId : undefined],
                 "sockets": [socket],
                 "settings": {},
-                "state": {}
+                "state": {},
+                "gameDone": false
             };
 
             resetGameState(gameEntry);
@@ -311,7 +313,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
                 });
         });
 
-        socket.on('game-move', (obj) => {
+        socket.on('game-move', async (obj) => {
             let gameEntry = getGameWithPlayer(socket);
 
             (() => {
@@ -371,8 +373,28 @@ function initApp(_app, _io, _accountInterface, _sessionSystem) {
 
                 let state = gameEntry["state"];
 
+                let gameDone = gameEntry["state"]["playerPoints"][gameEntry["state"]["gameWinner"]] >= 3;
+
+                won ||= gameDone;
+
                 if (won)
                 {
+                    if (gameDone && !gameEntry["gameDone"])
+                    {
+                        gameEntry["gameDone"] = true;
+
+                        // update ranking
+                        let userIds = gameEntry["playerIds"];
+                        let winner = gameEntry["state"]["gameWinner"];
+                        let loser = (winner + 1) % 2;
+
+                        let winnerId = userIds[winner];
+                        let loserId = userIds[loser];
+
+                        console.log("> Winner: ", winnerId);
+                        await rankingSystem.playerWonMatch(winnerId, loserId);
+                    }
+
                     for (let socket of gameEntry["sockets"])
                         socket.emit("game-win", {state});
                 }

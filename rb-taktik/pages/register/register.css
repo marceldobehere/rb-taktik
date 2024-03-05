@@ -11,15 +11,14 @@ body, #loader-div {
     font-family: 'Inter', sans-serif;
 }
 
-#alrAcc {
-    font-family: 'Helvetica', sans-serif;
-    font-weight: 800;
-        font-size: 4vh;
-    line-height: 4.2vh;
-    color: #FF2E00;
-    -webkit-text-stroke: 0.25vh black;
-    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+* {
+    margin: 0;
+}
 
+h3 {
+    font-size: 2.5vh;
+    margin: 0;
+    padding: 0;
 }
 
 #welcomeDesign{
@@ -40,21 +39,101 @@ body, #loader-div {
 }
 
 #playAsGuest{
-    margin-top: -2.5vh;
+    margin:auto;
+    margin-top: 4vh;
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
     font-size: 2.5vh;
     -webkit-text-stroke: 0.2vh black;
 }
+#alrAcc {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 800;
+    font-size: 4vh;
+    line-height: 4.2vh;
+    color: #FF2E00;
+    -webkit-text-stroke: 0.25vh black;
+    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
+    margin-bottom: 2vh;
+}
 
 #input-email{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    border-width: 0.55vh;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
 }
 
 #input-username{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    border-width: 0.55vh;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
 }
 
 #input-password{
-    height: 5.5vh;
+    height: 6.5vh;
+    width: 76vh;
+    border-radius: 4vh;
+    border-width: 0.55vh;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+#btn-register{
+    height: 6.5vh;
+    width: 30vh;
+    border-radius: 4vh;
+    font-size: 3vh;
+    border-width: 0.55vh;
+    margin-bottom: 4vh;
+    padding: 0;
+}
+#welcomeDesign{
+    height: 6.5vh;
+    width: 30vh;
+    margin: auto;
+    margin-bottom: 3vh;
+}
+
+@media screen and (max-aspect-ratio: 8/5) {
+    #input-email{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+        margin-bottom: 1vh;
+    }
+
+    #input-username{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+        margin-bottom: 1vh;
+
+    }
+
+    #input-password{
+        height: 5.5vh;
+        width: 60vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+        margin-bottom: 1vh;
+
+    }
+    #btn-register{
+        height: 5.5vh;
+        width: 20vh;
+        border-radius: 4vh;
+        font-size: 2vh;
+        margin-bottom: 1vh;
+
+    }
 }

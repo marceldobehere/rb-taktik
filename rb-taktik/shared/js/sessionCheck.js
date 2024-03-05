@@ -20,6 +20,8 @@ async function refreshUserData()
     }
 
     userData = result;
+    if (userData["rank"] < 600)
+        userData["rank"] = 600;
     isGuest = false;
     return result;
 }
