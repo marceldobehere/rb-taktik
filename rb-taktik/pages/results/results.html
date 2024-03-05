@@ -10,18 +10,23 @@
         <img id="crown-icon" src="/shared/images/crownIcon.png">
         <img id="pfp" src="/shared/images/placeHolderPFP.png">
         <h1><span id="player-name">Shabar</span> wins!</h1>
-        <p>Rounds played: <span class="res-info-text">3</span></p>
-        <p>Rounds won: <span class="res-info-text" id="wins-number">2</span></p>
-        <p>Elo-Points: <span class="res-info-text">1200</span><span id="points-gained"> (+20)</span></p>
-        <img id="rank" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
-        <button id="home-button">Home</button>
+        <br>
+        <p>Rounds played: <span class="res-info-text" id="rounds-played">3</span></p>
+        <p>Rounds won: <span class="res-info-text" id="rounds-won">2</span></p>
+        <p>Elo-Points: <span class="res-info-text" id="rank-old">1200</span><span id="points-gained"> (+20)</span></p>
+        <div>
+            <img class="rank-image" id="rank-image-old" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
+            <img class="rank-image" id="rank-arrow-image" src="/shared/images/guestPFP.png">
+            <img class="rank-image" id="rank-image-new" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
+        </div>
+        <button id="home-button" onclick="goPage('/home')">Home</button>
     </div>
 </body>
-</html>
-
 <script src="/shared/js/roccModule.js"></script>
 <script>
     importModule('/shared/js/basicModules.js');
     importModule('results.js');
     startImporting();
 </script>
+</html>
+

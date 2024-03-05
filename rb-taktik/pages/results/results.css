@@ -1,4 +1,4 @@
-body {
+body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
     width: 100vw;
     height: 100vh;
@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .results-container {
@@ -102,7 +103,7 @@ h1 {
     color: white;
 }
 
-#rank{
+.rank-image{
     padding: 0;
     margin: 0;
     width: 3vw;

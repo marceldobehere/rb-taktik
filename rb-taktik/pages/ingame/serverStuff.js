@@ -75,10 +75,19 @@ async function gameStarted(obj)
 
 async function init()
 {
-    msgHook("game-leave", (data) => {
-        alert("The opponent has left the game.");
+    msgHook("game-leave",  (data) => {
         //resetBoard();
-        goPage("/home")
+
+        setTimeout(() => {
+            if (playerPoints[0] >= 3 || playerPoints[1] >= 3)
+            {
+                hideMessage();
+                return;
+            }
+
+            alert("The opponent has left the game.");
+            goPage("/home")
+        }, 500);
     });
 
     msgHook("game-join", async (data) => {
