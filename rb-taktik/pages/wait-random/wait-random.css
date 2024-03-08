@@ -1,0 +1,21 @@
+.dot1, .dot2, .dot3 {
+    opacity: 0;
+    animation: dots 2s infinite;
+}
+
+.dot2 {
+    animation-delay: 0.5s;
+}
+
+.dot3 {
+    animation-delay: 1s;
+}
+
+@keyframes dots {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
