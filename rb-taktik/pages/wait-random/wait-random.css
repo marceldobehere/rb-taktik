@@ -1,3 +1,57 @@
+body, #loader-div {
+    background: linear-gradient(to top right, #32E8FF, #0075FF);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#wait-random-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0.3vw 0.3vw rgba(0, 0, 0, 0.25);
+}
+
+#searching{
+    font-size: 12vh;
+    margin-bottom: 1vh;
+}
+
+#looking-text{
+    font-size: 3.5vh;
+    margin-bottom: 5vh;
+}
+
+#home-icon{
+    width: 5vh;
+}
+
+#home-button{
+    border: none;
+    background-color: #FF2E00;
+    color: white;
+    box-shadow: 0px 0.3vw 0.3vw rgba(0, 0, 0, 0.25);
+    width: 20vh;
+    height: 8vh;
+    font-size: 3vh;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
 .dot1, .dot2, .dot3 {
     opacity: 0;
     animation: dots 2s infinite;
@@ -19,3 +73,52 @@
         opacity: 1;
     }
 }
+
+@media (max-height: 200px) and (max-width: 300px){
+    #searching {
+        font-size: 6vw;
+    }
+
+    #looking-text {
+        font-size: 2vw;
+    }
+
+    #home-button {
+        font-size: 2vw;
+    }
+}
+
+@media (max-height: 200px) and (max-width: 200px){
+    #searching {
+        font-size: 8vw;
+    }
+
+    #looking-text {
+        font-size: 3vw;
+    }
+
+    #home-button {
+        font-size: 2vw;
+    }
+}
+
+@media (max-height: 200px) and (max-width: 150px){
+    #searching {
+        font-size: 8vw;
+    }
+
+    #looking-text {
+        font-size: 4vw;
+    }
+
+    #home-button {
+        font-size: 2vw;
+    }
+}
+
+
+
+
+
+
+

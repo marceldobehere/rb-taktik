@@ -44,7 +44,6 @@ span{
     color: white;
     border-radius: 0.5vw;
     font-size: clamp(1.5vmax, 1.8vmax, 3vmax);
-
     border: none;
     display: flex;
     align-items: center;
