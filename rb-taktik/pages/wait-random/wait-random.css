@@ -74,3 +74,16 @@ body, #loader-div {
     }
 }
 
+@media (max-aspect-ratio: 16/9) {
+    #searching {
+        font-size: 9vw;
+    }
+
+    #looking-text {
+        font-size: 3vw;
+    }
+
+    #home-button {
+        font-size: 2vw;
+    }
+}
