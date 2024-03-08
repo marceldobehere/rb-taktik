@@ -48,8 +48,8 @@ body, #loader-div {
     height: 8vh;
     font-size: 3vh;
     display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    justify-content: center;
 }
 
 .dot1, .dot2, .dot3 {
@@ -74,16 +74,49 @@ body, #loader-div {
     }
 }
 
-@media (max-aspect-ratio: 16/9) {
+@media (max-width: 200px) {
     #searching {
-        font-size: 9vw;
+        font-size: 8vw;
     }
 
     #looking-text {
-        font-size: 3vw;
+        font-size: 2.5vw;
+    }
+
+    #home-button {
+        font-size: 1.5vw;
+        width: 8vw;
+    }
+}
+
+@media (max-width: 250px) {
+    #searching {
+        font-size: 12vw;
+    }
+
+    #looking-text {
+        font-size: 2.5vw;
+    }
+
+    #home-button {
+        font-size: 1.5vw;
+        width: 8vw;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #searching {
+        font-size: 12vw;
+    }
+
+    #looking-text {
+        font-size: 4vw;
     }
 
     #home-button {
         font-size: 2vw;
+        width: 10vw;
     }
 }
+
+
