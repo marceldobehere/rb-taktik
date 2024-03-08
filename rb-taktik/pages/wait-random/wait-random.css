@@ -36,7 +36,7 @@ body, #loader-div {
 }
 
 #home-icon {
-    width: 5vh;
+    width: 2.5vw;
 }
 
 #home-button {
@@ -88,6 +88,10 @@ body, #loader-div {
         font-size: 4vw;
         width: 18vw;
         height: 6vw;
+    }
+
+    #home-icon {
+        width: 5vw;
     }
 }
 
