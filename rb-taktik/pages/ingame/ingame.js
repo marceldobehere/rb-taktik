@@ -160,7 +160,7 @@ function stackSelected(element, stackIndex, pieceIndex)
 
 async function fieldClicked(element) {
     if (!gameRunning || gameWinner != undefined || playerTurn != playerNumber || selectedStack == -1)
-        return;
+        return fxAudioNoRB234Left.play();
 
     let idx = getIndex(element);
 
@@ -169,6 +169,14 @@ async function fieldClicked(element) {
 
     //element.style.backgroundColor = playerColors[playerNumber];
     playerTurn = (playerTurn + 1) % 2;
+
+    if (playerStacks[playerNumber][selectedStack] < 1)
+    {
+        fxAudioNoRB234Left.play();
+    }
+    else{
+        fxAudioplace.play();
+    }
 
     let reply = await msgSendAndGetReply("game-move", {"field":idx, "piece": selectedStack});
     if (reply["error"] != undefined)
@@ -210,6 +218,14 @@ function hideMessage(dontStart)
 {
     messagePopupBox.style.display = "none";
 
+    try {
+        fxAudioWin.pause();
+        fxAudioLose.pause();
+    } catch (e)
+    {
+        
+    }
+    resumeBgm();
     if (!dontStart)
         setTimeout(tryStartNextRound, 1000);
 }
@@ -288,15 +304,15 @@ function playClickSound() {
 }
 
 // Function to play the click sound for btns2
-function playClickSound2() {
-    fxAudioplace.play()
-        .then(() => {
-            console.log("Click sound played for btns2");
-        })
-        .catch(() => {
-            console.error("Error playing click sound for btns2");
-        });
-}
+// function playClickSound2() {
+//     fxAudioplace.play()
+//         .then(() => {
+//             console.log("Click sound played for btns2");
+//         })
+//         .catch(() => {
+//             console.error("Error playing click sound for btns2");
+//         });
+// }
 
 // Attach event listeners to btns
 btns.forEach(function(btn) {
@@ -320,9 +336,9 @@ btns.forEach(function(btn) {
 
 // Attach event listeners to btns2
 btns2.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-        playClickSound2();
-    });
+    // btn.addEventListener("click", function() {
+    //     playClickSound2();
+    // });
 
     btn.addEventListener("mouseover", function() {
         playHoverSound();

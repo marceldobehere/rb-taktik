@@ -13,6 +13,8 @@ const fxAudioNoRB234Left = new Audio();
 const fxAudioplace = new Audio();
 const fxAudioWin = new Audio();
 
+let bgmEnabled = true;
+
 function initAudio() {
     const bgm1 = "/shared/audio/music/rb_taktik_ingame_1.mp3";
     const bgm2 = "/shared/audio/music/rb_taktik_ingame_2.mp3";
@@ -45,8 +47,19 @@ function initAudio() {
     fxAudioplace.src = place;
     fxAudioWin.src = win;
 
+    updateAudioVol();
+
     console.log("> Audio Init done!")
 
+}
+
+function updateAudioVol()
+{
+    let fxVol = settingsObj["audio"]["volumeFX"];
+    setSfxVolume(fxVol);
+
+    let bgmVol = settingsObj["audio"]["volumeMusic"];
+    setBgmVolume(bgmVol);
 }
 
 function startBgm(audio)
@@ -58,6 +71,9 @@ function startBgm(audio)
 
 async function bgmStarter(audioElement)
 {
+    if (!bgmEnabled)
+        return;
+
     if (audioElement.paused)
     {
         try {
@@ -67,6 +83,39 @@ async function bgmStarter(audioElement)
             //console.log("BRUH", e)
         }
     }
+}
+
+function pauseBgm()
+{
+    bgmEnabled = false;
+    bgm1Audio.pause();
+    bgm2Audio.pause();
+}
+
+function resumeBgm()
+{
+    bgmEnabled = true;
+}
+
+function setBgmVolume(percent)
+{
+    bgm1Audio.volume = percent/100;
+    bgm2Audio.volume = percent/100;
+    bgmMenuAudio.volume = percent/100;
+}
+
+function setSfxVolume(percent)
+{
+    fxAudioDraw.volume = percent/100;
+    fxAudiogameStartCountdown.volume = percent/100;
+    fxAudioGameStart.volume = percent/100;
+    fxAudioLose.volume = percent/100;
+    fxAudioMenuButtonClick.volume = percent/100;
+    fxAudioMenuButtonHover.volume = percent/100;
+    fxAudioNewScore.volume = percent/100;
+    fxAudioNoRB234Left.volume = percent/100;
+    fxAudioplace.volume = percent/100;
+    fxAudioWin.volume = percent/100;
 }
 
 onModulesImported.push(initAudio);
