@@ -114,10 +114,19 @@ async function init()
     msgHook("game-win", (data) => {
         console.log("Game won/lost!", data);
         loadGameState(data["state"]);
-        if (data["state"]["gameWinner"] == playerNumber)
+        if (data["state"]["gameWinner"] == playerNumber){
+            pauseBgm();
+            fxAudioWin.play();
             showMessage("You won!");
+        }
+           
         else
+        {
+            pauseBgm();
+            fxAudioLose.play();
             showMessage("You lost");
+
+        }
     });
 
     msgHook("chat-message", (data) => {

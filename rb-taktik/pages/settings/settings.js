@@ -10,6 +10,7 @@ function setValue(name, x, output){
     saveAudioSetting(name, x);
     getValue(name, output);
     output.innerText = x + "%";
+    updateAudioVol();
 }
 
 

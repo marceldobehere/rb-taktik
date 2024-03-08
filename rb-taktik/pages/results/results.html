@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/shared/images/web_icon.png">
 </head>
 <body>
+    <div id="dark"></div>
     <div class="results-container">
         <img id="crown-icon" src="/shared/images/crownIcon.png">
         <img id="pfp" src="/shared/images/placeHolderPFP.png">
@@ -14,10 +15,10 @@
         <br>
         <p>Rounds played: <span class="res-info-text" id="rounds-played">3</span></p>
         <p>Rounds won: <span class="res-info-text" id="rounds-won">2</span></p>
-        <p>Elo-Points: <span class="res-info-text" id="rank-old">1200</span><span id="points-gained"> (+20)</span></p>
-        <div>
+        <p id="elo-points-container">Elo-Points: <span class="res-info-text" id="rank-old">1200</span><span id="points-gained"> (+20)</span></p>
+        <div id="rank-image-container">
             <img class="rank-image" id="rank-image-old" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
-            <img class="rank-image" id="rank-arrow-image" src="/shared/images/guestPFP.png">
+            <img class="rank-image" id="rank-arrow-image" src="/shared/images/rankedArrow.png">
             <img class="rank-image" id="rank-image-new" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
         </div>
         <button id="home-button" onclick="goPage('/home')">Home</button>
