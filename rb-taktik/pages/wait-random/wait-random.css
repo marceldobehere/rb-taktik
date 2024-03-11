@@ -50,6 +50,7 @@ body, #loader-div {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .dot1, .dot2, .dot3 {

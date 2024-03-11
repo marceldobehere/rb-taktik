@@ -49,6 +49,7 @@ span{
     align-items: center;
     justify-content: center;
     box-shadow: 0px 0.3vw 0.3vw rgba(0, 0, 0, 0.35);
+    cursor: pointer;
 }
 
 #homeIcon{
