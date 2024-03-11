@@ -79,7 +79,7 @@ h2, h3 {
     margin-bottom: 4vh;
     padding: 0.5vh;
     line-height: 5.4vh;
-    border: 0.4vh solid #FF2E00
+    border: 0.4vh solid #FF2E00;
     margin: auto auto -3.5vh;
     text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 }

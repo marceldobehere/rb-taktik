@@ -97,6 +97,7 @@ const friendInterface = require("./yesServer/friendInterface.js");
 const friendSystem = require("./yesServer/friendSystem.js");
 const challengeSystem = require("./yesServer/challengeSystem.js");
 const rankingSystem = require("./yesServer/rankingSystem.js");
+const waitSystem = require("./yesServer/waitSystem.js");
 
 
 async function startUp()
@@ -116,6 +117,7 @@ async function startUp()
     friendSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
     challengeSystem.initApp(app, io, notificationSystem, friendInterface, accountInterface, sessionSystem);
     await rankingSystem.initApp(accountInterface, sessionSystem);
+    await waitSystem.initApp(app, io, accountInterface, sessionSystem, rankingSystem);
 
     let port = USE_HTTPS ? 443 : 80;
     server.listen(port, () => {
