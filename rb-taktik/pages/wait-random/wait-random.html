@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waiting for random match</title>
+    <link rel="stylesheet" type="text/css" href="wait-random.css">
+</head>
+<body>
+    <div id="wait-random-container">
+        <h1 id="searching">Searching<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></h1>
+        <p id="looking-text">Looking for an opponent. Stay tuned!</p>
+        <button id="home-button" onclick="history.back()"><img src="../../shared/images/error404HomeLogo.png" id="home-icon">Home</button>
+    </div>
+</body>
+<script src="/shared/js/roccModule.js"></script>
+<script>
+  importModule('/shared/js/basicModules.js');
+  importModule('wait-random.js');
+  startImporting();
+</script>
+</html>
