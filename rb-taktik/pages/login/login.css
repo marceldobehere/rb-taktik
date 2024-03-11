@@ -48,7 +48,7 @@ h2, h3 {
 #playAsGuest{
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size: 2.5vh;
+    font-size: 3.8vh;
     -webkit-text-stroke: 0.2vh black;
     padding: 0;
     text-align: center;
@@ -77,7 +77,8 @@ h2, h3 {
     font-size: 3vh;
     border-width: 0.55vh;
     margin-bottom: 4vh;
-    padding: 0;
+    padding: 0vh;
+    line-height: 5.4vh;
 }
 
 * {
