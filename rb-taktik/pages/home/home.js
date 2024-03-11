@@ -1,5 +1,5 @@
 function joinGame() {
-    goPage("/ingame")
+    goPage("/ingame");
 }
 
 function openOptions() {
@@ -7,11 +7,11 @@ function openOptions() {
 }
 
 function joinRankedGame() {
-    joinGame();
+    goPage("/wait-ranked");
 }
 
 function joinRandomGame() {
-    joinGame();
+    goPage("/wait-random");
 }
 
 
