@@ -4,36 +4,35 @@ let accountInterface;
 let sessionSystem;
 let rankingSystem;
 
-let waitingRandomSockets = [];
-let waitingRankedSockets = [];
-let waitingRankedRanks = [];
+let waitingRandom = [];
+let waitingRanked = [];
 
 function removeSocketFromWaitingLists(socket)
 {
-    let index = waitingRandomSockets.indexOf(socket);
-    if (index != -1)
-        waitingRandomSockets.splice(index, 1);
+    let index = waitingRandom.findIndex((obj) => obj.socket === socket);
+    if (index !== -1)
+        waitingRandom.splice(index, 1);
 
-    index = waitingRankedSockets.indexOf(socket);
-    if (index != -1)
-    {
-        waitingRankedSockets.splice(index, 1);
-        waitingRankedRanks.splice(index, 1);
-    }
+    index = waitingRanked.findIndex((obj) => obj.socket === socket);
+    if (index !== -1)
+        waitingRanked.splice(index, 1);
 }
 
 async function connectPlayers(player1, player2)
 {
-    console.log(`> CONNECTING MATCH: `, player1, player2);
+    console.log(`> CONNECTING MATCH: ${player1.userId} and ${player2.userId}`);
+
+    player1.socket.emit('connect-match', {});
+    player2.socket.emit('connect-match', {});
 }
 
 async function tryConnectRandomMatch()
 {
-    if (waitingRandomSockets.length < 2)
+    if (waitingRandom.length < 2)
         return;
 
-    let player1 = waitingRandomSockets.shift();
-    let player2 = waitingRandomSockets.shift();
+    let player1 = waitingRandom.shift();
+    let player2 = waitingRandom.shift();
 
     // Send match infos to players
     await connectPlayers(player1, player2);
@@ -41,29 +40,25 @@ async function tryConnectRandomMatch()
 
 async function tryConnectRankedMatch()
 {
-    if (waitingRandomSockets.length < 2)
+    if (waitingRanked.length < 2)
         return;
 
-    for (let i = 0; i < waitingRankedSockets.length; i++)
+    for (let i = 0; i < waitingRanked.length; i++)
     {
-        let player1 = waitingRankedSockets[i];
-        let player1Rank = waitingRankedRanks[i];
+        let player1 = waitingRanked[i];
 
-        for (let i2 = i + 1; i2 < waitingRankedSockets.length; i2++)
+        for (let i2 = i + 1; i2 < waitingRanked.length; i2++)
         {
-            let player2 = waitingRankedSockets[i2];
-            let player2Rank = waitingRankedRanks[i2];
+            let player2 = waitingRanked[i2];
 
-            if (player1Rank !== player2Rank)
+            if (player1.rank !== player2.rank)
                 continue;
 
             // Remove 2nd player first
-            waitingRankedSockets.splice(i2, 1);
-            waitingRankedRanks.splice(i2, 1);
+            waitingRanked.splice(i2, 1);
 
             // Remove 1st player
-            waitingRankedSockets.splice(i, 1);
-            waitingRankedRanks.splice(i, 1);
+            waitingRanked.splice(i, 1);
 
             // Send match infos to players
             await connectPlayers(player1, player2);
@@ -83,20 +78,31 @@ function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem)
     io.on('connection', (socket) => {
         socket.on('disconnect', () => {
             removeSocketFromWaitingLists(socket);
+            console.log(`> WAIT LEAVE`);
         });
 
-        socket.on('start-wait-random', async (obj) => {
+        socket.on('start-wait-random', async () => {
+            console.log(`> WAIT START RANDOM`);
             removeSocketFromWaitingLists(socket);
-            waitingRandomSockets.push(socket);
-            await tryConnectRandomMatch();
 
+            let session = sessionSystem.getSessionBySocket(socket);
+            if (session === undefined)
+                return socket.emit('start-wait-random', {error: "Invalid session."});
+
+            let user = await accountInterface.getUser(session.userId);
+            if (user === undefined)
+                return socket.emit('start-wait-random', {error: "Invalid user."});
+
+            waitingRandom.push({userId: session.userId, socket: socket});
             socket.emit('start-wait-random', {});
+            await tryConnectRandomMatch();
         });
 
-        socket.on('start-wait-ranked', async (obj) => {
+        socket.on('start-wait-ranked', async () => {
+            console.log(`> WAIT START RANKED`);
             removeSocketFromWaitingLists(socket);
 
-            let session = sessionSystem.getSession(socket.id);
+            let session = sessionSystem.getSessionBySocket(socket);
             if (session === undefined)
                 return socket.emit('start-wait-ranked', {error: "You are not logged in."});
 
@@ -105,11 +111,9 @@ function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem)
                 return socket.emit('start-wait-ranked', {error: "Invalid user."});
 
             let rank = rankingSystem.getRankNumberFromLevel(user["rank"]);
-            console.log("Rank: " + rank);
 
-            waitingRankedSockets.push(socket);
-            waitingRankedRanks.push(rank);
-
+            waitingRandom.push({userId: session.userId, socket: socket, rank: rank});
+            socket.emit('start-wait-ranked', {});
             await tryConnectRankedMatch();
         });
     });
