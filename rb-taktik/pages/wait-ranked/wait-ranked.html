@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waiting for ranked match</title>
+    <link rel="stylesheet" type="text/css" href="wait-ranked.css">
+</head>
+<body>
+<div id="wait-ranked-container">
+  <h1 id="searching">Searching<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></h1>
+  <p class="looking-text">Searching for opponent that matches rank</p>
+  <img id="curr-rank" src="/shared/images/Ranked%20Icons/Bronze%20Rank%20Icon.png">
+  <p class="looking-text" id="stay-tuned">Stay tuned!</p>
+  <button id="home-button" onclick="goPage('/home')"><img src="../../shared/images/error404HomeLogo.png" id="home-icon">Home</button>
+</div>
+</body>
+<script src="/shared/js/roccModule.js"></script>
+<script>
+  importModule('/shared/js/basicModules.js');
+  importModule('wait-ranked.js');
+  startImporting();
+</script>
+</html>
