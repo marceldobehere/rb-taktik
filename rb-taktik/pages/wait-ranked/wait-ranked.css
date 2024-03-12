@@ -82,12 +82,12 @@ body, #loader-div {
 }
 
 
-@media (max-aspect-ratio: 16/9) {
+@media (max-aspect-ratio: 18/9) {
     #searching {
         font-size: 12vw;
     }
 
-    #looking-text {
+    .looking-text {
         font-size: 4vw;
     }
 
