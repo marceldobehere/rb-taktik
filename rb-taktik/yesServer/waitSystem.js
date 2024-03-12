@@ -6,6 +6,7 @@ let rankingSystem;
 
 let waitingRandom = [];
 let waitingRanked = [];
+let tempMatchUps = [];
 
 function removeSocketFromWaitingLists(socket)
 {
@@ -18,12 +19,45 @@ function removeSocketFromWaitingLists(socket)
         waitingRanked.splice(index, 1);
 }
 
+function removeMatchUp(userId)
+{
+    let index = tempMatchUps.findIndex((obj) => obj.player1.userId === userId || obj.player2.userId === userId);
+    if (index !== -1)
+        tempMatchUps.splice(index, 1);
+}
+
+function getMatchUp(userId)
+{
+    for (let i = 0; i < tempMatchUps.length; i++)
+    {
+        if (tempMatchUps[i].player1.userId === userId || tempMatchUps[i].player2.userId === userId)
+            return tempMatchUps[i];
+    }
+    return undefined;
+}
+
+function setMatchRoomId(userId, roomId)
+{
+    let matchUp = getMatchUp(userId);
+    if (matchUp === undefined)
+        return false;
+
+    matchUp.roomId = roomId;
+    return true;
+}
+
 async function connectPlayers(player1, player2)
 {
     console.log(`> CONNECTING MATCH: ${player1.userId} and ${player2.userId}`);
 
-    player1.socket.emit('connect-match', {});
-    player2.socket.emit('connect-match', {});
+    tempMatchUps.push({
+        player1: player1,
+        player2: player2,
+        roomId: undefined
+    })
+
+    player1.socket.emit('connect-match', {"host": true});
+    player2.socket.emit('connect-match', {"host": false});
 }
 
 async function tryConnectRandomMatch()
@@ -79,6 +113,31 @@ function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem)
         socket.on('disconnect', () => {
             removeSocketFromWaitingLists(socket);
             console.log(`> WAIT LEAVE`);
+        });
+
+        socket.on('match-set-room', async (obj) => {
+            let session = sessionSystem.getSessionBySocket(socket);
+            if (session === undefined)
+                return socket.emit('match-set-room', {error: "Invalid session."});
+
+            let user = await accountInterface.getUser(session.userId);
+            if (user === undefined)
+                return socket.emit('match-set-room', {error: "Invalid user."});
+
+            if (setMatchRoomId(session.userId, obj.roomId) === false)
+                return socket.emit('match-set-room', {error: "Failed to set match room."});
+
+            socket.emit('match-set-room', {});
+
+            let matchUp = getMatchUp(session.userId);
+            if (matchUp === undefined)
+                return console.log(`> ERROR: MatchUp not found.`);
+            let player2 = matchUp.player2;
+
+            player2.socket.emit('match-set-room', {"roomId": obj.roomId});
+            console.log(`> MATCH SET ROOM: ${session.userId} and ${player2.userId} to ${obj.roomId}`);
+
+            removeMatchUp(session.userId);
         });
 
         socket.on('start-wait-random', async () => {

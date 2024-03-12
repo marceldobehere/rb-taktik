@@ -28,7 +28,7 @@ async function initResultsPage()
 
     document.getElementById("player-name").textContent = playerNames[winner];
     document.getElementById("rounds-played").textContent = playerPoints[0] + playerPoints[1];
-    document.getElementById("rounds-won").textContent = playerPoints[winner];
+    document.getElementById("rounds-won").textContent = playerPoints[playerNumber];
     document.getElementById("rank-old").textContent = newRank;
 
     if (newRank > oldRank)
