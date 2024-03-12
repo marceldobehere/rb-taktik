@@ -171,7 +171,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem)
 
             let rank = rankingSystem.getRankNumberFromLevel(user["rank"]);
 
-            waitingRandom.push({userId: session.userId, socket: socket, rank: rank});
+            waitingRanked.push({userId: session.userId, socket: socket, rank: rank});
             socket.emit('start-wait-ranked', {});
             await tryConnectRankedMatch();
         });
