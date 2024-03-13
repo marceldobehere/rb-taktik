@@ -71,6 +71,7 @@ async function gameStarted(obj)
     console.log("Game started");
     loadGameState(obj["state"]);
     gameRunning = true;
+    document.getElementById("invite-link-div").style.display = "none";
 }
 
 async function init()
