@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Profile Info</title>
@@ -28,6 +29,20 @@
 
 
   </div>
+
+  <div id="msg-popup-box" onclick="cancelUnfriend()" style="display: none;">
+    <div id="msg-popup-box-text" onclick="event.stopPropagation()">
+      <h3>Confirmation</h3>
+   
+      Are you sure you want to unfriend <span id="username2">User</span>?<br> 
+
+      <button id="yes-btn" onclick="actuallyUnfriend()">Yes</button>
+      <button id="no-btn" onclick="cancelUnfriend()">No</button>
+
+    </div>
+
+
+  </div>
 </body>
 
 <script src="/shared/js/roccModule.js"></script>
@@ -36,4 +51,5 @@
   importModule('profile.js');
   startImporting();
 </script>
+
 </html>
