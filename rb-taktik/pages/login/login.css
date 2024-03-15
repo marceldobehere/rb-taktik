@@ -48,7 +48,7 @@ h2, h3 {
 #playAsGuest{
     font-family: 'Helvetica', sans-serif;
     font-weight: 800;
-    font-size: 3.8vh;
+    font-size: 2.5vh;
     -webkit-text-stroke: 0.2vh black;
     padding: 0;
     text-align: center;
@@ -71,34 +71,14 @@ h2, h3 {
 }
 
 #btn-login{
-    height: 8vh;
-    width: 40vh;
+    height: 6.5vh;
+    width: 30vh;
     border-radius: 4vh;
-    font-size: 4vh;
+    font-size: 3vh;
     border-width: 0.55vh;
     margin-bottom: 4vh;
     padding: 0;
-    line-height: 5.4vh;
-    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
-}
-
-#input-username{
-    height: 6vh;
-    width: 65vh;
-    border-radius: 4vh;
-    font-size: 4vh;
-    margin-bottom: 1vh;
-
-}
-
-#input-password{
-    height: 6vh;
-    width: 65vh;
-    border-radius: 4vh;
-    font-size: 4vh;
-    margin-bottom: 1vh;
-    text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
-
+    font-family: "Helvetica";
 }
 
 * {
@@ -123,7 +103,6 @@ h2, h3 {
         border-radius: 4vh;
         font-size: 4vh;
         margin-bottom: 1vh;
-        text-shadow: 0vh 0.4vh 0.4vh rgba(0, 0, 0, 0.25);
 
     }
     #btn-login{
