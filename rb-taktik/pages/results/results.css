@@ -12,6 +12,25 @@ body, #loader-div {
     font-family: 'Roboto', sans-serif;
 }
 
+#dark{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1000;
+    opacity: 0.4;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .results-container {
     background-color: white;
     width: 40vw;
@@ -28,7 +47,8 @@ body, #loader-div {
 }
 
 #pfp {
-    width: 10vw;
+    width: 10vh;
+    height: 10vh;
     margin-top: 4vh;
     padding: 0;
     border: 1vh solid red;
@@ -40,7 +60,7 @@ body, #loader-div {
     margin: 0;
     padding: 0;
     position: absolute;
-    bottom: 64vh;
+    bottom: 65vh;
 }
 
 p {
@@ -68,33 +88,8 @@ h1 {
     color: red;
 }
 
-
-@media (min-aspect-ratio: 16/9) {
-    .results-container {
-        height: 70vh;
-    }
-
-    #pfp {
-        width: 10vw;
-    }
-
-    #crown-icon {
-        width: 20vw;
-    }
-}
-
-@media (max-aspect-ratio: 4/3) {
-    .results-container {
-        width: 60vw;
-    }
-
-    #pfp {
-        width: 15vw;
-    }
-}
-
 #home-button {
-    width: 8vw;
+    width: 20vh;
     height: 7vh;
     font-size: 3vh;
     margin-top: 1vh;
@@ -108,16 +103,66 @@ h1 {
 .rank-image{
     padding: 0;
     margin: 0;
-    width: 3vw;
+    width: 6vh;
+    height: 6vh;
+    display: block;
 }
 
 #rank-arrow-image{
     position: relative;
     top: 0.5vh;
+    display: block;
 }
 
-.rank-image-container{
-    padding: 0;
+#rank-image-container{
+    padding-top: 1vh;
     margin: 0;
-    height: 10vh;
+    height: 6vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
+
+
+@media (max-aspect-ratio: 4/3) {
+    .results-container {
+        width: 60vw;
+    }
+
+    #pfp {
+        width: 14vh;
+        height: 14vh;
+    }
+
+    #home-button{
+        width: 18vh;
+        height: 7vh;
+    }
+
+    #crown-icon {
+        width: 35vh;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 65vh;
+
+    }
+}
+
+@media (min-aspect-ratio: 4/3) {
+    .results-container {
+        height: 70vh;
+    }
+
+    #pfp {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #crown-icon {
+        width: 20vw;
+        position: absolute;
+        bottom: 65vh;
+    }
+
+}
+

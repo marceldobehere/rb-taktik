@@ -28,7 +28,7 @@ async function initResultsPage()
 
     document.getElementById("player-name").textContent = playerNames[winner];
     document.getElementById("rounds-played").textContent = playerPoints[0] + playerPoints[1];
-    document.getElementById("rounds-won").textContent = playerPoints[winner];
+    document.getElementById("rounds-won").textContent = playerPoints[playerNumber];
     document.getElementById("rank-old").textContent = newRank;
 
     if (newRank > oldRank)
@@ -41,6 +41,9 @@ async function initResultsPage()
     let rankImageOld = document.getElementById("rank-image-old");
     let rankArrowImage = document.getElementById("rank-arrow-image");
     let rankImageNew = document.getElementById("rank-image-new");
+    let rankImageContainer = document.getElementById("rank-image-container");
+    let eloPointsContainer = document.getElementById("elo-points-container");
+    let homeButton = document.getElementById("home-button");
     rankImageOld.src = getRankImageFromLevel(oldRank);
     rankImageNew.src = getRankImageFromLevel(newRank);
 
@@ -48,6 +51,14 @@ async function initResultsPage()
     {
         rankArrowImage.style.display = "none";
         rankImageNew.style.display = "none";
+        rankImageContainer.style.gridTemplateColumns = "1fr";
+    }
+
+    if (isGuest)
+    {
+        rankImageContainer.innerHTML="";
+        eloPointsContainer.innerHTML="&nbsp;";
+
     }
 }
 

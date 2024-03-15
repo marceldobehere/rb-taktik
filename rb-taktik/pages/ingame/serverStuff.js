@@ -71,6 +71,7 @@ async function gameStarted(obj)
     console.log("Game started");
     loadGameState(obj["state"]);
     gameRunning = true;
+    document.getElementById("invite-link-div").style.display = "none";
 }
 
 async function init()
@@ -154,6 +155,20 @@ async function attemptJoinFromUrl()
 {
     const params = Object.fromEntries(new URLSearchParams(window.location.search));
     console.log("Url params:", params);
+
+    let matchUp = params["matchUp"];
+    if (matchUp)
+    {
+        await createGame();
+        let reply = await msgSendAndGetReply('match-set-room', {roomId: currentRoomId});
+        if (reply["error"])
+        {
+            alert(`There was an error setting the room: ${reply["error"]}`);
+            goPage("/home");
+        }
+        console.log("Match set room:", reply);
+        return;
+    }
 
     let challengeFriendId = params["challengeFriend"];
     if (challengeFriendId != undefined)
