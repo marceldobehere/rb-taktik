@@ -2,13 +2,92 @@
 
 body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .pfp{
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
+#picLogo{
 
+    padding: 0vh;
+    margin: auto;
+    width: 40vh;
+    max-width: 56vh;
+    min-width: 40vh;
+    height: auto;
+    display: block;
+
+}
+#firstDiv{
+    margin: 40px auto auto auto;
+    width:90%;
+    display:grid;
+    grid-template-columns: 30% auto 15% 15%;
+}
+#gamebuttonContainer{
+    border-radius: 3vh 0 0 0;
+
+
+
+}
+#btn-ranked{
+    width: 20vh;
+    height: 20vh;
+    border-radius: 3vh 0 0 0;
+    padding: 0.5vh;
+    font-size: 4vh;
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    transition: 0s;
+    border-width: 0vh;
+    color: white;
+}
+#btn-random{
+    border-radius: 0 3vh 0 0;
+    width: 20vh;
+    height: 20vh;
+    padding: 0.5vh;
+    font-size: 4vh;
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    transition: 0s;
+    transform:translate(23vh,-20vh);
+    border-width: 0vh;
+    color: white;
+}
+#btn-options{
+    border-radius: 0 0 0 3vh;
+    width: 20vh;
+    height: 20vh;
+    padding: 0.5vh;
+    font-size: 4vh;
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    transition: 0s;
+    transform:translate(0vh,-18vh);
+    border-width: 0vh;
+    color: white;
+}
+#btn-create{
+    border-radius: 0 0 3vh 0;
+    width: 20vh;
+    height: 20vh;
+    padding: 0.5vh;
+    font-size: 4vh;
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    transition: 0s;
+    transform:translate(23vh,-38vh);
+    border-width: 0vh;
+    color: white;
+}
+#info-pfp{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px 50px 50px 50px;
+    border: 3px solid #E01F16;
+}
 
 .menu-tile {
     box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;

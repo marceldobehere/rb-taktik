@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="/shared/css/main_styles.css">
+  <link rel="icon" type="image/x-icon" href="/shared/images/web_icon.png">
+
+</head>
+<body onclick="hideDropDown(); hideDropDownNotification();">
+<img src="/shared/images/Logo.png" alt="Logo" class="logo" id="picLogo">
+
+<div id="gamebuttonContainer">
+
+  <button id="btn-ranked" class="menu-tile drop-shadow-figma sound" onclick="joinRankedGame()">
+     <span>Ranked Game</span>
+  </button>
+
+  <button id="btn-random"  class="menu-tile drop-shadow-figma sound"
+       onclick="joinRandomGame()">
+    <span>Random Game</span>
+  </button>
+
+  <button id="btn-options" class="menu-tile drop-shadow-figma sound"
+       onclick="openOptions()">
+    <span>Options</span>
+  </button>
+
+  <button id="btn-create" class="menu-tile drop-shadow-figma sound"
+       onclick="createGame()">
+    <span>Create Game</span>
+  </button>
+
+</div>
+
+</body>
+
+</html>
