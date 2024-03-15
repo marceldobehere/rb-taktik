@@ -2,6 +2,8 @@ const friendReqButton = document.getElementById('friend-req-button');
 const challengeButton = document.getElementById('challenge-button');
 
 const usernameSpan = document.getElementById('username');
+const username2Span = document.getElementById('username2');
+
 const rankSpan = document.getElementById('rank');
 
 let otherUserId = undefined;
@@ -21,6 +23,8 @@ async function initProfileStuff()
     if (userid == undefined)
     {
         usernameSpan.textContent = "???";
+        username2Span.textContent = "???";
+        
         rankSpan.textContent = "???";
         friendReqButton.disabled = true;
         challengeButton.disabled = true;
@@ -33,6 +37,7 @@ async function initProfileStuff()
     if (profileData["error"])
     {
         usernameSpan.textContent = "???";
+        username2Span.textContent = "???";
         rankSpan.textContent = "???";
         friendReqButton.disabled = true;
         challengeButton.disabled = true;
@@ -42,7 +47,8 @@ async function initProfileStuff()
     console.log("Profile:", profileData);
 
     usernameSpan.textContent = profileData["username"];
-    rankSpan.textContent = profileData["rank"];
+    username2Span.textContent = profileData["username"];
+    rankSpan.textContent = profileData["rank"] < 600 ? 600 : profileData["rank"];
 
     if (userid == userData.userId)
     {
@@ -97,18 +103,7 @@ async function sendFriendRequest()
 {
     if (areFriends)
     {
-        let check = confirm("Are you sure you want to unfriend this user?");
-        if (!check)
-            return;
-
-        let reply = await msgSendAndGetReply("remove-friend", {userId: otherUserId});
-        if (reply["error"])
-        {
-            alert("Error: " + reply["error"]);
-            return;
-        }
-
-        await initProfileStuff();
+        showUnfriendWarning();
     }
     else if (isPending)
     {
@@ -189,3 +184,27 @@ btns.forEach(function(btn) {
 });
 
 startBgm(bgmMenuAudio);
+
+
+async function actuallyUnfriend(){
+    let reply = await msgSendAndGetReply("remove-friend", {userId: otherUserId});
+    if (reply["error"])
+    {
+        alert("Error: " + reply["error"]);
+        return;
+    }
+
+    await initProfileStuff();
+
+    cancelUnfriend();
+}
+
+function cancelUnfriend(){
+
+    document.getElementById("msg-popup-box").style.display = "none";
+}
+
+function showUnfriendWarning(){
+    document.getElementById("msg-popup-box").style.display = "";
+
+}

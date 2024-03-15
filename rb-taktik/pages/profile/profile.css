@@ -89,3 +89,55 @@ button:disabled {
     pointer-events: none;
     opacity: 0.5;
 }
+
+#msg-popup-box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#msg-popup-box div,
+#msg-popup-box-text {
+    width: 50dvw;
+    height: 50dvh;
+    background-color: white;
+    border-radius: 5dvh;
+    padding: 2dvh;
+    color: black;
+    text-align: center;
+    font-size: 4dvh;
+
+}
+
+#username2{
+    color: red;
+
+}
+
+#yes-btn{
+    margin-top: 15dvh;
+    background-color:#FF2E00;
+    border: none;
+    width: 20dvw;
+    height: 8dvh;
+    cursor: pointer;
+    font-size: 5dvh;
+}
+
+#no-btn{
+    background-color: #9b9b9b;
+    border: none;
+    width: 20dvw;
+    height: 8dvh;
+    cursor: pointer;
+    font-size: 5dvh;
+
+
+}
