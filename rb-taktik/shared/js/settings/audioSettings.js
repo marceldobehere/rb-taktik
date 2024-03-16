@@ -2,9 +2,9 @@ var audioSettingsObj = undefined;
 audioSettingsObj = loadSetting("audio");
 
 if (!audioSettingsObj["volumeMusic"])
-    audioSettingsObj["volumeMusic"] = 100;
+    audioSettingsObj["volumeMusic"] = 4;
 if (!audioSettingsObj["volumeFX"])
-    audioSettingsObj["volumeFX"] = 100;
+    audioSettingsObj["volumeFX"] = 5;
 saveSetting("audio", audioSettingsObj);
 
 function loadAudioSetting(settingName)
