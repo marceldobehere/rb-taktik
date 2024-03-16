@@ -1,3 +1,26 @@
+const viewProfileElementR = document.getElementById('view-profile-r');
+const viewProfileElementB = document.getElementById('view-profile-b');
+const pfpRed = document.getElementById("player-image-r");
+const pfpBlue = document.getElementById("player-image-b");
+
+function fixPfps()
+{
+    if (playerNumber == 0)
+        viewProfileElementR.remove();
+    if (playerNumber == 1)
+        viewProfileElementB.remove();
+    
+
+    const rGuest = (playerNumber != 0) || isGuest;
+    const bGuest = (playerNumber != 1) || isGuest;
+
+    // Correct Pictures
+    const guestPfp = "/shared/images/guestPFP.png";
+    const playerPfp = "/shared/images/placeHolderPFP.png";
+    pfpRed.src = rGuest ? guestPfp : playerPfp;
+    pfpBlue.src = bGuest ? guestPfp : playerPfp;
+}
+
 async function createGame()
 {
     // // get username
@@ -6,6 +29,7 @@ async function createGame()
     // if (username == null)
     //     return;
 
+    
     let result = await msgSendAndGetReply("game-create", {});
     if (result["error"] != undefined)
     {
@@ -21,6 +45,7 @@ async function createGame()
     playerNumber = 0;
     loadGameState(result["state"]);
     clearChat();
+    fixPfps();
 }
 
 async function joinGame()
@@ -96,6 +121,8 @@ async function init()
         console.log(data);
         loadGameState(data["state"]);
 
+        fixPfps();
+
         if (playerNumber == 0)
         {
             await startGame();
@@ -107,32 +134,25 @@ async function init()
         console.log(data);
         hideMessage(true);
 
-        const viewProfileElementR = document.getElementById('view-profile-r');
-        const viewProfileElementB = document.getElementById('view-profile-b');
-
-        if(playerNumber == 0){
+        const rGuest = (data["playerIds"][0] == undefined);
+        const bGuest = (data["playerIds"][1] == undefined);
+        
+        if (rGuest)
             viewProfileElementR.remove();
-            if(data["playerIds"][1] == undefined){
-                viewProfileElementB.remove();
-            }
-            else{
-                viewProfileElementB.addEventListener('click', function() {
-                    window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][1], '_blank').focus();
-                });
-            }
-        }
-        else{
+        if (bGuest)
             viewProfileElementB.remove();
-            if(data["playerIds"][0] == undefined){
-                viewProfileElementR.remove();
-            }
-            else{
-                viewProfileElementR.addEventListener('click', function() {
-                    window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][0], '_blank').focus();
-                });
-            }
-        }
+        
+        // Correct Pictures (rip christians code 16/03/2024 - 16/03/2024)
+        const guestPfp = "/shared/images/guestPFP.png";
+        const playerPfp = "/shared/images/placeHolderPFP.png";
+        pfpRed.src = rGuest ? guestPfp : playerPfp;
+        pfpBlue.src = bGuest ? guestPfp : playerPfp;
 
+        // Click Listener
+        const attachElement = (playerNumber == 0) ? viewProfileElementB : viewProfileElementR;
+        attachElement.addEventListener('click', function() {
+            window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][1 - playerNumber ], '_blank').focus();
+        });
 
     });
 

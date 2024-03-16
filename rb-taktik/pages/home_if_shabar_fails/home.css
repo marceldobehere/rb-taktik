@@ -1,0 +1,361 @@
+
+
+body, #loader-div {
+    background: linear-gradient(to top right, #32E8FF, #0075FF);
+}
+
+.pfp{
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+
+.menu-tile {
+    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
+    background-color: #E01F16;
+    font-size: 35px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-tile:hover {
+    background-color: red;
+}
+
+.menu-tile span {
+    transition: transform 0.2s;
+    transform: scale(1);
+    transform-origin: center;
+}
+
+.menu-tile:active {
+    box-shadow: inset 0 0 10px black;
+}
+
+.menu-tile:active span {
+    transform: scale(0.9);
+}
+
+.menu-tile-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.menu-tile-disabled:hover {
+    background-color: #E01F16;
+}
+
+.drop-shadow-figma {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.logo{
+    margin-top: 11px;
+    max-width: 30%;
+    min-width:20%;
+    height: auto;
+}
+
+.general-button-style{
+    border-radius: 50px 50px 50px 50px;
+    border:2px solid #E01F16;
+    width:100px;
+    height:100px;
+    background-color: #E01F16;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+
+}
+
+.general-button-style:hover {
+    background-color: red;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 260px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-color: #FFFFFF;
+    border: 3px solid #E01F16;
+    box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 15px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+.addButton {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+}
+
+.addButton button {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    border-radius: 25%;
+    float:right;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.addButton button:hover{
+    background-color: rgb(32, 32, 32);
+}
+
+.searchbar {
+    vertical-align: middle;
+    width: 80%;
+}
+.searchbar input::placeholder {
+    color: white;
+}
+.searchbar input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.5vw;
+    color: white;
+}
+
+.friend {
+    border: 2px solid black;
+    display: flex;
+    flex: 1;
+    border-radius: 15px;
+    margin-top: 8px;
+    background-color: white;
+    color: black;
+}
+
+.topbar{
+    display: flex;
+    flex: 1;
+}
+
+.bottombar{
+    margin-top: 16px;
+}
+
+#friend-list-cont{
+    padding: 32px;
+}
+
+.friend_pfp img{
+    border-radius: 100%;
+    position: relative;
+}
+
+.challengeButton {
+    display: flex;
+    align-items: center;
+}
+
+.challengeButton button {
+    background-color: #CA0000;
+    width: 150px;
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.friend_username {
+    display: flex;
+    align-items: center;
+    width: 75%;
+}
+
+.friend_username span{
+    margin-left: 16px;
+    vertical-align: middle;
+
+}
+.dropdown-notify-content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    align-items: center;
+    right:50px;
+}
+
+.notification-center{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    width: 350px;
+    height: auto;
+    border: 2px solid red;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+}
+
+#notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#notification-content{
+}
+
+.triangle {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left:60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 75px solid rgb(255, 255, 255);
+}
+
+.notifications{
+    color: black;
+    text-align: center;
+}
+
+.decision-btns button{
+    background-color: red;
+    border:none;
+    border-radius: 45px;
+    color: white;
+    padding: 8px;
+    margin: 0px 0px 16px 16px;
+}
+
+.x-button button{
+    background-color: #9B9B9B;
+    color: white;
+    border-radius: 90px;
+    border: none;
+    padding:8px;
+    width: 30px;
+    height: 30px;
+    margin-top: 50%;
+    margin-right: 8px;
+}
+
+.notify-pfp img{
+    border-radius: 90px;
+}
+
+.notify-pfp-div{
+    width: 50px;
+    height: 70px;
+    margin:8px;
+}
+
+.message {
+    margin-top:8px;
+    width: 230px;
+    display: inline-block;
+}
+
+.server-message{
+    width: 265px;
+    margin: 16px 16px 16px 16px;
+}
+
+.message span{
+    display: inline;
+}
+
+.notification-unread {
+    background-color: #e1fffb;
+}
+
+.notification-read {
+    background-color: #eFeFeF;
+}
+
+.notification-entry{
+    border-bottom: 2px solid #BAB6B6;
+}
+
+.flexify{
+    display: flex;
+}
+
+.message-title{
+    color: red;
+}
+
+.message-itself{
+    color: black;
+    font-size: smaller;
+}
+
+
+
+
+.notifyButton-normal {
+    width: 80px;
+}
+
+.notifyButton-unread {
+    width: 80px;
+    animation: tilt-shaking 0.25s infinite;
+}
+
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+#rankImg {
+    width: 2.8vh;
+    height: 2.8vh;
+    border-radius: 100%;
+    margin-left: 10px;
+    position: relative;
+    top: 0.6vh;
+}
+
+.viewProfileDiv {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    display: none;
+    font-size: 10px;
+    color: white;
+    margin-top: -55px;
+    padding-top: 5px;
+}
+
+.pfp-image:hover + .viewProfileDiv, .viewProfileDiv:hover {
+    display: block;
+}
