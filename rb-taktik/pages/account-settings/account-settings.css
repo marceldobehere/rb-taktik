@@ -121,20 +121,20 @@ div label.white_font {
 
 #edit {
     position: absolute;
-    margin: 30dvh 0 0 20dvw;
+    margin: 35dvh 0 0 20dvw;
 }
 
 
 #edit button {
-    width: 6dvw;
-    height: 6dvw;
+    width: 9dvw;
+    height: 9dvw;
     border-radius: 100%;
     background-color: #E01F16;
     border: 0.5dvw solid white;
     transition: background-color 0.2s;
     cursor: pointer;
     color: white;
-    font-size: 2dvw;
+    font-size: 3dvw;
 }
 
 #edit button:hover {
@@ -194,3 +194,134 @@ div label.white_font {
     font-weight: bold;
 
 }
+
+.pfp {
+    width: 20dvw;
+    height: 20dvw;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+    #white_font_title {
+        font-size: 9dvh;
+    
+    }
+
+    #edit {
+        margin: 30dvh 0 0 20dvw;
+
+    }
+
+    #edit button {
+        width: 9dvw;
+        height: 9dvw;
+        font-size: 3dvw;
+    }
+
+    .btn button, .btn button::after  {
+        font-size: 2dvw;
+    }
+    
+    .btn label {
+        font-size: 9dvh;
+    
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) { 
+    #white_font_title {
+        font-size: 6dvh;
+    
+    }
+
+    
+    .btn label {
+        font-size: 7dvh;
+    
+    }
+
+    .btn button, .btn button::after  {
+        font-size: 3dvw;
+    }
+    
+    #edit button {
+        width: 9dvw;
+        height: 9dvw;
+        font-size: 3dvw;
+    }
+
+    #pfp, .pfp {
+        width: 26dvw;
+        height: 26dvw;
+    }
+
+    #edit {
+        margin: 24dvh 0 0 20dvw;
+
+    }
+
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+
+
+    
+    .btn button, .btn button::after  {
+        font-size: 4dvw;
+    }
+
+    #white_font_title {
+        font-size: 4dvh;
+    
+    }
+    #pfp, .pfp {
+        width: 32dvw;
+        height: 32dvw;
+    }
+
+    #edit {
+        margin: 25dvh 0 0 20dvw;
+
+    }
+
+    #edit button {
+        width: 12dvw;
+        height: 12dvw;
+        font-size: 4dvw;
+    }
+
+
+    .btn label {
+        font-size: 5dvh;
+    
+    }
+
+ }
+
+@media screen and (max-width: 480px) {
+
+    .btn label {
+        font-size: 3dvh;
+    
+    }
+
+    .btn button, .btn button::after  {
+        font-size: 5dvw;
+    }
+
+    #pfp, .pfp {
+        width: 40dvw;
+        height: 40dvw;
+    }
+
+    #edit {
+        margin: 25dvh 0 0 30dvw;
+
+    }
+
+    #edit button {
+        width: 16dvw;
+        height: 16dvw;
+        font-size: 4dvw;
+    }
+ }
