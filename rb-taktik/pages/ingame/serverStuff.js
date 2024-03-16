@@ -109,6 +109,8 @@ async function init()
 
         const viewProfileElementR = document.getElementById('view-profile-r');
         const viewProfileElementB = document.getElementById('view-profile-b');
+        const pfpRed = document.getElementsByClassName("player-image-red");
+        const pfpBlue = document.getElementsByClassName("player-image-b");
 
         if(playerNumber == 0){
             viewProfileElementR.remove();
@@ -131,6 +133,20 @@ async function init()
                     window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][0], '_blank').focus();
                 });
             }
+        }
+
+        if(data["playerIds"][0] == undefined){
+            pfpRed.src="/shared/images/guestPFP.png"
+        }
+        else{
+            pfpRed.src="/shared/images/placeHolderPFP.png"
+        }
+
+        if(data["playerIds"][1] == undefined){
+            pfpBlue.src="/shared/images/guestPFP.png"
+        }
+        else{
+            pfpBlue.src="/shared/images/placeHolderPFP.png"
         }
 
 
