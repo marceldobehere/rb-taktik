@@ -10,13 +10,13 @@ html,
 #big_container {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20vh;
-    margin-top: 8vh;
-    width: 50vw;
-    max-width: 50vw;
-    height: 10vh;
-    min-height: 0vh;
-    max-height: 10vh;
+    margin-bottom: 20dvh;
+    margin-top: 8dvh;
+    width: 50dvw;
+    max-width: 50dvw;
+    height: 10dvh;
+    min-height: 0dvh;
+    max-height: 10dvh;
 }
 
 
@@ -72,7 +72,7 @@ div label.white_font {
     border: none;
     box-shadow: none;
     color: white;
-    font-size: 4vh;
+    font-size: 4dvh;
 
     transition: box-shadow ease-in-out 0.2s;
     padding: 0;
@@ -114,15 +114,14 @@ div label.white_font {
 #edit-pfp {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
     width: 16dvw;
     height: 16dvw;
-    margin: auto;
+    margin: auto auto 25dvh auto;
 }
 
 #edit {
     position: absolute;
-    margin: 210px 0 0 210px;
+    margin: 30dvh 0 0 20dvw;
 }
 
 
@@ -131,7 +130,7 @@ div label.white_font {
     height: 6dvw;
     border-radius: 100%;
     background-color: #E01F16;
-    border: 3px solid white;
+    border: 0.5dvw solid white;
     transition: 0.2s;
     cursor: pointer;
     color: white;
@@ -144,11 +143,11 @@ div label.white_font {
 
 .btn button {
     display: inline-block;
-    padding: 10px 40px;
+    padding: 8dvh 4dvw;
     background-color: #E01F16;
     color: white;
     border: 2px solid white;
-    border-radius: 30px;
+    border-radius: 10dvh;
     cursor: pointer;
     font-size: 2dvw;
     text-align: left;
@@ -158,6 +157,7 @@ div label.white_font {
     transition: 0.2s;
     width: 100%;
     height: 4dvw;
+    
 }
 
 .btn button::after {
@@ -182,13 +182,13 @@ div label.white_font {
 
 
 .btn {
-    margin-bottom: 50px;
+    margin-bottom: 20dvh;
 }
 
 
 .btn label {
     color: white;
-    font-size: 60px;
+    font-size: 10dvh;
     font-weight: bold;
 
 }

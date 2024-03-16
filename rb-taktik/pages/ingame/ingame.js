@@ -282,7 +282,6 @@ const btns = document.querySelectorAll(".sound");
 
 // Function to play the hover sound
 function playHoverSound() {
-    fxAudioMenuButtonHover.volume = 0.25;
     fxAudioMenuButtonHover.play()
         .then(() => {
             console.log("Hover sound played");

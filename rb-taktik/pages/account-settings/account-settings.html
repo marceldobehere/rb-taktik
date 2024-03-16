@@ -14,51 +14,53 @@
   <div id="big_container">
     <header>
       <center>
-        <h1 style="font-size: 9vh;" id="white_font_title">Account Settings</h1>
+        <h1 style="font-size: 9dvh;" id="white_font_title">Account Settings</h1>
       </center>
 
     </header>
 
-    <div id="edit-pfp">
-      <div id="pfp">
-        <image src="/shared/images/placeHolderPFP.png" class="inline pfp"
-          style="width: 300px; height: 300px; border-radius:100%; border: 3px solid #E01F16">
-        </image>
+    <div class="whole-container">
+      <div id="edit-pfp">
+        <div id="pfp">
+          <image src="/shared/images/placeHolderPFP.png" class="inline pfp"
+            style="width: 20dvw; height: 20dvw; border-radius:100%; border: 0.5dvw solid #E01F16">
+          </image>
+        </div>
+        <div id="edit">
+          <button class="sound">Edit</button>
+        </div>
       </div>
-      <div id="edit">
-        <button class="sound">Edit</button>
+
+      <div class="btn">
+        <label>Profile Link</label>
+        <button onclick="copyProfileLink()">Click to Copy a Link to your profile</button>
+      </div>
+
+      <div class="btn">
+        <label>Username</label>
+        <button onclick="changeUsername()"><span id="username">Shabar</span></button>
+      </div>
+
+
+      <div class="btn">
+        <label>Email</label>
+        <button onclick="changeEmail()"><span id="email">whatisbro@cooking.com</span></button>
+      </div>
+
+
+      <div class="btn">
+        <label>Password</label>
+        <button onclick="changePassword()"><span id="password">Change</span></button>
       </div>
     </div>
 
-    <div class="btn">
-      <label>Profile Link</label>
-      <button onclick="copyProfileLink()">Click to Copy a Link to your profile</button>
-    </div>
 
-    <div class="btn">
-      <label>Username</label>
-      <button onclick="changeUsername()"><span id="username">Shabar</span></button>
-    </div>
+    <footer id="footer">
+      <div>
+        <button class="sound" onclick="goPage('/home')" id="back_button">Back</button>
 
-
-    <div class="btn">
-      <label>Email</label>
-      <button onclick="changeEmail()"><span id="email">whatisbro@cooking.com</span></button>
-    </div>
-
-
-    <div class="btn">
-      <label>Password</label>
-      <button onclick="changePassword()"><span id="password">Change</span></button>
-    </div>
-  </div>
-
-  <footer id="footer">
-    <div>
-      <button class="sound" onclick="goPage('/home')" id="back_button">Back</button>
-
-    </div>
-  </footer>
+      </div>
+    </footer>
 </body>
 
 <script src="/shared/js/roccModule.js"></script>
