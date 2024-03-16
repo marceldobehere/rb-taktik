@@ -104,7 +104,36 @@ async function init()
 
     msgHook("game-start", (data) => {
         gameStarted(data);
+        console.log(data);
         hideMessage(true);
+
+        const viewProfileElementR = document.getElementById('view-profile-r');
+        const viewProfileElementB = document.getElementById('view-profile-b');
+
+        if(playerNumber == 0){
+            viewProfileElementR.remove();
+            if(data["playerIds"][1] == undefined){
+                viewProfileElementB.remove();
+            }
+            else{
+                viewProfileElementB.addEventListener('click', function() {
+                    window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][1], '_blank').focus();
+                });
+            }
+        }
+        else{
+            viewProfileElementB.remove();
+            if(data["playerIds"][0] == undefined){
+                viewProfileElementR.remove();
+            }
+            else{
+                viewProfileElementR.addEventListener('click', function() {
+                    window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][0], '_blank').focus();
+                });
+            }
+        }
+
+
     });
 
     msgHook("game-move", (data) => {

@@ -357,7 +357,8 @@ btns2.forEach(function(btn) {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
- 
+
+
   
 
 const randomMusicIndex = getRandomInt(0,1);
