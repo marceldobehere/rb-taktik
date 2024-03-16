@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="/shared/css/main_styles.css">
+    <link rel="icon" type="image/x-icon" href="/shared/images/web_icon.png">
+
+</head>
+
+<body onclick="hideDropDown(); hideDropDownNotification();">
+<img src="/shared/images/Logo.png" alt="Logo" class="logo"
+     style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
+<div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
+    <div class="inline" id="dropdown">
+        <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp sound"
+               style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
+               onclick="toggleDropDown(event)"></image>
+        <p class="inline">
+            <span id="info-username">Shabarian der 2.</span><br>
+            Rank: <span id="info-rank">9999</span><img id="rankImg"><img>
+        </p>
+        <div class="dropdown-content" style="display:none;" onclick="cancelClose(event)">
+            <a class=" sound" href="/account-settings">Account Settings</a>
+            <a class=" sound" id="acc-login-logout" href="#" onclick="doLogout()">Log Out</a>
+        </div>
+
+
+    </div>
+
+    <div class="inline">
+    </div>
+
+    <div class="inline" id="statisticButton">
+        <button class="general-button-style sound"><img src="/shared/images/statisticsIcon.png" alt="Ranking"
+                                                  style="width: 80px"></button>
+    </div>
+
+    <div class="inline " id="dropdown-notify">
+        <button onclick="toggleNotifications(event)" class="general-button-style sound"><img id="notifyButtonImg" class="notifyButton-normal"
+                src="/shared/images/bellIcon.png" alt="Notifications"></button>
+        <div id="notification-content" class="dropdown-notify-content" style="display:none;">
+            <div class="triangle" onclick="cancelClose(event)"></div>
+            <div class="notification-center" onclick="cancelClose(event)">
+                <div class="notifications">
+                    Notifications: <span id="notification-count">3</span>
+                </div>
+
+                <div id="notification-list">
+                    <div class="notification-entry notification-unread">
+                        <div class="flexify">
+                            <div class="flexify">
+                                <div class="notify-pfp-div notify-pfp">
+                                    <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                                </div>
+                                <div class="message">
+                                    <span class="message-title">MATCH REQUEST</span><br>
+                                    <span class="message-itself">User 1 sent you a match request!</span>
+                                </div>
+                            </div>
+
+                            <div class="x-button">
+                                <button>X</button>
+                            </div>
+                        </div>
+
+                        <div class="decision-btns">
+                            <button>ACCEPT</button>
+                            <button>DECLINE</button>
+                        </div>
+                    </div>
+                    <div class="notification-entry notification-read">
+                        <div class="flexify">
+                            <div class="flexify">
+                                <div class="notify-pfp-div notify-pfp">
+                                    <img src="/shared/images/placeHolderPFP.png" width="50px" alt="">
+                                </div>
+                                <div class="message">
+                                    <span class="message-title">FRIEND REQUEST</span><br>
+                                    <span class="message-itself">User 1 sent you a friend request!</span>
+                                </div>
+
+                            </div>
+
+                            <div class="x-button">
+                                <button>X</button>
+                            </div>
+                        </div>
+
+                        <div class="decision-btns">
+                            <button>ACCEPT</button>
+                            <button>DECLINE</button>
+                        </div>
+                    </div>
+                    <div class="notification-entry notification-read">
+                        <div class="flexify">
+                            <div class="server-message">
+                                <span class="message-title">SERVER MESSAGE</span><br>
+                                <span class="message-itself">The server has sent you a message!</span>
+                            </div>
+                            <div class="x-button">
+                                <button>X</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br><br>
+<div style="margin: auto;width:80%;display:grid; grid-template-columns: 400px auto;column-gap: 20px;">
+    <div class="inline"
+         style=" width:350px;height:350px;display:inline-grid; grid-template-columns: auto auto; gap:10px;">
+        <div id="btn-ranked" style="border-radius: 30px 0 0 0;" class="menu-tile drop-shadow-figma sound"
+             onclick="joinRankedGame()">
+            <span>Ranked Game</span>
+        </div>
+        <div id="btn-random" style="border-radius: 0 30px 0 0" class="menu-tile drop-shadow-figma sound"
+             onclick="joinRandomGame()">
+            <span>Random Game</span>
+        </div>
+        <div id="btn-options" style="border-radius: 0 0 0 30px" class="menu-tile drop-shadow-figma sound"
+             onclick="openOptions()">
+            <span>Options</span>
+        </div>
+        <div id="btn-create" style="border-radius: 0 0 30px 0" class="menu-tile drop-shadow-figma sound"
+             onclick="createGame()">
+            <span>Create Game</span>
+        </div>
+    </div>
+
+    <div class="inline drop-shadow-figma" style="border-radius: 30px 30px 30px 30px; background-color: #E01F16;">
+        <div id="friend-list-cont">
+            <div class="topbar">
+                <div class="searchbar">
+                    <label for="searchbar" class="hidden">Search a friend</label>
+                    <input class=" sound" id="searchbar" type="text" placeholder="Search friend...">
+                </div>
+                <div class="addButton">
+                    <button class=" sound">Add</button>
+                </div>
+            </div>
+            <div class="bottombar" id="actual-friend-list">
+                <div class="friend">
+                    <div class="friend_pfp">
+                        <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="friend_username">
+                        <span>User01</span>
+                    </div>
+                    <div class="challengeButton">
+                        <button>Challenge</button>
+                    </div>
+                </div>
+                <div class="friend">
+                    <div class="friend_pfp">
+                        <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="friend_username">
+                        <span>User02</span>
+                    </div>
+                    <div class="challengeButton">
+                        <button>Challenge</button>
+                    </div>
+                </div>
+                <div class="friend">
+                    <div class="friend_pfp">
+                        <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="friend_username">
+                        <span>User03</span>
+                    </div>
+                    <div class="challengeButton">
+                        <button>Challenge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="/shared/js/roccModule.js"></script>
+<script>
+    importModule('/shared/js/basicModules.js');
+    importModule('popups.js');
+    importModule('friends.js');
+    importModule('notifications.js');
+    importModule('home.js');
+    startImporting();
+</script>
+
+</html>
