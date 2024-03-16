@@ -200,7 +200,7 @@ div label.white_font {
     height: 20dvw;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
+@media screen and (min-width: 1024px) and (max-width: 1280px) and (min-height: 1024px) and (max-height: 1280px){
     #white_font_title {
         font-size: 9dvh;
     
@@ -228,7 +228,7 @@ div label.white_font {
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) { 
+@media screen and (min-width: 768px) and (max-width: 1024px)and (min-height: 768px) and (max-height: 1024px) { 
     #white_font_title {
         font-size: 6dvh;
     
@@ -262,7 +262,7 @@ div label.white_font {
 
 }
 
-@media screen and (min-width: 480px) and (max-width: 768px) {
+@media screen and (min-width: 480px) and (max-width: 768px)and (min-height: 480px) and (max-height: 768px) {
 
 
     
@@ -298,7 +298,7 @@ div label.white_font {
 
  }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 480px)and(max-height: 480px) {
 
     .btn label {
         font-size: 3dvh;
