@@ -12,11 +12,12 @@ body, #loader-div {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
+
 #picLogo{
 
     padding: 0vh;
     margin: auto;
-    width: 40vh;
+    width: 50vh;
     max-width: 56vh;
     min-width: 40vh;
     height: auto;
@@ -30,10 +31,11 @@ body, #loader-div {
     grid-template-columns: 30% auto 15% 15%;
 }
 #gamebuttonContainer{
+    width: 40vh;
     border-radius: 3vh 0 0 0;
-
-
-
+    margin: auto;
+    margin-left: 30vh;
+    margin-top: 15vh;
 }
 #btn-ranked{
     width: 20vh;
@@ -46,6 +48,7 @@ body, #loader-div {
     border-width: 0vh;
     color: white;
 }
+
 #btn-random{
     border-radius: 0 3vh 0 0;
     width: 20vh;
@@ -54,7 +57,9 @@ body, #loader-div {
     font-size: 4vh;
     box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
     transition: 0s;
-    transform:translate(23vh,-20vh);
+    margin: auto;
+    margin-left: 23vh;
+    transform: translate(0vh, -20vh);
     border-width: 0vh;
     color: white;
 }
@@ -82,6 +87,51 @@ body, #loader-div {
     border-width: 0vh;
     color: white;
 }
+#diver{
+    transform:translate(60vh,-80vh);
+    width: 120vh;
+}
+#divForNotifiction{
+    transform:translate(110vh,-138vh);
+}
+#DivForStatisticsButton{
+    transform:translate(90vh,-148vh);
+
+}
+#Buttonnotification{
+    width: 10vh;
+    height: 10vh;
+    border: 0.2vh solid #E01F16;
+    border-radius: 5vh;
+    padding: 0;
+    border-width: 0.2vh;
+
+}
+
+#statisticButton{
+    width: 10vh;
+    height: 10vh;
+    border: 0.2vh solid #E01F16;
+    border-radius: 5vh;
+    padding: 0;
+    border-width: 0.2vh;
+}
+
+#imageStatistic{
+    width: 9vh;
+    height: 10vh;
+    border-radius: 10vh;
+}
+#notifyButtonImg{
+    width: 10vh;
+    height: 10vh;
+
+}
+#FriendListorSum{
+    border-radius: 3vh 3vh 3vh 3vh;
+    background-color: #E01F16;
+}
+
 #info-pfp{
     width: 100px;
     height: 100px;
@@ -113,7 +163,7 @@ body, #loader-div {
 }
 
 .menu-tile:active {
-    box-shadow: inset 0 0 10px black;
+    box-shadow: inset 0 0 1vh black;
 }
 
 .menu-tile:active span {
@@ -130,7 +180,7 @@ body, #loader-div {
 }
 
 .drop-shadow-figma {
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
 }
 
 .logo{
@@ -148,7 +198,7 @@ body, #loader-div {
     background-color: #E01F16;
     user-select: none;
     cursor: pointer;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
 
 }
 
@@ -161,11 +211,11 @@ body, #loader-div {
     display: none;
     position: absolute;
     min-width: 260px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
     z-index: 1;
     background-color: #FFFFFF;
     border: 3px solid #E01F16;
-    box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.3vh 0.6vh 0.6vh 0.2vh rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     text-align: center;
     align-items: center;
@@ -183,7 +233,16 @@ body, #loader-div {
 .addButton {
     display: inline-block;
     vertical-align: middle;
-    width: 20%;
+    width: 15vh;
+    height: 6.6vh;
+}
+#AddButtonFr{
+    width: 7.6vh;
+    height: 6vh;
+    padding: 0;
+    transition-duration: 0s;
+    border-width: 0.4vh;
+    font-size: 2.6vh;
 }
 
 .addButton button {
@@ -202,9 +261,13 @@ body, #loader-div {
     background-color: rgb(32, 32, 32);
 }
 
-.searchbar {
+#searchbar {
     vertical-align: middle;
-    width: 80%;
+    width: 60vh;
+    margin: 0;
+    border-width: 1vh;
+    font-size: 2vh;
+
 }
 .searchbar input::placeholder {
     color: white;
@@ -223,11 +286,13 @@ body, #loader-div {
 }
 
 .friend {
-    border: 2px solid black;
+    border: 0.2vh solid black;
     display: flex;
     flex: 1;
-    border-radius: 15px;
-    margin-top: 8px;
+    width: 70vh;
+    height: 6vh;
+    border-radius: 1.5vh;
+    margin-top: 0.8vh;
     background-color: white;
     color: black;
 }
@@ -238,41 +303,55 @@ body, #loader-div {
 }
 
 .bottombar{
-    margin-top: 16px;
+    margin-top: 1.6vh;
 }
 
 #friend-list-cont{
-    padding: 32px;
+    width: 70vh;
+    height: 30vh;
+    padding: 3.2vh;
 }
 
 .friend_pfp img{
     border-radius: 100%;
+    width: 6vh;
+    height: 6vh;
 }
 
 .challengeButton {
     display: flex;
     align-items: center;
+
+}
+
+.broclasschalleng{
+    padding-right: 1vh;
+    padding-left: 0vh;
+    padding-top: 0vh;
+    padding-bottom: 0vh;
 }
 
 .challengeButton button {
     background-color: #CA0000;
-    width: 150px;
-    height: 30px;
-    margin-right: 8px;
-    border-radius: 30px;
+    width: 15vh;
+    height: 3vh;
+    margin-right: 0.8vh;
+    border-radius: 3vh;
     cursor: pointer;
     border: none;
     color: white;
+    font-size: 2vh;
 }
 
 .friend_username {
     display: flex;
     align-items: center;
-    width: 75%;
+    width: 60vh;
+    padding: 0.5vh;
 }
 
 .friend_username span{
-    margin-left: 16px;
+    margin-left: 1.6vh;
     vertical-align: middle;
 
 }
@@ -291,7 +370,7 @@ body, #loader-div {
     width: 350px;
     height: auto;
     border: 2px solid red;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 
 }
