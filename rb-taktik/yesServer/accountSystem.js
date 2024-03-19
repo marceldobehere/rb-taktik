@@ -28,17 +28,17 @@ async function initApp(_app, _io, _accountInterface, _securityInterface, _sessio
         });
 
         socket.on('register', async (obj) => {
-            console.log("Registering user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            console.log("Registering user " + obj.username + " with email " + obj.email);
             if (await registerUser(obj.username, obj.email, obj.password) === false)
                 return socket.emit('register', {error: "Username already taken"});
 
-            console.log("Registered user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            console.log("Registered user " + obj.username + " with email " + obj.email);
             // login as well
             let sessionId = await loginUser(obj.username, obj.password, socket);
             if (sessionId === false)
                 return socket.emit('register', {error: "Invalid username or password"});
 
-            console.log("Logged in user " + obj.username + " with password " + obj.password + " and email " + obj.email);
+            console.log("Logged in user " + obj.username + " with email " + obj.email);
             socket.emit('register', {sessionId: sessionId});
         });
 
