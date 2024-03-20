@@ -34,8 +34,7 @@ async function loadFriendList()
         friendDiv.appendChild(friendPfp);
 
         friendPfp.addEventListener("click", function() {
-            //window.location.href = "http://localhost/profile/profile.html?userid=" + friendId;
-            window.open("http://localhost/profile/profile.html?userid=" + friendId, '_blank').focus();
+            window.open(window.location.origin + "/profile/profile.html?userid=" + friendId, '_blank').focus();
         });
 
 

@@ -151,7 +151,7 @@ async function init()
         // Click Listener
         const attachElement = (playerNumber == 0) ? viewProfileElementB : viewProfileElementR;
         attachElement.addEventListener('click', function() {
-            window.open("http://localhost/profile/profile.html?userid=" + data["playerIds"][1 - playerNumber ], '_blank').focus();
+            window.open(window.location.origin+"/profile/profile.html?userid=" + data["playerIds"][1 - playerNumber ], '_blank').focus();
         });
 
     });
@@ -166,6 +166,7 @@ async function init()
         loadGameState(data["state"]);
         if (data["state"]["gameWinner"] == playerNumber){
             pauseBgm();
+            fxAudioWin.currentTime = 0;
             fxAudioWin.play();
             showMessage("You won!");
         }
@@ -173,6 +174,7 @@ async function init()
         else
         {
             pauseBgm();
+            fxAudioLose.currentTime = 0;
             fxAudioLose.play();
             showMessage("You lost");
 

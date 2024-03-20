@@ -160,7 +160,10 @@ function stackSelected(element, stackIndex, pieceIndex)
 
 async function fieldClicked(element) {
     if (!gameRunning || gameWinner != undefined || playerTurn != playerNumber || selectedStack == -1)
-        return fxAudioNoRB234Left.play();
+    {
+        fxAudioNoRB234Left.currentTime = 0;
+        fxAudioNoRB234Left.play()
+    }
 
     let idx = getIndex(element);
 
@@ -172,9 +175,11 @@ async function fieldClicked(element) {
 
     if (playerStacks[playerNumber][selectedStack] < 1)
     {
+        fxAudioNoRB234Left.currentTime = 0;
         fxAudioNoRB234Left.play();
     }
     else{
+        fxAudioplace.currentTime = 0;
         fxAudioplace.play();
     }
 
