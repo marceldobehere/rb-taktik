@@ -248,7 +248,7 @@ async function clearNotification(notId)
 
     if (res["error"] != undefined)
     {
-        alert("Error: " + res["error"]);
+        console.log(`Error clearing not ${notId}: ` + res["error"]);
         return;
     }
 }
