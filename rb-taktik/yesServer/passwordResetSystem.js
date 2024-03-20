@@ -5,7 +5,7 @@ let accountInterface;
 let securityInterface;
 let sessionSystem;
 let mailInterface;
-const RB_TAKTIK_ADDRESS = "http://localhost:80";
+const RB_TAKTIK_ADDRESS = "https://rb-taktik.marceldobehere.com";
 
 let passwordResetRequests = {};
 
