@@ -85,7 +85,7 @@ body, #loader-div {
     display: none;
 }
 
-.player-image:hover + .view-profile-circle {
+.player-image:hover + .view-profile-circle, view-profile-circle:hover {
     display: block;
 }
 
