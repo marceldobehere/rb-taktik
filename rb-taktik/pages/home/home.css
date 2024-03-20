@@ -9,7 +9,7 @@ body, #loader-div {
 }
 
 .pfp{
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
 }
 
 
@@ -88,16 +88,33 @@ body, #loader-div {
     color: white;
 }
 #diver{
-    transform:translate(60vh,-80vh);
+    transform:translate(70vh,-80vh);
     width: 120vh;
 }
-#divForNotifiction{
-    transform:translate(110vh,-138vh);
-}
-#DivForStatisticsButton{
-    transform:translate(90vh,-148vh);
+@media screen and (aspect-ratio: 8/6 ){
+    #divForNotifiction{
+        transform:translate(110vh,-138vh);
+    }
+    #DivForStatisticsButton{
+        transform:translate(90vh,-148vh);
+    }
+    #diver{
+        transform:translate(60vh,-80vh);
+        width: 120vh;
+    }
 
 }
+#divForNotifiction{
+    transform:translate(130vh,-138vh);
+}
+#DivForStatisticsButton{
+    transform:translate(110vh,-148vh);
+
+}
+#profile{
+    transform:translate(-10vh,-160vh);
+}
+
 #Buttonnotification{
     width: 10vh;
     height: 10vh;
@@ -133,16 +150,16 @@ body, #loader-div {
 }
 
 #info-pfp{
-    width: 100px;
-    height: 100px;
-    border-radius: 50px 50px 50px 50px;
-    border: 3px solid #E01F16;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 5vh;
+    border: 0.3vh solid #E01F16;
 }
 
 .menu-tile {
-    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
+    box-shadow: 0 0.4vh 0.4vh 0 #00000066, inset 0 0 1vh;
     background-color: #E01F16;
-    font-size: 35px;
+    font-size: 3.5vh;
     text-align: center;
     display: flex;
     align-items: center;
@@ -503,7 +520,9 @@ body, #loader-div {
     width: 2.8vh;
     height: 2.8vh;
     border-radius: 100%;
-    margin-left: 10px;
+    margin-left: 1vh;
     position: relative;
     top: 0.6vh;
 }
+
+

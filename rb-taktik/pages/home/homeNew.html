@@ -115,14 +115,33 @@
   </div>
 
 
+  <div id="profile">
+  <div class="inline" id="dropdown">
+    <img id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp sound" onclick="toggleDropDown(event)">
+    <p class="inline">
+      <span id="info-username">Bashar Al Nablsi</span><br>
+      Rank: <span id="info-rank">600</span><img id="rankImg" src="/shared/images/Ranked Icons/Bronze Rank Icon.png"><img>
+    </p>
+    <div class="dropdown-content" style="display:none;" onclick="cancelClose(event)">
+      <a class=" sound" href="/account-settings">Account Settings</a>
+      <a class=" sound" id="acc-login-logout" href="#" onclick="doLogout()">Logout</a>
+    </div>
+  </div>
+  </div>
+
 </div>
 
 
 
-
-
-
-
 </body>
+
+<script>
+  importModule('/shared/js/basicModules.js');
+  importModule('popups.js');
+  importModule('friends.js');
+  importModule('notifications.js');
+  importModule('home.js');
+  startImporting();
+</script>
 
 </html>
