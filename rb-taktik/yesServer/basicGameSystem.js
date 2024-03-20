@@ -58,7 +58,7 @@ function resetGame(entry)
     entry["state"]["playerStacks"] = [[999,4,3,2], [999,4,3,2]];
 }
 
-function checkWin(entry)
+function checkWin(entry, pNum)
 {
     let state = entry["state"];
     let board = state["board"];
@@ -115,7 +115,8 @@ function checkWin(entry)
     }
 
     // check if player cannot place any pieces
-    for (let p = 0; p < 2; p++)
+    //for (let p = 0; p < 2; p++)
+    let p = pNum;
     {
         let canPlace = false;
         for (let piece = 3; piece >= 0; piece--)
@@ -361,7 +362,7 @@ function initApp(_app, _io, _accountInterface, _sessionSystem, _rankingSystem) {
 
             if (gameEntry)
             {
-                let won = checkWin(gameEntry);
+                let won = checkWin(gameEntry, gameEntry["state"]["playerTurn"]);
                 if (won &&
                     gameEntry["state"]["gameWinner"] === undefined)
                 {

@@ -34,39 +34,46 @@ async function loadFriendList()
         friendDiv.appendChild(friendPfp);
 
         friendPfp.addEventListener("click", function() {
-            window.open(window.location.origin + "/profile/profile.html?userid=" + friendId, '_blank').focus();
+            //window.location.href = "http://localhost/profile/profile.html?userid=" + friendId;
+            window.open(window.location.origin+"/profile/profile.html?userid=" + friendId, '_blank').focus();
         });
 
 
 
         let friendPfpImg = document.createElement("img");
         friendPfpImg.src = "/shared/images/placeHolderPFP.png";
+        friendPfpImg.className="pfp-image"
         friendPfpImg.width = 50;
         friendPfpImg.height = 50;
         friendPfpImg.alt = "Profile Picture";
         friendPfp.appendChild(friendPfpImg);
 
+        
+        let friendPfpDiv = document.createElement("div");
+        friendPfpDiv.className = "viewProfileDiv";
+        friendPfpDiv.textContent = "View Profile";
+        friendPfp.appendChild(friendPfpDiv);
 
 
-        let viewProfile = document.createElement("span");
-        viewProfile.innerHTML = "View<br>Profile";
-        viewProfile.className = "viewProfile";
-        let imgPosition = friendPfpImg.getBoundingClientRect();
-        viewProfile.style.position = 'absolute';
-        viewProfile.style.top = imgPosition.top + 'px';
-        viewProfile.style.left = imgPosition.left + 'px';
+        // let viewProfile = document.createElement("span");
+        // viewProfile.innerHTML = "View<br>Profile";
+        // viewProfile.className = "viewProfile";
+        // let imgPosition = friendPfpImg.getBoundingClientRect();
+        // viewProfile.style.position = 'absolute';
+        // viewProfile.style.top = imgPosition.top + 'px';
+        // viewProfile.style.left = imgPosition.left + 'px';
 
-        friendPfp.appendChild(viewProfile);
+        // friendPfp.appendChild(viewProfile);
 
-        friendPfp.addEventListener('mouseover', function() {
-            viewProfile.style.display = 'flex';
-            viewProfile.style.justifyContent = 'center';
-            viewProfile.style.alignItems = 'center';
-        });
+        // friendPfp.addEventListener('mouseover', function() {
+        //     viewProfile.style.display = 'flex';
+        //     viewProfile.style.justifyContent = 'center';
+        //     viewProfile.style.alignItems = 'center';
+        // });
 
-        friendPfp.addEventListener('mouseout', function() {
-            viewProfile.style.display = 'none';
-        });
+        // friendPfp.addEventListener('mouseout', function() {
+        //     viewProfile.style.display = 'none';
+        // });
 
 
 

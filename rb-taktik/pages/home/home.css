@@ -2,164 +2,18 @@
 
 body, #loader-div {
     background: linear-gradient(to top right, #32E8FF, #0075FF);
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
 }
 
 .pfp{
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 
-#picLogo{
-
-    padding: 0vh;
-    margin: auto;
-    width: 50vh;
-    max-width: 56vh;
-    min-width: 40vh;
-    height: auto;
-    display: block;
-
-}
-#firstDiv{
-    margin: 40px auto auto auto;
-    width:90%;
-    display:grid;
-    grid-template-columns: 30% auto 15% 15%;
-}
-#gamebuttonContainer{
-    width: 40vh;
-    border-radius: 3vh 0 0 0;
-    margin: auto;
-    margin-left: 30vh;
-    margin-top: 15vh;
-}
-#btn-ranked{
-    width: 20vh;
-    height: 20vh;
-    border-radius: 3vh 0 0 0;
-    padding: 0.5vh;
-    font-size: 4vh;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
-    transition: 0s;
-    border-width: 0vh;
-    color: white;
-}
-
-#btn-random{
-    border-radius: 0 3vh 0 0;
-    width: 20vh;
-    height: 20vh;
-    padding: 0.5vh;
-    font-size: 4vh;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
-    transition: 0s;
-    margin: auto;
-    margin-left: 23vh;
-    transform: translate(0vh, -20vh);
-    border-width: 0vh;
-    color: white;
-}
-#btn-options{
-    border-radius: 0 0 0 3vh;
-    width: 20vh;
-    height: 20vh;
-    padding: 0.5vh;
-    font-size: 4vh;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
-    transition: 0s;
-    transform:translate(0vh,-18vh);
-    border-width: 0vh;
-    color: white;
-}
-#btn-create{
-    border-radius: 0 0 3vh 0;
-    width: 20vh;
-    height: 20vh;
-    padding: 0.5vh;
-    font-size: 4vh;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
-    transition: 0s;
-    transform:translate(23vh,-38vh);
-    border-width: 0vh;
-    color: white;
-}
-#diver{
-    transform:translate(70vh,-80vh);
-    width: 120vh;
-}
-@media screen and (aspect-ratio: 8/6 ){
-    #divForNotifiction{
-        transform:translate(110vh,-138vh);
-    }
-    #DivForStatisticsButton{
-        transform:translate(90vh,-148vh);
-    }
-    #diver{
-        transform:translate(60vh,-80vh);
-        width: 120vh;
-    }
-
-}
-#divForNotifiction{
-    transform:translate(130vh,-138vh);
-}
-#DivForStatisticsButton{
-    transform:translate(110vh,-148vh);
-
-}
-#profile{
-    transform:translate(-10vh,-160vh);
-}
-
-#Buttonnotification{
-    width: 10vh;
-    height: 10vh;
-    border: 0.2vh solid #E01F16;
-    border-radius: 5vh;
-    padding: 0;
-    border-width: 0.2vh;
-
-}
-
-#statisticButton{
-    width: 10vh;
-    height: 10vh;
-    border: 0.2vh solid #E01F16;
-    border-radius: 5vh;
-    padding: 0;
-    border-width: 0.2vh;
-}
-
-#imageStatistic{
-    width: 9vh;
-    height: 10vh;
-    border-radius: 10vh;
-}
-#notifyButtonImg{
-    width: 10vh;
-    height: 10vh;
-
-}
-#FriendListorSum{
-    border-radius: 3vh 3vh 3vh 3vh;
-    background-color: #E01F16;
-}
-
-#info-pfp{
-    width: 10vh;
-    height: 10vh;
-    border-radius: 5vh;
-    border: 0.3vh solid #E01F16;
-}
 
 .menu-tile {
-    box-shadow: 0 0.4vh 0.4vh 0 #00000066, inset 0 0 1vh;
+    box-shadow: 0 4px 4px 0 #00000066, inset 0 0 10px;
     background-color: #E01F16;
-    font-size: 3.5vh;
+    font-size: 35px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -180,7 +34,7 @@ body, #loader-div {
 }
 
 .menu-tile:active {
-    box-shadow: inset 0 0 1vh black;
+    box-shadow: inset 0 0 10px black;
 }
 
 .menu-tile:active span {
@@ -197,7 +51,7 @@ body, #loader-div {
 }
 
 .drop-shadow-figma {
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 .logo{
@@ -215,7 +69,7 @@ body, #loader-div {
     background-color: #E01F16;
     user-select: none;
     cursor: pointer;
-    box-shadow: 0 0.4vh 0.4vh 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4);
 
 }
 
@@ -228,11 +82,11 @@ body, #loader-div {
     display: none;
     position: absolute;
     min-width: 260px;
-    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     background-color: #FFFFFF;
     border: 3px solid #E01F16;
-    box-shadow: 0.3vh 0.6vh 0.6vh 0.2vh rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 6px 6px 2px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     text-align: center;
     align-items: center;
@@ -250,16 +104,7 @@ body, #loader-div {
 .addButton {
     display: inline-block;
     vertical-align: middle;
-    width: 15vh;
-    height: 6.6vh;
-}
-#AddButtonFr{
-    width: 7.6vh;
-    height: 6vh;
-    padding: 0;
-    transition-duration: 0s;
-    border-width: 0.4vh;
-    font-size: 2.6vh;
+    width: 20%;
 }
 
 .addButton button {
@@ -278,13 +123,9 @@ body, #loader-div {
     background-color: rgb(32, 32, 32);
 }
 
-#searchbar {
+.searchbar {
     vertical-align: middle;
-    width: 60vh;
-    margin: 0;
-    border-width: 1vh;
-    font-size: 2vh;
-
+    width: 80%;
 }
 .searchbar input::placeholder {
     color: white;
@@ -303,13 +144,11 @@ body, #loader-div {
 }
 
 .friend {
-    border: 0.2vh solid black;
+    border: 2px solid black;
     display: flex;
     flex: 1;
-    width: 70vh;
-    height: 6vh;
-    border-radius: 1.5vh;
-    margin-top: 0.8vh;
+    border-radius: 15px;
+    margin-top: 8px;
     background-color: white;
     color: black;
 }
@@ -320,55 +159,42 @@ body, #loader-div {
 }
 
 .bottombar{
-    margin-top: 1.6vh;
+    margin-top: 16px;
 }
 
 #friend-list-cont{
-    width: 70vh;
-    height: 30vh;
-    padding: 3.2vh;
+    padding: 32px;
 }
 
 .friend_pfp img{
     border-radius: 100%;
-    width: 6vh;
-    height: 6vh;
+    position: relative;
 }
 
 .challengeButton {
     display: flex;
     align-items: center;
-
-}
-
-.broclasschalleng{
-    padding-right: 1vh;
-    padding-left: 0vh;
-    padding-top: 0vh;
-    padding-bottom: 0vh;
 }
 
 .challengeButton button {
     background-color: #CA0000;
-    width: 15vh;
-    height: 3vh;
-    margin-right: 0.8vh;
-    border-radius: 3vh;
+    width: 150px;
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 30px;
     cursor: pointer;
     border: none;
     color: white;
-    font-size: 2vh;
 }
 
 .friend_username {
     display: flex;
     align-items: center;
-    width: 60vh;
-    padding: 0.5vh;
+    width: 75%;
 }
 
 .friend_username span{
-    margin-left: 1.6vh;
+    margin-left: 16px;
     vertical-align: middle;
 
 }
@@ -387,7 +213,7 @@ body, #loader-div {
     width: 350px;
     height: auto;
     border: 2px solid red;
-    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 
 }
@@ -486,17 +312,7 @@ body, #loader-div {
     font-size: smaller;
 }
 
-.viewProfile {
-    position: absolute;
-    font-size: 12px;
-    font-weight: bolder;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 55px;
-    height: 55px;
-    border-radius: 100%;
-    display: none;
-}
+
 
 
 .notifyButton-normal {
@@ -520,9 +336,26 @@ body, #loader-div {
     width: 2.8vh;
     height: 2.8vh;
     border-radius: 100%;
-    margin-left: 1vh;
+    margin-left: 10px;
     position: relative;
     top: 0.6vh;
 }
 
+.viewProfileDiv {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    display: none;
+    font-size: 10px;
+    color: white;
+    margin-top: -55px;
+    padding-top: 5px;
+}
 
+.pfp-image:hover + .viewProfileDiv, .viewProfileDiv:hover {
+    display: block;
+}

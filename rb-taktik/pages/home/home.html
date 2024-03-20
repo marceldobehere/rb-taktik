@@ -11,10 +11,12 @@
 </head>
 
 <body onclick="hideDropDown(); hideDropDownNotification();">
-<img src="/shared/images/Logo.png" alt="Logo" class="logo" id="picLogo">
-<div id="firstDiv">
+<img src="/shared/images/Logo.png" alt="Logo" class="logo"
+     style="position:fixed;top:20px;left:50%;transform: translate(-50%, 0)">
+<div style="margin: 40px auto auto auto;width:90%;display:grid;grid-template-columns: 30% auto 15% 15%;">
     <div class="inline" id="dropdown">
         <image id="info-pfp" src="/shared/images/placeHolderPFP.png" class="inline pfp sound"
+               style="width: 100px; height: 100px; border-radius: 50px 50px 50px 50px; border: 3px solid #E01F16"
                onclick="toggleDropDown(event)"></image>
         <p class="inline">
             <span id="info-username">Shabarian der 2.</span><br>
@@ -148,7 +150,6 @@
                     <div class="friend_pfp">
                         <img src="/shared/images/placeHolderPFP.png" width="50px" height="50px"
                              alt="Profile Picture">
-                        <span class="viewProfile">View<br>Profile</span>
                     </div>
                     <div class="friend_username">
                         <span>User01</span>
