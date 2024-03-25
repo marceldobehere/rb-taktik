@@ -39,9 +39,10 @@ async function initApp()
     }
     catch (e)
     {
-        console.log("Error reading auth.json: " + e);
-        console.log("You might need to extract the file from the secure rar file!");
-        process.exit(1);
+        console.log("> Error reading auth.json: " + e);
+        console.log("  > You might need to extract the file from the secure rar file.");
+        console.log("  > Or create a mailjet account and get the api key and secret from there.");
+        console.log("  > Mail interface will not work!")
     }
 
     console.log("> Initialized mail interface");
