@@ -24,7 +24,7 @@ RB-Taktik is currently hosted [here](https://rb-taktik.marceldobehere.com).
 (Please don't try to break the server lol, ty)
 
 ## Technologies
-The game uses HTML/CSS/JS with Socket.io client side and NodeJS with Express and Socket.io on the server.
+The game uses HTML/CSS/JS with Socket.io client side and NodeJS with Express and Socket.io on the server. The server also uses nodemailer with mailjet to send emails for the password-reset system.
 
 The server can also be placed in a docker container.
 
